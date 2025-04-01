@@ -29,6 +29,14 @@
 # Instalcija
 TBD
 
+## 📂 Struktura repozitorija
+```
+📁 RUS--Monitor-za-bebe
+│── 📂 Lab1            # rješenje zadatka 1.
+│── 📂 Projekt         # Implementacija projekta Monitora za bebe
+│── 📄 README.md       # Ovaj dokument
+```
+
 # Članovi tima 
 > Karlo Cvitak
 
