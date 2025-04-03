@@ -1,81 +1,78 @@
-# Arduino sustav za upravljanje prekidima
+# Sustav s Prekidima za Arduino
 
-Ovaj projekt demonstrira sustav upravljanja prekidima za Arduino, koji rukuje višestrukim prekidima s različitim prioritetima. Sustav efikasno upravlja različitim događajima koristeći odgovarajuće strategije rukovanja prekidima.
+## 1. Opis Sustava
+Ovaj projekt implementira sustav koji koristi prekide za obradu ulaznih signala s tipkala i senzora temperature (DHT22) te generira vizualne indikacije pomoću LED dioda.
 
-## Mogućnosti
+## 2. Funkcionalnosti
 
-- Više vrsta prekida s različitim razinama prioriteta:
-  - Prekidi tipkala (najviši prioritet)
-  - Prekidi timera (srednji prioritet)
-  - ADC/senzor temperature prekidi (najniži prioritet)
-- Detekcija i praćenje konflikta resursa
-- Vizualizacija u stvarnom vremenu pomoću LED dioda i LCD zaslona
-- Praćenje temperature pomoću NTC termistora
-- Sveobuhvatno praćenje statistike
+### 2.1. Rukovanje prekidima tipkala
+| Tipkalo  | Prioritet | Prekid  | Akcija |
+|----------|----------|---------|--------|
+| BUTTON0  | Visoki   | INT0    | LED_INT0 titra 1 sekundu |
+| BUTTON1  | Srednji  | INT1    | LED_INT1 titra 1 sekundu |
+| BUTTON2  | Niski    | INT2    | LED_INT2 titra 1 sekundu |
 
-## Hardverski zahtjevi
+- Implementiran debounce mehanizam za sprečavanje višestrukih aktivacija.
 
-- Arduino Uno
-- 4 LED diode s otpornicima od 220Ω
-  - Crvena LED
-  - Plava LED
-  - Zelena LED
-  - Žuta LED
-- 2 tipkala (crveno i plavo)
-- NTC termistor
-- LCD 1602 zaslon s I2C sučeljem
+### 2.2. Rukovanje prekidom tajmera
+| Tajmer   | Prekid  | Akcija |
+|----------|--------|--------|
+| TIMER1   | Svake 1s | LED_Timer svijetli kratko |
 
-## Postavljanje sklopa u Wokwi simulatoru
+### 2.3. Rukovanje senzorom temperature (DHT22)
+| Senzor  | Prag | Akcija |
+|---------|------|--------|
+| DHT22   | < 25°C | LED_Temp titra svakih 200ms |
 
-### Dijelovi
+- Provjera temperature svakih 2 sekunde.
 
-1. Arduino Uno
-2. 2 tipkala:
-   - Crveno tipkalo (btn1)
-   - Plavo tipkalo (btn2)
-3. 4 LED diode:
-   - Crvena LED (led1)
-   - Plava LED (led2)
-   - Zelena LED (led3)
-   - Žuta LED (led4)
-4. 4 otpornika za LED diode (220Ω)
-5. NTC senzor temperature
-6. LCD 1602 zaslon s I2C sučeljem
+### 2.4. Izvršavanje prioriteta prekida
+| Prioritet | Prekid  |
+|-----------|---------|
+| 1 (Najviši) | TIMER1 |
+| 2 | INT0 (BUTTON0) |
+| 3 | INT1 (BUTTON1) |
+| 4 | INT2 (BUTTON2) |
+| 5 (Najniži) | Senzor temperature |
 
-### Spajanje
+- Implementacija koristi neblokirajuće metode (`millis()`) umjesto `delay()`.
 
-#### Tipkala:
-- Crveno tipkalo (btn1):
-  - Jedna nožica na pin 2 Arduina
-  - Druga nožica na GND Arduina
-- Plavo tipkalo (btn2):
-  - Jedna nožica na pin 3 Arduina
-  - Druga nožica na GND Arduina
+## 3. Spajanje komponenti
+| Komponenta   | Arduino Pin |
+|-------------|------------|
+| BUTTON0     | 2 (INT0) |
+| BUTTON1     | 3 (INT1) |
+| BUTTON2     | 21 (INT2 - samo na Mega) |
+| LED_INT0    | 4 |
+| LED_INT1    | 5 |
+| LED_INT2    | 6 |
+| LED_TIMER   | 7 |
+| LED_TEMP    | 8 |
+| DHT22       | 9 |
 
-#### LED diode:
-- Crvena LED (led1):
-  - Anoda (A) preko otpornika od 220Ω na pin 8 Arduina
-  - Katoda (C) na GND Arduina
-- Plava LED (led2):
-  - Anoda (A) preko otpornika od 220Ω na pin 9 Arduina
-  - Katoda (C) na GND Arduina
-- Zelena LED (led3):
-  - Anoda (A) preko otpornika od 220Ω na pin 10 Arduina
-  - Katoda (C) na GND Arduina
-- Žuta LED (led4):
-  - Anoda (A) preko otpornika od 220Ω na pin 11 Arduina
-  - Katoda (C) na GND Arduina
+- Tipkala su povezana s odgovarajućim `INT` pinovima.
+- LED diode signaliziraju aktivaciju prekida.
+- Senzor temperature (DHT22) je spojen na digitalni pin 9.
 
-#### NTC senzor temperature:
-- VCC nožica na 5V Arduina
-- OUT nožica na A0 Arduina
-- GND nožica na GND Arduina
+## 3.1 Shema spajanja
 
-#### LCD 1602 I2C:
-- GND na GND Arduina
-- VCC na 5V Arduina
-- SDA na A4 Arduina
-- SCL na A5 Arduina
+![Dijagram spajanja](images/shema_spajanja.png)
+
+
+
+## 4. Simulacija i Testiranje
+- Sustav je testiran u **Wokwi** simulatoru.
+- Logički analizator je korišten za provjeru prioriteta prekida.
+- Nakon zaustavljanje simulacija preuzima se .vcd datoteka sa prikazima prekida 
+
+![VCD](images/vcd_simulacije.png)
+
+## 5. Zaključak
+Ovaj sustav demonstrira korištenje prekida u realnom vremenu, s optimiziranim performansama kroz neblokirajuće metode i pravilno definirane prioritete.
+
+## Otvaranje VCD datoteke
+1. Preuzeti PulseView
+2. Otvoriti preuzetu VCD datoteku i postaviti Downsampling faktor
 
 ## Postavljanje Wokwi simulatora
 
@@ -87,81 +84,5 @@ Za pokretanje ovog projekta u Wokwi simulatoru:
 4. Stvorite datoteku `libraries.txt` sa sljedećim sadržajem:
 
 ```
-LiquidCrystal_I2C
+DHT sensor library
 ```
-
-5. Pokrenite simulaciju
-
-## Opis sustava
-
-### Prioriteti prekida (od najvišeg do najnižeg)
-
-1. **Tipkalo 1 (INT0)** - Vanjski prekid najvišeg prioriteta
-2. **Tipkalo 2 (INT1)** - Vanjski prekid srednjeg prioriteta
-3. **Timer1** - Programiran da se aktivira svake sekunde
-4. **ADC** - Najniži prioritet, aktivira se nakon Timer1 za mjerenje temperature
-
-### Prekidne rutine (ISR)
-
-- **ISR_Button1**: Obrađuje pritiske crvenog tipkala, mijenja stanje crvene LED
-- **ISR_Button2**: Obrađuje pritiske plavog tipkala, mijenja stanje plave LED
-- **Timer1 ISR**: Aktivira se svake sekunde, mijenja stanje zelene LED i pokreće ADC konverziju
-- **ADC ISR**: Obrađuje analogno očitanje temperature i mijenja stanje žute LED
-
-### Upravljanje konfliktima resursa
-
-Sustav koristi zastavice za detekciju i brojanje konflikata resursa:
-- `processingButton1`
-- `processingButton2`
-- `processingTimer`
-- `processingADC`
-
-Kada se jedan prekid dogodi dok se drugi obrađuje, brojač konflikata se povećava.
-
-### Ugniježđeni prekidi
-
-Sustav omogućuje ugniježđene prekide u Timer1 ISR-u koristeći funkciju `sei()`, što omogućuje prekidima višeg prioriteta da prekinu obradu timera.
-
-### Debouncing
-
-Unosi tipkala imaju implementiran debouncing s odgodom od 200ms kako bi se spriječila višestruka aktiviranja od jednog pritiska.
-
-## Informacije na zaslonu
-
-### LCD zaslon
-
-LCD prikazuje:
-- Prvi red: Brojači prekida za Tipkalo 1, Tipkalo 2 i Timer
-- Drugi red: Trenutna temperatura i broj konflikata
-
-### Serijski monitor
-
-Serijski monitor (9600 bauda) pruža detaljne informacije:
-- Detalji inicijalizacije sustava
-- Pojedinačne aktivacije prekida
-- Kompletna statistika svake 2 sekunde
-
-## Kako radi
-
-1. Tijekom postavljanja, sustav inicijalizira sve prekide s njihovim odgovarajućim prioritetima
-2. Kada se dogodi prekid:
-   - Odgovarajuća LED dioda mijenja stanje odmah unutar ISR-a
-   - Postavlja se zastavica koja označava da prekid treba obradu
-   - Brojač prekida se povećava
-3. Glavna petlja provjerava i obrađuje čekajuće prekide
-4. Svake 2 sekunde, statistika se prikazuje na LCD-u i serijskom monitoru
-
-## Demonstrirane značajke
-
-- Višestruki izvori prekida s različitim prioritetima
-- Ugniježđeni prekidi (prekidi višeg prioriteta mogu prekinuti one nižeg)
-- Detekcija konflikta resursa
-- Efikasno rukovanje prekidima s minimalnom obradom u ISR-ima
-- Interakcija s vanjskim hardverom (tipkala, LED diode, LCD, senzor temperature)
-- Debouncing tipkala
-
-## Napomene
-
-- Izračun temperature koristi Steinhart-Hart jednadžbu za NTC termistore
-- Rukovanje prekidima je dizajnirano da bude brzo, s većinom obrade koja se događa u glavnoj petlji
-- Konflikti resursa se prate kako bi se demonstrirali učinci prioriteta, ali ne utječu na funkcionalnost
