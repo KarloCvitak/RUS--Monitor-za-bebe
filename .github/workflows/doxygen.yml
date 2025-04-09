@@ -57,10 +57,10 @@ jobs:
         
         # Projekt Doxyfile
         cat > Doxyfile << 'EOL'
-        PROJECT_NAME           = "Arduino Komunikacija"
+        PROJECT_NAME           = "Monitor za Bebe"
         PROJECT_NUMBER         = "1.0"
-        PROJECT_BRIEF          = "Program za bežičnu komunikaciju"
-        OUTPUT_DIRECTORY       = ../docs/projekt3
+        PROJECT_BRIEF          = "Projekt za Ugradbene sustave"
+        OUTPUT_DIRECTORY       = .
         INPUT                  = .
         FILE_PATTERNS          = *.ino *.h *.cpp
         RECURSIVE              = YES
