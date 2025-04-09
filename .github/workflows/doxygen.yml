@@ -36,6 +36,9 @@ jobs:
         HAVE_DOT               = YES
         UML_LOOK               = YES
         EXTRACT_ALL            = YES
+        EXTENSION_MAPPING      = ino=C++
+        SOURCE_BROWSER         = YES
+        INLINE_SOURCES         = YES
         EOL
         
         # Labos 2 Doxyfile
@@ -53,6 +56,9 @@ jobs:
         HAVE_DOT               = YES
         UML_LOOK               = YES
         EXTRACT_ALL            = YES
+        EXTENSION_MAPPING      = ino=C++
+        SOURCE_BROWSER         = YES
+        INLINE_SOURCES         = YES
         EOL
         
         # Projekt Doxyfile
@@ -70,6 +76,9 @@ jobs:
         HAVE_DOT               = YES
         UML_LOOK               = YES
         EXTRACT_ALL            = YES
+        EXTENSION_MAPPING      = ino=C++
+        SOURCE_BROWSER         = YES
+        INLINE_SOURCES         = YES
         EOL
         
         # Index datoteka za navigaciju između projekata
