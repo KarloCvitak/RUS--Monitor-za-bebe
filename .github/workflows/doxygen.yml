@@ -76,17 +76,78 @@ jobs:
         mkdir -p docs
         cat > docs/index.html << 'EOL'
         <!DOCTYPE html>
-        <html>
-        <head>
           <title>Arduino Projekti Dokumentacija</title>
           <style>
-            body { font-family: Arial, sans-serif; margin: 40px; line-height: 1.6; }
-            h1 { color: #333; }
-            .project-list { list-style-type: none; padding: 0; }
-            .project-list li { margin-bottom: 15px; }
-            .project-list a { color: #0066cc; text-decoration: none; font-weight: bold; }
-            .project-list a:hover { text-decoration: underline; }
-            .description { color: #666; }
+            body {
+              font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+              background-color: #f9f9f9;
+              color: #2c3e50;
+              margin: 40px auto;
+              max-width: 800px;
+              line-height: 1.8;
+              padding: 0 20px;
+            }
+        
+            h1, h2 {
+              color: #2c3e50;
+            }
+        
+            h1 {
+              font-size: 2.5em;
+              margin-bottom: 10px;
+            }
+        
+            h2 {
+              font-size: 1.6em;
+              margin-top: 40px;
+              margin-bottom: 20px;
+              border-bottom: 2px solid #e0e0e0;
+              padding-bottom: 5px;
+            }
+        
+            .project-list {
+              list-style: none;
+              padding: 0;
+              margin: 0;
+            }
+        
+            .project-list li {
+              background: #ffffff;
+              border: 1px solid #e0e0e0;
+              border-radius: 12px;
+              padding: 20px;
+              margin-bottom: 15px;
+              box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
+              transition: transform 0.2s ease, box-shadow 0.2s ease;
+            }
+        
+            .project-list li:hover {
+              transform: translateY(-2px);
+              box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            }
+        
+            .project-list a {
+              color: #2980b9;
+              text-decoration: none;
+              font-size: 1.2em;
+              font-weight: 600;
+              display: inline-block;
+              margin-bottom: 8px;
+            }
+        
+            .project-list a:hover {
+              text-decoration: underline;
+            }
+        
+            .description {
+              color: #7f8c8d;
+              font-size: 0.95em;
+            }
+        
+            p {
+              color: #555;
+              font-size: 1.05em;
+            }
           </style>
         </head>
         <body>
@@ -96,12 +157,16 @@ jobs:
           <h2>Dostupni projekti:</h2>
           <ul class="project-list">
             <li>
-              <a href="./Lab2/html/index.html">Arduino Sleep Mode</a>
+              <a href="./lab1/html/index.html">Arduino ISR</a>
+              <div class="description">Sustav s Prekidima za Arduino</div>
+            </li>
+            <li>
+              <a href="./lab2/html/index.html">Arduino Sleep Mode</a>
               <div class="description">Program za upravljanje potrošnjom energije Arduino mikrokontrolera korištenjem sleep modova</div>
             </li>
             <li>
-              <a href=".Projekt/html/index.html">Monitor Za Bebe</a>
-              <div class="description">Projekt Ugradbenih Sustsava</div>
+              <a href="./Projekt/html/index.html">Monitor Za Bebe</a>
+              <div class="description">Projekt Ugradbenih Sustava</div>
             </li>
           </ul>
         </body>
