@@ -1,0 +1,37 @@
+{
+    "version": 1,
+    "author": "Karlo Cvitak",
+    "editor": "wokwi",
+    "parts": [
+      { "type": "wokwi-arduino-uno", "id": "arduino", "top": -76.2, "left": -135, "attrs": {} },
+      {
+        "type": "wokwi-pushbutton",
+        "id": "btn1",
+        "top": 275,
+        "left": 67.2,
+        "attrs": { "color": "green" }
+      },
+      {
+        "type": "wokwi-led",
+        "id": "led1",
+        "top": 121.2,
+        "left": 291.8,
+        "attrs": { "color": "red" }
+      },
+      {
+        "type": "wokwi-resistor",
+        "id": "r1",
+        "top": 195.95,
+        "left": 220.8,
+        "attrs": { "value": "220" }
+      }
+    ],
+    "connections": [
+      [ "arduino:GND.1", "btn1:2.l", "black", [ "v0" ] ],
+      [ "arduino:2", "btn1:1.l", "green", [ "v0" ] ],
+      [ "arduino:13", "r1:1", "red", [ "v0" ] ],
+      [ "r1:2", "led1:A", "red", [ "v0" ] ],
+      [ "led1:C", "arduino:GND.2", "black", [ "v0" ] ]
+    ],
+    "dependencies": {}
+  }
