@@ -47,17 +47,8 @@ Ovaj projekt implementira sustav za optimizaciju potrošnje energije Arduino mik
 * Serijski monitor (9600 baud) koristi se za prikaz informacija
 
 ### 3.1 Shema spajanja
-```
-Arduino UNO          Tipkalo
-    ____              ____
-   |    |            |    |
-   | D2 |------------o    o----+
-   |    |                      |
-   |GND |----------------------+
-   |    |
-   | D13|---[LED]---[220Ω]---GND
-   |____|
-```
+
+![Dijagram spajanja](images/shema_spajanja.png)
 
 ## 4. Ciklus rada programa
 1. Aktivni period (LED uključena) - trajanje 5 sekundi
@@ -75,13 +66,8 @@ Arduino UNO          Tipkalo
 * Vizualna indikacija LED diodom olakšava praćenje ciklusa rada
 
 ### 5.1 Rezultati mjerenja potrošnje
-| Način rada | Prosječna potrošnja |
-|------------|---------------------|
-| Normalni rad (bez sleep) | ~20-40 mA |
-| SLEEP_MODE_IDLE | ~10-15 mA |
-| SLEEP_MODE_STANDBY | ~0.8 μA |
-| SLEEP_MODE_PWR_SAVE | ~1 μA |
-| SLEEP_MODE_PWR_DOWN | ~0.1 μA |
+
+
 
 ## 6. Postavljanje projekta
 Za pokretanje ovog projekta:

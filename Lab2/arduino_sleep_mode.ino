@@ -243,9 +243,4 @@
        break;
    }
    
-   Serial.println(F("Usporedba potrošnje energije:"));
-   Serial.println(F("PWR_DOWN: Najniža potrošnja (~0.1μA), sve periferije isključene"));
-   Serial.println(F("PWR_SAVE: Niska potrošnja (~1μA), samo Timer2 aktivan"));
-   Serial.println(F("STANDBY: Slično PWR_DOWN, ali glavni oscilator radi (~0.8μA)"));
-   Serial.println(F("IDLE: Viša potrošnja (~4-15mA), CPU zaustavljen, većina periferija aktivna"));
  }
