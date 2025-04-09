@@ -56,11 +56,11 @@ jobs:
         EOL
         
         # Projekt Doxyfile
-        cat > Doxyfile << 'EOL'
+        cat > Projekt/Doxyfile << 'EOL'
         PROJECT_NAME           = "Monitor za Bebe"
         PROJECT_NUMBER         = "1.0"
         PROJECT_BRIEF          = "Projekt za Ugradbene sustave"
-        OUTPUT_DIRECTORY       = .
+        OUTPUT_DIRECTORY       = ../docs/Projekt
         INPUT                  = .
         FILE_PATTERNS          = *.ino *.h *.cpp
         RECURSIVE              = YES
@@ -100,7 +100,7 @@ jobs:
               <div class="description">Program za upravljanje potrošnjom energije Arduino mikrokontrolera korištenjem sleep modova</div>
             </li>
             <li>
-              <a href="./html/index.html">Monitor Za Bebe</a>
+              <a href=".Projekt/html/index.html">Monitor Za Bebe</a>
               <div class="description">Projekt Ugradbenih Sustsava</div>
             </li>
           </ul>
@@ -113,7 +113,7 @@ jobs:
         # Generiranje dokumentacije za svaki projekt
         cd Lab1 && doxygen Doxyfile && cd ..
         cd Lab2 && doxygen Doxyfile && cd ..
-        doxygen Doxyfile && cd ..
+        cd Projekt doxygen Doxyfile && cd ..
 
     - name: Deploy Documentation
       uses: peaceiris/actions-gh-pages@v3
