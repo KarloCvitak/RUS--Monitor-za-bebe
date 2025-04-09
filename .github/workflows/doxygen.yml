@@ -113,7 +113,7 @@ jobs:
         # Generiranje dokumentacije za svaki projekt
         cd Lab1 && doxygen Doxyfile && cd ..
         cd Lab2 && doxygen Doxyfile && cd ..
-        cd Projekt doxygen Doxyfile && cd ..
+        cd Projekt && doxygen Doxyfile && cd ..
 
     - name: Deploy Documentation
       uses: peaceiris/actions-gh-pages@v3
