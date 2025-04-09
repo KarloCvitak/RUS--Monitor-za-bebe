@@ -1,3 +1,5 @@
+[Pristup pregledu generirane dokumentacije](https://johnDoe.github.io/RUS--Monitor-za-bebe/).
+  
 # Razvoj ugradbenih sustava
 
 # Opis projekta
