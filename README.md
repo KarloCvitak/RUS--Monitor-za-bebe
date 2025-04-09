@@ -1,6 +1,5 @@
-[Pristup pregledu generirane dokumentacije](https://johnDoe.github.io/RUS--Monitor-za-bebe/).
-  
 # Razvoj ugradbenih sustava
+[Pristup pregledu generirane dokumentacije koda](https://karlocvitak.github.io/RUS--Monitor-za-bebe/).
 
 # Opis projekta
 
