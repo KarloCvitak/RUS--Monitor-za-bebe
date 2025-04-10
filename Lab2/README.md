@@ -9,10 +9,10 @@ Ovaj projekt implementira sustav za optimizaciju potrošnje energije Arduino mik
 ### 2.1. Rukovanje sleep modovima
 | Mode | Potrošnja | Karakteristike |
 |------|-----------|----------------|
-| SLEEP_MODE_PWR_DOWN | Najniža (~0.1μA) | Sve periferije isključene |
-| SLEEP_MODE_PWR_SAVE | Niska (~1μA) | Samo Timer2 aktivan |
-| SLEEP_MODE_STANDBY | Vrlo niska (~0.8μA) | Glavni oscilator radi |
-| SLEEP_MODE_IDLE | Viša (~4-15mA) | CPU zaustavljen, većina periferija aktivna |
+| SLEEP_MODE_PWR_DOWN | Sve periferije isključene |
+| SLEEP_MODE_PWR_SAVE | Samo Timer2 aktivan |
+| SLEEP_MODE_STANDBY | Glavni oscilator radi |
+| SLEEP_MODE_IDLE | CPU zaustavljen, većina periferija aktivna |
 
 * Implementirana mogućnost promjene sleep moda pritiskom tipkala
 
@@ -61,25 +61,3 @@ Ovaj projekt implementira sustav za optimizaciju potrošnje energije Arduino mik
    - Watchdog timerom - automatsko buđenje nakon 8 sekundi
 6. Povratak na aktivni period
 
-## 5. Simulacija i Testiranje
-
-
-
-### 5.1 Rezultati mjerenja potrošnje
-
-
-
-## 6. Postavljanje projekta
-Za pokretanje ovog projekta:
-1. Spojite komponente prema shemi
-2. Učitajte kod na Arduino
-3. Otvorite serijski monitor (9600 baud) za praćenje rada
-
-```
-// libraries.txt
-avr/sleep.h
-avr/power.h
-avr/wdt.h
-```
-
-novima

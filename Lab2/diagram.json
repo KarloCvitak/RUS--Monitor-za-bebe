@@ -11,18 +11,26 @@
         "left": 67.2,
         "attrs": { "color": "green" }
       },
-      {
-        "type": "wokwi-led",
-        "id": "led1",
-        "top": 121.2,
-        "left": 291.8,
-        "attrs": { "color": "red" }
-      },
+      { "type": "wokwi-led", "id": "led1", "top": 15.6, "left": 282.2, "attrs": { "color": "red" } },
       {
         "type": "wokwi-resistor",
         "id": "r1",
         "top": 195.95,
         "left": 220.8,
+        "attrs": { "value": "220" }
+      },
+      {
+        "type": "wokwi-led",
+        "id": "debug-led",
+        "top": 169.2,
+        "left": 474.2,
+        "attrs": { "color": "blue" }
+      },
+      {
+        "type": "wokwi-resistor",
+        "id": "r2",
+        "top": 195.95,
+        "left": 350,
         "attrs": { "value": "220" }
       }
     ],
@@ -31,7 +39,10 @@
       [ "arduino:2", "btn1:1.l", "green", [ "v0" ] ],
       [ "arduino:13", "r1:1", "red", [ "v0" ] ],
       [ "r1:2", "led1:A", "red", [ "v0" ] ],
-      [ "led1:C", "arduino:GND.2", "black", [ "v0" ] ]
+      [ "led1:C", "arduino:GND.2", "black", [ "v0" ] ],
+      [ "arduino:4", "r2:1", "blue", [ "v0" ] ],
+      [ "r2:2", "debug-led:A", "blue", [ "v0" ] ],
+      [ "debug-led:C", "arduino:GND.2", "black", [ "v0" ] ]
     ],
     "dependencies": {}
   }

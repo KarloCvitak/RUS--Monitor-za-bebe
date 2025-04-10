@@ -1,8 +1,8 @@
 /**
  * @file arduino_sleep_mode.ino
  * @brief Program za upravljanje potrošnjom energije Arduino mikrokontrolera korištenjem sleep modova
- * @author Karlo
- * @date 2025-04-09
+ * @author Claude
+ * @date 2025-04-10
  * 
  * @details Ovaj program demonstrira razne tehnike za smanjenje potrošnje energije
  * na Arduino platformi korištenjem sleep modova. Implementira različite mehanizme
@@ -12,6 +12,7 @@
  #include <avr/sleep.h>
  #include <avr/power.h>
  #include <avr/wdt.h>
+ #include <avr/interrupt.h>
  
  /**
   * @brief Pin na kojem je spojena LED dioda
@@ -25,14 +26,19 @@
  const int BUTTON_PIN = 2;
  
  /**
-  * @brief Zastavica koja označava buđenje putem tipkala
+  * @brief Pin za debugging sleep modova u Wokwi
   */
- volatile bool wakeUpByButton = false;
+ const int DEBUG_PIN = 4;
  
  /**
-  * @brief Zastavica koja označava buđenje putem watchdog timera
+  * @brief Zastavica koja označava stanje spavanja
   */
- volatile bool wakeUpByTimer = false;
+ volatile bool isSleeping = true;
+ 
+ /**
+  * @brief Zastavica koja označava buđenje putem tipkala
+  */
+ volatile bool buttonWakeUp = false;
  
  /**
   * @brief Trenutno odabrani sleep mode
@@ -40,11 +46,17 @@
   */
  byte sleepMode = SLEEP_MODE_PWR_DOWN;
  
+ /**
+  * @brief Za praćenje zadnjeg vremena za debounce tipkala
+  */
+ volatile unsigned long lastButtonPress = 0;
+ 
  // Prototipi funkcija
  void setupExternalInterrupt();
  void enterSleep();
  void setupWatchdog(int timerPrescaler);
  void changeMode();
+ void disableWatchdog();
  
  /**
   * @brief Inicijalizacija programa
@@ -58,6 +70,10 @@
    // Postavljanje pinova
    pinMode(LED_PIN, OUTPUT);
    pinMode(BUTTON_PIN, INPUT_PULLUP);
+   pinMode(DEBUG_PIN, OUTPUT);
+   
+   // Osiguraj da je watchdog timer isključen na početku
+   disableWatchdog();
    
    // Postavljanje prekida
    setupExternalInterrupt();
@@ -78,7 +94,7 @@
   * 
   * Izvršava sljedeći slijed operacija:
   * 1. Uključuje LED na 5 sekundi (aktivan period)
-  * 2. Ako je pritisnuta tipka, mijenja sleep mode
+  * 2. Ako je probuđen pritiskom na tipku, mijenja sleep mode
   * 3. Konfigurira watchdog timer na 8 sekundi
   * 4. Ulazi u odabrani sleep mode
   * 5. Nakon buđenja, ispisuje što je uzrokovalo buđenje
@@ -86,18 +102,15 @@
  void loop() {
    // Aktivan period - uključi LED na 5 sekundi
    Serial.println(F("Uključujem LED na 5 sekundi..."));
-   power_timer0_enable();  // Enable Timer0 za millis()
    digitalWrite(LED_PIN, HIGH);
    delay(5000);
    digitalWrite(LED_PIN, LOW);
    
-   // Ako je pritisnuta tipka, promijeni sleep mode
-   if (wakeUpByButton) {
-     changeMode();
-     wakeUpByButton = false;
-   }
+   // Debug signal za Wokwi - pokazuje aktivni period
+   digitalWrite(DEBUG_PIN, HIGH);
+   delay(200);
+   digitalWrite(DEBUG_PIN, LOW);
    
-   // Priprema za sleep mode
    Serial.println(F("Ulazim u sleep mode..."));
    Serial.println(F("Buđenje će biti nakon 8 sekundi ili pritiskom tipke"));
    Serial.flush();  // Osigurati da su svi podaci poslani prije spavanja
@@ -105,18 +118,80 @@
    // Postavljanje watchdog timera na 8 sekundi
    setupWatchdog(9);  // 9 = 8 sekundi
    
+   // Indikacija za Wokwi - uzorak bljeskanja za trenutni mod
+   visualizeSleepMode();
+   
    // Ulazak u sleep mode
    enterSleep();
    
    // Kod nastavlja ovdje nakon buđenja
-   if (wakeUpByTimer) {
-     Serial.println(F("Buđenje uzrokovano timerom!"));
-     wakeUpByTimer = false;
-   } else if (wakeUpByButton) {
+   Serial.println(F("Probudili smo se!"));
+   
+   // Provjeri zastavicu za buđenje tipkom
+   if (buttonWakeUp) {
      Serial.println(F("Buđenje uzrokovano pritiskom tipke!"));
+     changeMode();  // Promijeni mod kada smo probuđeni tipkom
+     buttonWakeUp = false;  // Resetiraj zastavicu
+   } else {
+     Serial.println(F("Buđenje uzrokovano timerom!"));
    }
    
    delay(1000);  // Mali delay za stabilizaciju
+   isSleeping = true;  // Resetiramo zastavicu za sljedeći ciklus
+ }
+ 
+ /**
+  * @brief Vizualizira trenutni sleep mod kroz LED bljeskanje
+  * 
+  * Za Wokwi simulaciju, ova funkcija pokazuje koji je trenutni
+  * sleep mod aktiviran različitim uzorkom bljeskanja.
+  */
+ void visualizeSleepMode() {
+   switch (sleepMode) {
+     case SLEEP_MODE_PWR_DOWN:
+       // Jedan brzi bljesak za PWR_DOWN
+       digitalWrite(DEBUG_PIN, HIGH);
+       delay(100);
+       digitalWrite(DEBUG_PIN, LOW);
+       break;
+     case SLEEP_MODE_PWR_SAVE:
+       // Dva brza bljeska za PWR_SAVE
+       for (int i = 0; i < 2; i++) {
+         digitalWrite(DEBUG_PIN, HIGH);
+         delay(100);
+         digitalWrite(DEBUG_PIN, LOW);
+         delay(100);
+       }
+       break;
+     case SLEEP_MODE_STANDBY:
+       // Tri brza bljeska za STANDBY
+       for (int i = 0; i < 3; i++) {
+         digitalWrite(DEBUG_PIN, HIGH);
+         delay(100);
+         digitalWrite(DEBUG_PIN, LOW);
+         delay(100);
+       }
+       break;
+     case SLEEP_MODE_IDLE:
+       // Dugački bljesak za IDLE
+       digitalWrite(DEBUG_PIN, HIGH);
+       delay(500);
+       digitalWrite(DEBUG_PIN, LOW);
+       break;
+   }
+ }
+ 
+ /**
+  * @brief Isključuje watchdog timer
+  * 
+  * Sigurnosna funkcija za potpuno isključivanje watchdog timera
+  */
+ void disableWatchdog() {
+   // Clearing the WDT reset flag
+   MCUSR &= ~(1<<WDRF);
+   
+   // Disable the WDT
+   wdt_disable();
  }
  
  /**
@@ -132,20 +207,25 @@
  /**
   * @brief Interrupt Service Routine (ISR) za tipkalo
   * 
-  * Postavi zastavicu i onemogući sleep mode kada se pritisne tipkalo.
+  * Postavlja zastavice za buđenje iz sleep moda i označava buđenje tipkom
   */
  void buttonInterrupt() {
-   wakeUpByButton = true;
-   sleep_disable();  // Odmah onemogući sleep mode
+   // Debounce mehanizam
+   unsigned long currentMillis = millis();
+   if (currentMillis - lastButtonPress > 200) {  // 200ms debounce period
+     isSleeping = false;
+     buttonWakeUp = true;
+     lastButtonPress = currentMillis;
+   }
  }
  
  /**
   * @brief Interrupt Service Routine (ISR) za Watchdog Timer
   * 
-  * Postavi zastavicu i onemogući watchdog timer kada istekne vrijeme timera.
+  * Postavlja zastavicu i onemogući watchdog timer kada istekne vrijeme timera.
   */
  ISR(WDT_vect) {
-   wakeUpByTimer = true;
+   isSleeping = false;
    wdt_disable();  // Onemogući watchdog timer
  }
  
@@ -176,7 +256,8 @@
   * @brief Ulazak u odabrani sleep mode
   * 
   * Isključuje nekorištene periferije, konfigurira registre i
-  * stavlja mikrokontroler u odabrani sleep mode.
+  * stavlja mikrokontroler u odabrani sleep mode. Čeka dok se
+  * ne dogodi vanjski prekid ili istekne watchdog timer.
   */
  void enterSleep() {
    // Isključi periferije koje se ne koriste u sleep modu
@@ -190,26 +271,28 @@
      power_usart0_disable();
    }
    
+   noInterrupts();        // Onemogući prekide prije ulaska u sleep
    set_sleep_mode(sleepMode);  // Postavi odabrani sleep mode
-   
-   sleep_enable();             // Omogući sleep mode
+   sleep_enable();        // Omogući sleep mode
    
    // Samo kod PWR_DOWN i STANDBY modova, omogući BOD disable za minimalnu potrošnju
    if (sleepMode == SLEEP_MODE_PWR_DOWN || sleepMode == SLEEP_MODE_STANDBY) {
-     // Posebna sekvenca za isključivanje BOD-a tijekom sleep moda (samo za AVR s BOD disable bit-om)
      #if defined(BODS) && defined(BODSE)
        sleep_bod_disable();
      #endif
    }
    
-   // Ulazak u sleep mode
-   sleep_mode();
+   interrupts();          // Ponovno omogući prekide
+   sleep_cpu();           // Ulazak u sleep mode
    
-   // Program nastavlja ovdje nakon buđenja
-   sleep_disable();  // Onemogući sleep odmah nakon buđenja
+   // Program nastavlja ovdje nakon prvog buđenja
+   sleep_disable();       // Odmah onemogući sleep
+   
+   // Ostani u petlji dok se ne dogodi prekid
+   while (isSleeping) {}
    
    // Ponovno omogući potrebne periferije
-   power_all_enable();  // Uključi sve periferije
+   power_all_enable();    // Uključi sve periferije
  }
  
  /**
@@ -242,5 +325,4 @@
        Serial.println(F("Reset na: SLEEP_MODE_PWR_DOWN"));
        break;
    }
-   
  }
