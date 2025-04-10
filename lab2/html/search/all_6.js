@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['setup_0',['setup',['../arduino__sleep__mode_8ino.html#a4fc01d736fe50cf5b977f755b675f11d',1,'arduino_sleep_mode.ino']]],
-  ['setupexternalinterrupt_1',['setupExternalInterrupt',['../arduino__sleep__mode_8ino.html#aebd4dcf38a05c8be3c7bdd9c38130112',1,'arduino_sleep_mode.ino']]],
-  ['setupwatchdog_2',['setupWatchdog',['../arduino__sleep__mode_8ino.html#ac84cd35e5331d91aa923acfbb1ad3369',1,'arduino_sleep_mode.ino']]],
-  ['sleepmode_3',['sleepMode',['../arduino__sleep__mode_8ino.html#a2d4a23b2392a19cae5b9b1c00ab5b4b6',1,'arduino_sleep_mode.ino']]]
+  ['lastbuttonpress_0',['lastButtonPress',['../arduino__sleep__mode_8ino.html#a18ec832e742616d037d5a342d30715f9',1,'arduino_sleep_mode.ino']]],
+  ['led_5fpin_1',['LED_PIN',['../arduino__sleep__mode_8ino.html#adae60f691931ebee43e0b1779dbd4219',1,'arduino_sleep_mode.ino']]],
+  ['loop_2',['loop',['../arduino__sleep__mode_8ino.html#afe461d27b9c48d5921c00d521181f12f',1,'arduino_sleep_mode.ino']]]
 ];

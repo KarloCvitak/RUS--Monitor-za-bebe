@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['entersleep_0',['enterSleep',['../arduino__sleep__mode_8ino.html#ae5b5093bef9a291e112c49e9aae5feec',1,'arduino_sleep_mode.ino']]]
+  ['disablewatchdog_0',['disableWatchdog',['../arduino__sleep__mode_8ino.html#aa572728a61b0024de131ea9c47fc8ed5',1,'arduino_sleep_mode.ino']]]
 ];

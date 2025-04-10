@@ -1,9 +1,11 @@
 <map id="arduino_sleep_mode.ino" name="arduino_sleep_mode.ino">
-<area shape="rect" id="Node000001" title="Program za upravljanje potrošnjom energije Arduino mikrokontrolera korištenjem sleep modova." alt="" coords="83,5,265,31"/>
+<area shape="rect" id="Node000001" title="Program za upravljanje potrošnjom energije Arduino mikrokontrolera korištenjem sleep modova." alt="" coords="141,5,322,31"/>
 <area shape="rect" id="Node000002" title=" " alt="" coords="5,79,100,104"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="156,33,85,74,83,69,153,28"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="204,33,95,76,93,71,202,28"/>
 <area shape="rect" id="Node000003" title=" " alt="" coords="125,79,223,104"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="177,31,177,65,171,65,171,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="224,33,194,70,190,66,220,29"/>
 <area shape="rect" id="Node000004" title=" " alt="" coords="247,79,330,104"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="194,28,260,69,257,74,191,33"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="243,29,273,66,269,70,239,33"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="354,79,469,104"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="261,28,370,71,368,76,259,33"/>
 </map>
