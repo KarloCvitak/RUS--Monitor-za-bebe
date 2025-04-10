@@ -1,4 +1,5 @@
 # Sustav s Prekidima za Arduino
+[Pristup pregledu generirane dokumentacije koda](https://karlocvitak.github.io/RUS--Monitor-za-bebe/).
 
 ## 1. Opis Sustava
 Ovaj projekt implementira sustav koji koristi prekide za obradu ulaznih signala s tipkala i senzora temperature (DHT22) te generira vizualne indikacije pomoću LED dioda.

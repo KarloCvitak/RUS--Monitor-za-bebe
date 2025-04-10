@@ -1,4 +1,5 @@
 # README: Arduino Sleep Mode Sustav za Štednju Energije
+[Pristup pregledu generirane dokumentacije koda](https://karlocvitak.github.io/RUS--Monitor-za-bebe/).
 
 ## 1. Opis Sustava
 Ovaj projekt implementira sustav za optimizaciju potrošnje energije Arduino mikrokontrolera korištenjem različitih sleep modova. Sustav omogućuje Arduino uređaju da većinu vremena provodi u niskopotrošnom režimu, a aktivira se samo kad je potrebno ili kada je probuđen vanjskim signalom.
@@ -61,9 +62,8 @@ Ovaj projekt implementira sustav za optimizaciju potrošnje energije Arduino mik
 6. Povratak na aktivni period
 
 ## 5. Simulacija i Testiranje
-* Sustav je testiran na Arduino UNO platformi
-* Potrošnja je izmjerena multimetrom u seriji s napajanjem
-* Vizualna indikacija LED diodom olakšava praćenje ciklusa rada
+
+
 
 ### 5.1 Rezultati mjerenja potrošnje
 
