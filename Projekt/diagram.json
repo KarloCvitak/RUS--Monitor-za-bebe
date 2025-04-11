@@ -1,23 +1,42 @@
 {
   "version": 1,
-  "author": "Uri Shaked",
+  "author": "Karlo Cvitak",
   "editor": "wokwi",
   "parts": [
+    { "type": "wokwi-esp32-devkit-v1", "id": "esp", "top": -33.7, "left": -81.8, "attrs": {} },
+    { "type": "wokwi-analog-temperature", "id": "temp1", "top": 100, "left": 200, "attrs": {} },
+    { "type": "wokwi-microphone", "id": "mic1", "top": -112.98, "left": -158.61, "attrs": {} },
     {
-      "type": "board-esp32-devkit-c-v4",
-      "id": "esp"
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": -61.2,
+      "left": 138.2,
+      "attrs": { "color": "green" }
+    },
+    {
+      "type": "wokwi-dht22",
+      "id": "dht1",
+      "top": -114.9,
+      "left": -264.6,
+      "attrs": { "temperature": "21.4", "humidity": "50" }
     }
   ],
   "connections": [
-    [
-      "esp:TX",
-      "$serialMonitor:RX",
-      ""
-    ],
-    [
-      "esp:RX",
-      "$serialMonitor:TX",
-      ""
-    ]
-  ]
+    [ "esp:TX0", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX0", "$serialMonitor:TX", "", [] ],
+    [ "esp:GND.1", "temp1:GND", "black", [] ],
+    [ "esp:3V3", "temp1:VCC", "red", [] ],
+    [ "esp:D34", "temp1:OUT", "green", [] ],
+    [ "esp:GND.1", "mic1:GND", "black", [] ],
+    [ "esp:3V3", "mic1:VCC", "red", [] ],
+    [ "esp:D35", "mic1:OUT", "green", [] ],
+    [ "esp:D2", "led1:A", "green", [] ],
+    [ "esp:GND.1", "led1:C", "black", [] ],
+    [ "dht1:VCC", "esp:3V3", "red", [ "v0" ] ],
+    [ "dht1:SDA", "esp:D4", "green", [ "v0" ] ],
+    [ "dht1:GND", "esp:GND.1", "black", [ "v57.6", "h124.8" ] ],
+    [ "mic1:1", "esp:GND.2", "black", [ "v0" ] ],
+    [ "mic1:2", "esp:D35", "green", [ "v0" ] ]
+  ],
+  "dependencies": {}
 }
