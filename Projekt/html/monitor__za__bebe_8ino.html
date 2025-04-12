@@ -77,8 +77,29 @@ $(function() {
   <div class="headertitle"><div class="title">monitor_za_bebe.ino File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Implementacija sustava za nadzor beba s podrškom za sleep mod.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;Arduino.h&gt;</code><br />
 <code>#include &lt;DHT.h&gt;</code><br />
+<code>#include &quot;esp_sleep.h&quot;</code><br />
+<code>#include &quot;driver/rtc_io.h&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Include dependency graph for monitor_za_bebe.ino:</div>
+<div class="dyncontent">
+<div class="center"><img src="monitor__za__bebe_8ino__incl.png" border="0" usemap="#amonitor__za__bebe_8ino" alt=""/></div>
+<map name="amonitor__za__bebe_8ino" id="amonitor__za__bebe_8ino">
+<area shape="rect" title="Implementacija sustava za nadzor beba s podrškom za sleep mod." alt="" coords="117,5,276,31"/>
+<area shape="rect" title=" " alt="" coords="5,79,89,104"/>
+<area shape="poly" title=" " alt="" coords="174,33,85,75,83,70,172,28"/>
+<area shape="rect" title=" " alt="" coords="114,79,175,104"/>
+<area shape="poly" title=" " alt="" coords="190,33,163,69,159,66,186,29"/>
+<area shape="rect" title=" " alt="" coords="199,79,298,104"/>
+<area shape="poly" title=" " alt="" coords="207,29,234,66,230,69,203,33"/>
+<area shape="rect" title=" " alt="" coords="322,79,434,104"/>
+<area shape="poly" title=" " alt="" coords="227,28,337,71,335,76,225,33"/>
+</map>
+</div>
 </div>
 <p><a href="monitor__za__bebe_8ino_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -87,7 +108,7 @@ Macros</h2></td></tr>
 <tr class="memitem:a661d236dd49f3aef3a2cf46cf6a1405e" id="r_a661d236dd49f3aef3a2cf46cf6a1405e"><td class="memItemLeft" align="right" valign="top">#<a class="el" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">define</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monitor__za__bebe_8ino.html#a661d236dd49f3aef3a2cf46cf6a1405e">DHT_PIN</a>&#160;&#160;&#160;4</td></tr>
 <tr class="memdesc:a661d236dd49f3aef3a2cf46cf6a1405e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pin za DHT22 senzor.  <br /></td></tr>
 <tr class="separator:a661d236dd49f3aef3a2cf46cf6a1405e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abd69c0b108d24168d3acdc62c6218b95" id="r_abd69c0b108d24168d3acdc62c6218b95"><td class="memItemLeft" align="right" valign="top">#<a class="el" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">define</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monitor__za__bebe_8ino.html#abd69c0b108d24168d3acdc62c6218b95">SOUND_SENSOR_PIN</a>&#160;&#160;&#160;35</td></tr>
+<tr class="memitem:abd69c0b108d24168d3acdc62c6218b95" id="r_abd69c0b108d24168d3acdc62c6218b95"><td class="memItemLeft" align="right" valign="top">#<a class="el" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">define</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monitor__za__bebe_8ino.html#abd69c0b108d24168d3acdc62c6218b95">SOUND_SENSOR_PIN</a>&#160;&#160;&#160;34</td></tr>
 <tr class="memdesc:abd69c0b108d24168d3acdc62c6218b95"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pin za zvučni senzor.  <br /></td></tr>
 <tr class="separator:abd69c0b108d24168d3acdc62c6218b95"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a089a71f836911c71b3f73fdd3b4b890b" id="r_a089a71f836911c71b3f73fdd3b4b890b"><td class="memItemLeft" align="right" valign="top">#<a class="el" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">define</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monitor__za__bebe_8ino.html#a089a71f836911c71b3f73fdd3b4b890b">STATUS_LED_PIN</a>&#160;&#160;&#160;2</td></tr>
@@ -111,18 +132,21 @@ Functions</h2></td></tr>
 <tr class="memitem:ad0c01ae6a10d12869addfdf70f5c07e9" id="r_ad0c01ae6a10d12869addfdf70f5c07e9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">int</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monitor__za__bebe_8ino.html#ad0c01ae6a10d12869addfdf70f5c07e9">readSoundLevel</a> ()</td></tr>
 <tr class="memdesc:ad0c01ae6a10d12869addfdf70f5c07e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Čita razinu zvuka sa zvučnog senzora.  <br /></td></tr>
 <tr class="separator:ad0c01ae6a10d12869addfdf70f5c07e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ace098a93e7cb0ef3e2733c5f9d464f2f" id="r_ace098a93e7cb0ef3e2733c5f9d464f2f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monitor__za__bebe_8ino.html#ace098a93e7cb0ef3e2733c5f9d464f2f">checkTemperature</a> ()</td></tr>
-<tr class="memdesc:ace098a93e7cb0ef3e2733c5f9d464f2f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Provjerava temperaturu i šalje upozorenje ako je izvan raspona.  <br /></td></tr>
-<tr class="separator:ace098a93e7cb0ef3e2733c5f9d464f2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac0a8b28ab00b8f1d6da2e2f430ce80a5" id="r_ac0a8b28ab00b8f1d6da2e2f430ce80a5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monitor__za__bebe_8ino.html#ac0a8b28ab00b8f1d6da2e2f430ce80a5">checkHumidity</a> ()</td></tr>
-<tr class="memdesc:ac0a8b28ab00b8f1d6da2e2f430ce80a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Provjerava vlažnost i šalje upozorenje ako je izvan raspona.  <br /></td></tr>
-<tr class="separator:ac0a8b28ab00b8f1d6da2e2f430ce80a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab3ab841232cf3669258f48cb453422e2" id="r_ab3ab841232cf3669258f48cb453422e2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monitor__za__bebe_8ino.html#ab3ab841232cf3669258f48cb453422e2">checkSound</a> ()</td></tr>
-<tr class="memdesc:ab3ab841232cf3669258f48cb453422e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Provjerava zvuk i šalje upozorenje ako beba plače.  <br /></td></tr>
-<tr class="separator:ab3ab841232cf3669258f48cb453422e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7d88f1d05fba88fb8f31e501f81e5ac3" id="r_a7d88f1d05fba88fb8f31e501f81e5ac3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monitor__za__bebe_8ino.html#a7d88f1d05fba88fb8f31e501f81e5ac3">checkTemperature</a> ()</td></tr>
+<tr class="memdesc:a7d88f1d05fba88fb8f31e501f81e5ac3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Provjerava temperaturu i šalje upozorenje ako je izvan raspona.  <br /></td></tr>
+<tr class="separator:a7d88f1d05fba88fb8f31e501f81e5ac3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7f9af884807fe0dd011bae0b722f5b12" id="r_a7f9af884807fe0dd011bae0b722f5b12"><td class="memItemLeft" align="right" valign="top"><a class="el" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monitor__za__bebe_8ino.html#a7f9af884807fe0dd011bae0b722f5b12">checkHumidity</a> ()</td></tr>
+<tr class="memdesc:a7f9af884807fe0dd011bae0b722f5b12"><td class="mdescLeft">&#160;</td><td class="mdescRight">Provjerava vlažnost i šalje upozorenje ako je izvan raspona.  <br /></td></tr>
+<tr class="separator:a7f9af884807fe0dd011bae0b722f5b12"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae82383b8e03b3c4c9e18327d620f0acd" id="r_ae82383b8e03b3c4c9e18327d620f0acd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monitor__za__bebe_8ino.html#ae82383b8e03b3c4c9e18327d620f0acd">checkSound</a> ()</td></tr>
+<tr class="memdesc:ae82383b8e03b3c4c9e18327d620f0acd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Provjerava zvuk i šalje upozorenje ako beba plače.  <br /></td></tr>
+<tr class="separator:ae82383b8e03b3c4c9e18327d620f0acd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1d858d406e6558a085195407a385f826" id="r_a1d858d406e6558a085195407a385f826"><td class="memItemLeft" align="right" valign="top"><a class="el" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monitor__za__bebe_8ino.html#a1d858d406e6558a085195407a385f826">sendStatusReport</a> ()</td></tr>
 <tr class="memdesc:a1d858d406e6558a085195407a385f826"><td class="mdescLeft">&#160;</td><td class="mdescRight">Periodički izvještaj o stanju.  <br /></td></tr>
 <tr class="separator:a1d858d406e6558a085195407a385f826"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a29efc3f74a7b3c3ca078a821e1c6f550" id="r_a29efc3f74a7b3c3ca078a821e1c6f550"><td class="memItemLeft" align="right" valign="top"><a class="el" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monitor__za__bebe_8ino.html#a29efc3f74a7b3c3ca078a821e1c6f550">enterDeepSleep</a> (<a class="el" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">uint64_t</a> <a class="el" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">sleepDuration</a>)</td></tr>
+<tr class="memdesc:a29efc3f74a7b3c3ca078a821e1c6f550"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ulazak u deep sleep mod.  <br /></td></tr>
+<tr class="separator:a29efc3f74a7b3c3ca078a821e1c6f550"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4fc01d736fe50cf5b977f755b675f11d" id="r_a4fc01d736fe50cf5b977f755b675f11d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monitor__za__bebe_8ino.html#a4fc01d736fe50cf5b977f755b675f11d">setup</a> ()</td></tr>
 <tr class="separator:a4fc01d736fe50cf5b977f755b675f11d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afe461d27b9c48d5921c00d521181f12f" id="r_afe461d27b9c48d5921c00d521181f12f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monitor__za__bebe_8ino.html#afe461d27b9c48d5921c00d521181f12f">loop</a> ()</td></tr>
@@ -142,12 +166,18 @@ Variables</h2></td></tr>
 <tr class="memitem:a10dbb79b6128bcff640a3c69bb3a5e67" id="r_a10dbb79b6128bcff640a3c69bb3a5e67"><td class="memItemLeft" align="right" valign="top"><a class="el" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">const</a> <a class="el" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">float</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monitor__za__bebe_8ino.html#a10dbb79b6128bcff640a3c69bb3a5e67">MAX_HUMIDITY</a> = 60.0</td></tr>
 <tr class="memdesc:a10dbb79b6128bcff640a3c69bb3a5e67"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maksimalna sigurna vlažnost u %.  <br /></td></tr>
 <tr class="separator:a10dbb79b6128bcff640a3c69bb3a5e67"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3519a034e3f730cb388324b2eab2d3ad" id="r_a3519a034e3f730cb388324b2eab2d3ad"><td class="memItemLeft" align="right" valign="top"><a class="el" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">const</a> <a class="el" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">int</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monitor__za__bebe_8ino.html#a3519a034e3f730cb388324b2eab2d3ad">CRYING_THRESHOLD</a> = 2000</td></tr>
+<tr class="memitem:a3519a034e3f730cb388324b2eab2d3ad" id="r_a3519a034e3f730cb388324b2eab2d3ad"><td class="memItemLeft" align="right" valign="top"><a class="el" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">const</a> <a class="el" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">int</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monitor__za__bebe_8ino.html#a3519a034e3f730cb388324b2eab2d3ad">CRYING_THRESHOLD</a> = 2048</td></tr>
 <tr class="memdesc:a3519a034e3f730cb388324b2eab2d3ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prag za detekciju plača.  <br /></td></tr>
 <tr class="separator:a3519a034e3f730cb388324b2eab2d3ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a921e032b7468643d82107c660897cd87" id="r_a921e032b7468643d82107c660897cd87"><td class="memItemLeft" align="right" valign="top"><a class="el" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">const</a> <a class="el" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">unsigned</a> <a class="el" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">long</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monitor__za__bebe_8ino.html#a921e032b7468643d82107c660897cd87">ALERT_COOLDOWN</a> = 60000</td></tr>
 <tr class="memdesc:a921e032b7468643d82107c660897cd87"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vremenski razmak između upozorenja (1 minuta)  <br /></td></tr>
 <tr class="separator:a921e032b7468643d82107c660897cd87"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae70f708a708a558c19d36935f11133df" id="r_ae70f708a708a558c19d36935f11133df"><td class="memItemLeft" align="right" valign="top"><a class="el" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">const</a> <a class="el" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">uint64_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monitor__za__bebe_8ino.html#ae70f708a708a558c19d36935f11133df">SLEEP_DURATION_NORMAL</a> = 300000000</td></tr>
+<tr class="separator:ae70f708a708a558c19d36935f11133df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad8b327996ed9a243a2040b90001bf5d0" id="r_ad8b327996ed9a243a2040b90001bf5d0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">const</a> <a class="el" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">uint64_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monitor__za__bebe_8ino.html#ad8b327996ed9a243a2040b90001bf5d0">SLEEP_DURATION_ALERT</a> = 10000000</td></tr>
+<tr class="separator:ad8b327996ed9a243a2040b90001bf5d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae39cd6821aac9de072620e1a6d8d71de" id="r_ae39cd6821aac9de072620e1a6d8d71de"><td class="memItemLeft" align="right" valign="top"><a class="el" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">const</a> <a class="el" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">int</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monitor__za__bebe_8ino.html#ae39cd6821aac9de072620e1a6d8d71de">MAX_NORMAL_READINGS</a> = 3</td></tr>
+<tr class="separator:ae39cd6821aac9de072620e1a6d8d71de"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae8da78d10b78c6aaae82e63077fd0b90" id="r_ae8da78d10b78c6aaae82e63077fd0b90"><td class="memItemLeft" align="right" valign="top"><a class="el" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">unsigned</a> <a class="el" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">long</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monitor__za__bebe_8ino.html#ae8da78d10b78c6aaae82e63077fd0b90">lastCryingAlert</a> = 0</td></tr>
 <tr class="memdesc:ae8da78d10b78c6aaae82e63077fd0b90"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vrijeme zadnjeg upozorenja za plač  <br /></td></tr>
 <tr class="separator:ae8da78d10b78c6aaae82e63077fd0b90"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -175,8 +205,23 @@ Variables</h2></td></tr>
 <tr class="memitem:a9aa45f8e8cda09c727c00650d54f71b8" id="r_a9aa45f8e8cda09c727c00650d54f71b8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monitor__za__bebe_8ino.html#a9aa45f8e8cda09c727c00650d54f71b8">humidityOutOfRange</a> = <a class="el" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">false</a></td></tr>
 <tr class="memdesc:a9aa45f8e8cda09c727c00650d54f71b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Status vlažnosti van raspona.  <br /></td></tr>
 <tr class="separator:a9aa45f8e8cda09c727c00650d54f71b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab579ba5890dd30ddb273e2d3ed7fe126" id="r_ab579ba5890dd30ddb273e2d3ed7fe126"><td class="memItemLeft" align="right" valign="top"><a class="el" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">int</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monitor__za__bebe_8ino.html#ab579ba5890dd30ddb273e2d3ed7fe126">normalReadingsCount</a> = 0</td></tr>
+<tr class="memdesc:ab579ba5890dd30ddb273e2d3ed7fe126"><td class="mdescLeft">&#160;</td><td class="mdescRight">Brojač normalnih očitanja.  <br /></td></tr>
+<tr class="separator:ab579ba5890dd30ddb273e2d3ed7fe126"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a22ebbc698373afce094b495bf7605750" id="r_a22ebbc698373afce094b495bf7605750"><td class="memItemLeft" align="right" valign="top"><a class="el" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">RTC_DATA_ATTR</a> <a class="el" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">int</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monitor__za__bebe_8ino.html#a22ebbc698373afce094b495bf7605750">bootCount</a> = 0</td></tr>
+<tr class="separator:a22ebbc698373afce094b495bf7605750"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a070bee623db5749e4fe4a8219cfd8e9c" id="r_a070bee623db5749e4fe4a8219cfd8e9c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">RTC_DATA_ATTR</a> <a class="el" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">unsigned</a> <a class="el" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">long</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monitor__za__bebe_8ino.html#a070bee623db5749e4fe4a8219cfd8e9c">lastStatusReport</a> = 0</td></tr>
+<tr class="separator:a070bee623db5749e4fe4a8219cfd8e9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Macro Definition Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Implementacija sustava za nadzor beba s podrškom za sleep mod. </p>
+<dl class="section author"><dt>Author</dt><dd>Karlo Cvitak </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>1.2 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2025-04-12</dd></dl>
+<p>Ovaj sustav omogućuje nadzor temperature, vlažnosti i zvuka djeteta te šalje upozorenja putem Discord webhooks kada se otkriju određeni uvjeti. Koristi DHT22 senzor za precizno mjerenje temperature i vlažnosti. Implementiran sleep mod za uštedu energije kada su parametri u normalnom rasponu. </p>
+
+<p class="definition">Definition in file <a class="el" href="monitor__za__bebe_8ino_source.html">monitor_za_bebe.ino</a>.</p>
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="a661d236dd49f3aef3a2cf46cf6a1405e" name="a661d236dd49f3aef3a2cf46cf6a1405e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a661d236dd49f3aef3a2cf46cf6a1405e">&#9670;&#160;</a></span>DHT_PIN</h2>
 
@@ -191,7 +236,7 @@ Variables</h2></td></tr>
 
 <p>Pin za DHT22 senzor. </p>
 
-<p class="definition">Definition at line <a class="el" href="monitor__za__bebe_8ino_source.html#l00017">17</a> of file <a class="el" href="monitor__za__bebe_8ino_source.html">monitor_za_bebe.ino</a>.</p>
+<p class="definition">Definition at line <a class="el" href="monitor__za__bebe_8ino_source.html#l00020">20</a> of file <a class="el" href="monitor__za__bebe_8ino_source.html">monitor_za_bebe.ino</a>.</p>
 
 </div>
 </div>
@@ -209,7 +254,7 @@ Variables</h2></td></tr>
 
 <p>DHT22 (AM2302) senzor. </p>
 
-<p class="definition">Definition at line <a class="el" href="monitor__za__bebe_8ino_source.html#l00022">22</a> of file <a class="el" href="monitor__za__bebe_8ino_source.html">monitor_za_bebe.ino</a>.</p>
+<p class="definition">Definition at line <a class="el" href="monitor__za__bebe_8ino_source.html#l00025">25</a> of file <a class="el" href="monitor__za__bebe_8ino_source.html">monitor_za_bebe.ino</a>.</p>
 
 </div>
 </div>
@@ -220,14 +265,14 @@ Variables</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#<a class="el" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">define</a> SOUND_SENSOR_PIN&#160;&#160;&#160;35</td>
+          <td class="memname">#<a class="el" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">define</a> SOUND_SENSOR_PIN&#160;&#160;&#160;34</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Pin za zvučni senzor. </p>
 
-<p class="definition">Definition at line <a class="el" href="monitor__za__bebe_8ino_source.html#l00018">18</a> of file <a class="el" href="monitor__za__bebe_8ino_source.html">monitor_za_bebe.ino</a>.</p>
+<p class="definition">Definition at line <a class="el" href="monitor__za__bebe_8ino_source.html#l00021">21</a> of file <a class="el" href="monitor__za__bebe_8ino_source.html">monitor_za_bebe.ino</a>.</p>
 
 </div>
 </div>
@@ -245,19 +290,19 @@ Variables</h2></td></tr>
 
 <p>Pin za LED indikator statusa. </p>
 
-<p class="definition">Definition at line <a class="el" href="monitor__za__bebe_8ino_source.html#l00019">19</a> of file <a class="el" href="monitor__za__bebe_8ino_source.html">monitor_za_bebe.ino</a>.</p>
+<p class="definition">Definition at line <a class="el" href="monitor__za__bebe_8ino_source.html#l00022">22</a> of file <a class="el" href="monitor__za__bebe_8ino_source.html">monitor_za_bebe.ino</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="ac0a8b28ab00b8f1d6da2e2f430ce80a5" name="ac0a8b28ab00b8f1d6da2e2f430ce80a5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac0a8b28ab00b8f1d6da2e2f430ce80a5">&#9670;&#160;</a></span>checkHumidity()</h2>
+<a id="a7f9af884807fe0dd011bae0b722f5b12" name="a7f9af884807fe0dd011bae0b722f5b12"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7f9af884807fe0dd011bae0b722f5b12">&#9670;&#160;</a></span>checkHumidity()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">void</a> checkHumidity </td>
+          <td class="memname"><a class="el" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">bool</a> checkHumidity </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -266,51 +311,53 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Provjerava vlažnost i šalje upozorenje ako je izvan raspona. </p>
+<dl class="section return"><dt>Returns</dt><dd>bool True ako je vlažnost izvan raspona </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="monitor__za__bebe_8ino_source.html#l00120">120</a> of file <a class="el" href="monitor__za__bebe_8ino_source.html">monitor_za_bebe.ino</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  120</span>                      {</div>
-<div class="line"><span class="lineno">  121</span>   <span class="keywordtype">bool</span> <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">isCurrentlyOutOfRange</a> = (<a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">currentHumidity &lt; MIN_HUMIDITY || currentHumidity &gt;</a> <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a10dbb79b6128bcff640a3c69bb3a5e67">MAX_HUMIDITY</a>);</div>
-<div class="line"><span class="lineno">  122</span>   </div>
-<div class="line"><span class="lineno">  123</span>   <span class="comment">// Provjera je li vrijeme za slanje upozorenja</span></div>
-<div class="line"><span class="lineno">  124</span>   <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">currentTime</a> = <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">millis</a>();</div>
-<div class="line"><span class="lineno">  125</span>   <span class="keywordflow">if</span> (<a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">isCurrentlyOutOfRange</a> &amp;&amp; </div>
-<div class="line"><span class="lineno">  126</span>       (<a class="code hl_variable" href="monitor__za__bebe_8ino.html#a9aa45f8e8cda09c727c00650d54f71b8">humidityOutOfRange</a> != <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">isCurrentlyOutOfRange</a> || </div>
-<div class="line"><span class="lineno">  127</span>        <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">currentTime</a> - <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a7fcd77f88a3997b6ae4de17178cd931c">lastHumidityAlert</a> &gt; <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a921e032b7468643d82107c660897cd87">ALERT_COOLDOWN</a>)) {</div>
-<div class="line"><span class="lineno">  128</span>       </div>
-<div class="line"><span class="lineno">  129</span>     <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">String</a> <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">message</a>;</div>
-<div class="line"><span class="lineno">  130</span>     <span class="keywordflow">if</span> (<a class="code hl_variable" href="monitor__za__bebe_8ino.html#ae38ebdca688c226cb3e0ea11e7050b57">currentHumidity</a> &lt; <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a81fb51ae7a2c7f1dc9b7d4a46e95a766">MIN_HUMIDITY</a>) {</div>
-<div class="line"><span class="lineno">  131</span>       <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">message</a> = <span class="stringliteral">&quot;💧 Vlažnost je preniska: &quot;</span> + <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">String</a>(<a class="code hl_variable" href="monitor__za__bebe_8ino.html#ae38ebdca688c226cb3e0ea11e7050b57">currentHumidity</a>, 1) + <span class="stringliteral">&quot; % (sigurno: &quot;</span> + <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">String</a>(<a class="code hl_variable" href="monitor__za__bebe_8ino.html#a81fb51ae7a2c7f1dc9b7d4a46e95a766">MIN_HUMIDITY</a>, 1) + <span class="stringliteral">&quot; - &quot;</span> + <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">String</a>(<a class="code hl_variable" href="monitor__za__bebe_8ino.html#a10dbb79b6128bcff640a3c69bb3a5e67">MAX_HUMIDITY</a>, 1) + <span class="stringliteral">&quot; %)&quot;</span>;</div>
-<div class="line"><span class="lineno">  132</span>     } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  133</span>       <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">message</a> = <span class="stringliteral">&quot;💧 Vlažnost je previsoka: &quot;</span> + <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">String</a>(<a class="code hl_variable" href="monitor__za__bebe_8ino.html#ae38ebdca688c226cb3e0ea11e7050b57">currentHumidity</a>, 1) + <span class="stringliteral">&quot; % (sigurno: &quot;</span> + <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">String</a>(<a class="code hl_variable" href="monitor__za__bebe_8ino.html#a81fb51ae7a2c7f1dc9b7d4a46e95a766">MIN_HUMIDITY</a>, 1) + <span class="stringliteral">&quot; - &quot;</span> + <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">String</a>(<a class="code hl_variable" href="monitor__za__bebe_8ino.html#a10dbb79b6128bcff640a3c69bb3a5e67">MAX_HUMIDITY</a>, 1) + <span class="stringliteral">&quot; %)&quot;</span>;</div>
-<div class="line"><span class="lineno">  134</span>     }</div>
-<div class="line"><span class="lineno">  135</span>     </div>
-<div class="line"><span class="lineno">  136</span>     <span class="comment">// Plava boja za upozorenje o vlažnosti</span></div>
-<div class="line"><span class="lineno">  137</span>     <span class="keywordflow">if</span> (<a class="code hl_function" href="monitor__za__bebe_8ino.html#a594dd6b4d858b3d48a0edc170177cfc0">sendDiscordAlert</a>(<a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">message</a>, 3066993)) {</div>
-<div class="line"><span class="lineno">  138</span>       <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a7fcd77f88a3997b6ae4de17178cd931c">lastHumidityAlert</a> = <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">currentTime</a>;</div>
-<div class="line"><span class="lineno">  139</span>     }</div>
-<div class="line"><span class="lineno">  140</span>   }</div>
-<div class="line"><span class="lineno">  141</span>   </div>
-<div class="line"><span class="lineno">  142</span>   <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a9aa45f8e8cda09c727c00650d54f71b8">humidityOutOfRange</a> = <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">isCurrentlyOutOfRange</a>;</div>
-<div class="line"><span class="lineno">  143</span> }</div>
-<div class="ttc" id="amonitor__za__bebe_8ino_html_a10dbb79b6128bcff640a3c69bb3a5e67"><div class="ttname"><a href="monitor__za__bebe_8ino.html#a10dbb79b6128bcff640a3c69bb3a5e67">MAX_HUMIDITY</a></div><div class="ttdeci">const float MAX_HUMIDITY</div><div class="ttdoc">Maksimalna sigurna vlažnost u %.</div><div class="ttdef"><b>Definition</b> <a href="monitor__za__bebe_8ino_source.html#l00028">monitor_za_bebe.ino:28</a></div></div>
-<div class="ttc" id="amonitor__za__bebe_8ino_html_a594dd6b4d858b3d48a0edc170177cfc0"><div class="ttname"><a href="monitor__za__bebe_8ino.html#a594dd6b4d858b3d48a0edc170177cfc0">sendDiscordAlert</a></div><div class="ttdeci">bool sendDiscordAlert(String message, int color)</div><div class="ttdoc">Šalje upozorenje na Discord.</div><div class="ttdef"><b>Definition</b> <a href="monitor__za__bebe_8ino_source.html#l00050">monitor_za_bebe.ino:50</a></div></div>
-<div class="ttc" id="amonitor__za__bebe_8ino_html_a7fcd77f88a3997b6ae4de17178cd931c"><div class="ttname"><a href="monitor__za__bebe_8ino.html#a7fcd77f88a3997b6ae4de17178cd931c">lastHumidityAlert</a></div><div class="ttdeci">unsigned long lastHumidityAlert</div><div class="ttdoc">Vrijeme zadnjeg upozorenja za vlažnost.</div><div class="ttdef"><b>Definition</b> <a href="monitor__za__bebe_8ino_source.html#l00036">monitor_za_bebe.ino:36</a></div></div>
-<div class="ttc" id="amonitor__za__bebe_8ino_html_a81fb51ae7a2c7f1dc9b7d4a46e95a766"><div class="ttname"><a href="monitor__za__bebe_8ino.html#a81fb51ae7a2c7f1dc9b7d4a46e95a766">MIN_HUMIDITY</a></div><div class="ttdeci">const float MIN_HUMIDITY</div><div class="ttdoc">Minimalna sigurna vlažnost u %.</div><div class="ttdef"><b>Definition</b> <a href="monitor__za__bebe_8ino_source.html#l00027">monitor_za_bebe.ino:27</a></div></div>
-<div class="ttc" id="amonitor__za__bebe_8ino_html_a908a6600439809b00fa906e5c78d381c"><div class="ttname"><a href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">currentTemp</a></div><div class="ttdeci">float currentTemp</div><div class="ttdoc">Trenutna temperatura.</div><div class="ttdef"><b>Definition</b> <a href="monitor__za__bebe_8ino_source.html#l00037">monitor_za_bebe.ino:37</a></div></div>
-<div class="ttc" id="amonitor__za__bebe_8ino_html_a921e032b7468643d82107c660897cd87"><div class="ttname"><a href="monitor__za__bebe_8ino.html#a921e032b7468643d82107c660897cd87">ALERT_COOLDOWN</a></div><div class="ttdeci">const unsigned long ALERT_COOLDOWN</div><div class="ttdoc">Vremenski razmak između upozorenja (1 minuta)</div><div class="ttdef"><b>Definition</b> <a href="monitor__za__bebe_8ino_source.html#l00030">monitor_za_bebe.ino:30</a></div></div>
-<div class="ttc" id="amonitor__za__bebe_8ino_html_a9aa45f8e8cda09c727c00650d54f71b8"><div class="ttname"><a href="monitor__za__bebe_8ino.html#a9aa45f8e8cda09c727c00650d54f71b8">humidityOutOfRange</a></div><div class="ttdeci">bool humidityOutOfRange</div><div class="ttdoc">Status vlažnosti van raspona.</div><div class="ttdef"><b>Definition</b> <a href="monitor__za__bebe_8ino_source.html#l00042">monitor_za_bebe.ino:42</a></div></div>
-<div class="ttc" id="amonitor__za__bebe_8ino_html_ae38ebdca688c226cb3e0ea11e7050b57"><div class="ttname"><a href="monitor__za__bebe_8ino.html#ae38ebdca688c226cb3e0ea11e7050b57">currentHumidity</a></div><div class="ttdeci">float currentHumidity</div><div class="ttdoc">Trenutna vlažnost.</div><div class="ttdef"><b>Definition</b> <a href="monitor__za__bebe_8ino_source.html#l00038">monitor_za_bebe.ino:38</a></div></div>
+<p class="definition">Definition at line <a class="el" href="monitor__za__bebe_8ino_source.html#l00137">137</a> of file <a class="el" href="monitor__za__bebe_8ino_source.html">monitor_za_bebe.ino</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  137</span>                     {</div>
+<div class="line"><span class="lineno">  138</span>    <span class="keywordtype">bool</span> <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">isCurrentlyOutOfRange</a> = (<a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">currentHumidity &lt; MIN_HUMIDITY || currentHumidity &gt;</a> <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a10dbb79b6128bcff640a3c69bb3a5e67">MAX_HUMIDITY</a>);</div>
+<div class="line"><span class="lineno">  139</span>   </div>
+<div class="line"><span class="lineno">  140</span>    <span class="comment">// Provjera je li vrijeme za slanje upozorenja</span></div>
+<div class="line"><span class="lineno">  141</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">currentTime</a> = <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">millis</a>();</div>
+<div class="line"><span class="lineno">  142</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">isCurrentlyOutOfRange</a> &amp;&amp; </div>
+<div class="line"><span class="lineno">  143</span>        (<a class="code hl_variable" href="monitor__za__bebe_8ino.html#a9aa45f8e8cda09c727c00650d54f71b8">humidityOutOfRange</a> != <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">isCurrentlyOutOfRange</a> || </div>
+<div class="line"><span class="lineno">  144</span>        <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">currentTime</a> - <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a7fcd77f88a3997b6ae4de17178cd931c">lastHumidityAlert</a> &gt; <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a921e032b7468643d82107c660897cd87">ALERT_COOLDOWN</a>)) {</div>
+<div class="line"><span class="lineno">  145</span>       </div>
+<div class="line"><span class="lineno">  146</span>        <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">String</a> <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">message</a>;</div>
+<div class="line"><span class="lineno">  147</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="monitor__za__bebe_8ino.html#ae38ebdca688c226cb3e0ea11e7050b57">currentHumidity</a> &lt; <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a81fb51ae7a2c7f1dc9b7d4a46e95a766">MIN_HUMIDITY</a>) {</div>
+<div class="line"><span class="lineno">  148</span>            <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">message</a> = <span class="stringliteral">&quot;💧 Vlažnost je preniska: &quot;</span> + <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">String</a>(<a class="code hl_variable" href="monitor__za__bebe_8ino.html#ae38ebdca688c226cb3e0ea11e7050b57">currentHumidity</a>, 1) + <span class="stringliteral">&quot; % (sigurno: &quot;</span> + <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">String</a>(<a class="code hl_variable" href="monitor__za__bebe_8ino.html#a81fb51ae7a2c7f1dc9b7d4a46e95a766">MIN_HUMIDITY</a>, 1) + <span class="stringliteral">&quot; - &quot;</span> + <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">String</a>(<a class="code hl_variable" href="monitor__za__bebe_8ino.html#a10dbb79b6128bcff640a3c69bb3a5e67">MAX_HUMIDITY</a>, 1) + <span class="stringliteral">&quot; %)&quot;</span>;</div>
+<div class="line"><span class="lineno">  149</span>        } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  150</span>            <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">message</a> = <span class="stringliteral">&quot;💧 Vlažnost je previsoka: &quot;</span> + <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">String</a>(<a class="code hl_variable" href="monitor__za__bebe_8ino.html#ae38ebdca688c226cb3e0ea11e7050b57">currentHumidity</a>, 1) + <span class="stringliteral">&quot; % (sigurno: &quot;</span> + <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">String</a>(<a class="code hl_variable" href="monitor__za__bebe_8ino.html#a81fb51ae7a2c7f1dc9b7d4a46e95a766">MIN_HUMIDITY</a>, 1) + <span class="stringliteral">&quot; - &quot;</span> + <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">String</a>(<a class="code hl_variable" href="monitor__za__bebe_8ino.html#a10dbb79b6128bcff640a3c69bb3a5e67">MAX_HUMIDITY</a>, 1) + <span class="stringliteral">&quot; %)&quot;</span>;</div>
+<div class="line"><span class="lineno">  151</span>        }</div>
+<div class="line"><span class="lineno">  152</span>       </div>
+<div class="line"><span class="lineno">  153</span>        <span class="comment">// Plava boja za upozorenje o vlažnosti</span></div>
+<div class="line"><span class="lineno">  154</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="monitor__za__bebe_8ino.html#a594dd6b4d858b3d48a0edc170177cfc0">sendDiscordAlert</a>(<a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">message</a>, 3066993)) {</div>
+<div class="line"><span class="lineno">  155</span>            <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a7fcd77f88a3997b6ae4de17178cd931c">lastHumidityAlert</a> = <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">currentTime</a>;</div>
+<div class="line"><span class="lineno">  156</span>        }</div>
+<div class="line"><span class="lineno">  157</span>    }</div>
+<div class="line"><span class="lineno">  158</span>   </div>
+<div class="line"><span class="lineno">  159</span>    <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a9aa45f8e8cda09c727c00650d54f71b8">humidityOutOfRange</a> = <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">isCurrentlyOutOfRange</a>;</div>
+<div class="line"><span class="lineno">  160</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">isCurrentlyOutOfRange</a>;</div>
+<div class="line"><span class="lineno">  161</span>}</div>
+<div class="ttc" id="amonitor__za__bebe_8ino_html_a10dbb79b6128bcff640a3c69bb3a5e67"><div class="ttname"><a href="monitor__za__bebe_8ino.html#a10dbb79b6128bcff640a3c69bb3a5e67">MAX_HUMIDITY</a></div><div class="ttdeci">const float MAX_HUMIDITY</div><div class="ttdoc">Maksimalna sigurna vlažnost u %.</div><div class="ttdef"><b>Definition</b> <a href="monitor__za__bebe_8ino_source.html#l00031">monitor_za_bebe.ino:31</a></div></div>
+<div class="ttc" id="amonitor__za__bebe_8ino_html_a594dd6b4d858b3d48a0edc170177cfc0"><div class="ttname"><a href="monitor__za__bebe_8ino.html#a594dd6b4d858b3d48a0edc170177cfc0">sendDiscordAlert</a></div><div class="ttdeci">bool sendDiscordAlert(String message, int color)</div><div class="ttdoc">Šalje upozorenje na Discord.</div><div class="ttdef"><b>Definition</b> <a href="monitor__za__bebe_8ino_source.html#l00063">monitor_za_bebe.ino:63</a></div></div>
+<div class="ttc" id="amonitor__za__bebe_8ino_html_a7fcd77f88a3997b6ae4de17178cd931c"><div class="ttname"><a href="monitor__za__bebe_8ino.html#a7fcd77f88a3997b6ae4de17178cd931c">lastHumidityAlert</a></div><div class="ttdeci">unsigned long lastHumidityAlert</div><div class="ttdoc">Vrijeme zadnjeg upozorenja za vlažnost.</div><div class="ttdef"><b>Definition</b> <a href="monitor__za__bebe_8ino_source.html#l00044">monitor_za_bebe.ino:44</a></div></div>
+<div class="ttc" id="amonitor__za__bebe_8ino_html_a81fb51ae7a2c7f1dc9b7d4a46e95a766"><div class="ttname"><a href="monitor__za__bebe_8ino.html#a81fb51ae7a2c7f1dc9b7d4a46e95a766">MIN_HUMIDITY</a></div><div class="ttdeci">const float MIN_HUMIDITY</div><div class="ttdoc">Minimalna sigurna vlažnost u %.</div><div class="ttdef"><b>Definition</b> <a href="monitor__za__bebe_8ino_source.html#l00030">monitor_za_bebe.ino:30</a></div></div>
+<div class="ttc" id="amonitor__za__bebe_8ino_html_a908a6600439809b00fa906e5c78d381c"><div class="ttname"><a href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">currentTemp</a></div><div class="ttdeci">float currentTemp</div><div class="ttdoc">Trenutna temperatura.</div><div class="ttdef"><b>Definition</b> <a href="monitor__za__bebe_8ino_source.html#l00045">monitor_za_bebe.ino:45</a></div></div>
+<div class="ttc" id="amonitor__za__bebe_8ino_html_a921e032b7468643d82107c660897cd87"><div class="ttname"><a href="monitor__za__bebe_8ino.html#a921e032b7468643d82107c660897cd87">ALERT_COOLDOWN</a></div><div class="ttdeci">const unsigned long ALERT_COOLDOWN</div><div class="ttdoc">Vremenski razmak između upozorenja (1 minuta)</div><div class="ttdef"><b>Definition</b> <a href="monitor__za__bebe_8ino_source.html#l00033">monitor_za_bebe.ino:33</a></div></div>
+<div class="ttc" id="amonitor__za__bebe_8ino_html_a9aa45f8e8cda09c727c00650d54f71b8"><div class="ttname"><a href="monitor__za__bebe_8ino.html#a9aa45f8e8cda09c727c00650d54f71b8">humidityOutOfRange</a></div><div class="ttdeci">bool humidityOutOfRange</div><div class="ttdoc">Status vlažnosti van raspona.</div><div class="ttdef"><b>Definition</b> <a href="monitor__za__bebe_8ino_source.html#l00050">monitor_za_bebe.ino:50</a></div></div>
+<div class="ttc" id="amonitor__za__bebe_8ino_html_ae38ebdca688c226cb3e0ea11e7050b57"><div class="ttname"><a href="monitor__za__bebe_8ino.html#ae38ebdca688c226cb3e0ea11e7050b57">currentHumidity</a></div><div class="ttdeci">float currentHumidity</div><div class="ttdoc">Trenutna vlažnost.</div><div class="ttdef"><b>Definition</b> <a href="monitor__za__bebe_8ino_source.html#l00046">monitor_za_bebe.ino:46</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="ab3ab841232cf3669258f48cb453422e2" name="ab3ab841232cf3669258f48cb453422e2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab3ab841232cf3669258f48cb453422e2">&#9670;&#160;</a></span>checkSound()</h2>
+<a id="ae82383b8e03b3c4c9e18327d620f0acd" name="ae82383b8e03b3c4c9e18327d620f0acd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae82383b8e03b3c4c9e18327d620f0acd">&#9670;&#160;</a></span>checkSound()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">void</a> checkSound </td>
+          <td class="memname"><a class="el" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">bool</a> checkSound </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -319,44 +366,46 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Provjerava zvuk i šalje upozorenje ako beba plače. </p>
+<dl class="section return"><dt>Returns</dt><dd>bool True ako beba plače </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="monitor__za__bebe_8ino_source.html#l00148">148</a> of file <a class="el" href="monitor__za__bebe_8ino_source.html">monitor_za_bebe.ino</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  148</span>                   {</div>
-<div class="line"><span class="lineno">  149</span>   <a class="code hl_variable" href="monitor__za__bebe_8ino.html#ab4435d9b44d39082a8e46997679cca91">soundLevel</a> = <a class="code hl_function" href="monitor__za__bebe_8ino.html#ad0c01ae6a10d12869addfdf70f5c07e9">readSoundLevel</a>();</div>
-<div class="line"><span class="lineno">  150</span>   <span class="keywordtype">bool</span> <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">isCurrentlyCrying</a> = <a class="code hl_variable" href="monitor__za__bebe_8ino.html#ab4435d9b44d39082a8e46997679cca91">soundLevel</a> &gt; <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a3519a034e3f730cb388324b2eab2d3ad">CRYING_THRESHOLD</a>;</div>
-<div class="line"><span class="lineno">  151</span>   </div>
-<div class="line"><span class="lineno">  152</span>   <span class="comment">// Provjera je li vrijeme za slanje upozorenja</span></div>
-<div class="line"><span class="lineno">  153</span>   <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">currentTime</a> = <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">millis</a>();</div>
-<div class="line"><span class="lineno">  154</span>   <span class="keywordflow">if</span> (<a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">isCurrentlyCrying</a> &amp;&amp; </div>
-<div class="line"><span class="lineno">  155</span>       (<a class="code hl_variable" href="monitor__za__bebe_8ino.html#a8236e33c91672e72d2662bec762d0139">isCrying</a> != <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">isCurrentlyCrying</a> || </div>
-<div class="line"><span class="lineno">  156</span>        <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">currentTime</a> - <a class="code hl_variable" href="monitor__za__bebe_8ino.html#ae8da78d10b78c6aaae82e63077fd0b90">lastCryingAlert</a> &gt; <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a921e032b7468643d82107c660897cd87">ALERT_COOLDOWN</a>)) {</div>
-<div class="line"><span class="lineno">  157</span>       </div>
-<div class="line"><span class="lineno">  158</span>     <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">String</a> <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">message</a> = <span class="stringliteral">&quot;🔊 Beba plače! Razina zvuka: &quot;</span> + <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">String</a>(<a class="code hl_variable" href="monitor__za__bebe_8ino.html#ab4435d9b44d39082a8e46997679cca91">soundLevel</a>);</div>
-<div class="line"><span class="lineno">  159</span>     </div>
-<div class="line"><span class="lineno">  160</span>     <span class="comment">// Ljubičasta boja za upozorenje o plaču</span></div>
-<div class="line"><span class="lineno">  161</span>     <span class="keywordflow">if</span> (<a class="code hl_function" href="monitor__za__bebe_8ino.html#a594dd6b4d858b3d48a0edc170177cfc0">sendDiscordAlert</a>(<a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">message</a>, 10181046)) {</div>
-<div class="line"><span class="lineno">  162</span>       <a class="code hl_variable" href="monitor__za__bebe_8ino.html#ae8da78d10b78c6aaae82e63077fd0b90">lastCryingAlert</a> = <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">currentTime</a>;</div>
-<div class="line"><span class="lineno">  163</span>     }</div>
-<div class="line"><span class="lineno">  164</span>   }</div>
-<div class="line"><span class="lineno">  165</span>   </div>
-<div class="line"><span class="lineno">  166</span>   <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a8236e33c91672e72d2662bec762d0139">isCrying</a> = <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">isCurrentlyCrying</a>;</div>
-<div class="line"><span class="lineno">  167</span> }</div>
-<div class="ttc" id="amonitor__za__bebe_8ino_html_a3519a034e3f730cb388324b2eab2d3ad"><div class="ttname"><a href="monitor__za__bebe_8ino.html#a3519a034e3f730cb388324b2eab2d3ad">CRYING_THRESHOLD</a></div><div class="ttdeci">const int CRYING_THRESHOLD</div><div class="ttdoc">Prag za detekciju plača.</div><div class="ttdef"><b>Definition</b> <a href="monitor__za__bebe_8ino_source.html#l00029">monitor_za_bebe.ino:29</a></div></div>
-<div class="ttc" id="amonitor__za__bebe_8ino_html_a8236e33c91672e72d2662bec762d0139"><div class="ttname"><a href="monitor__za__bebe_8ino.html#a8236e33c91672e72d2662bec762d0139">isCrying</a></div><div class="ttdeci">bool isCrying</div><div class="ttdoc">Status plača.</div><div class="ttdef"><b>Definition</b> <a href="monitor__za__bebe_8ino_source.html#l00040">monitor_za_bebe.ino:40</a></div></div>
-<div class="ttc" id="amonitor__za__bebe_8ino_html_ab4435d9b44d39082a8e46997679cca91"><div class="ttname"><a href="monitor__za__bebe_8ino.html#ab4435d9b44d39082a8e46997679cca91">soundLevel</a></div><div class="ttdeci">int soundLevel</div><div class="ttdoc">Trenutna razina zvuka.</div><div class="ttdef"><b>Definition</b> <a href="monitor__za__bebe_8ino_source.html#l00039">monitor_za_bebe.ino:39</a></div></div>
-<div class="ttc" id="amonitor__za__bebe_8ino_html_ad0c01ae6a10d12869addfdf70f5c07e9"><div class="ttname"><a href="monitor__za__bebe_8ino.html#ad0c01ae6a10d12869addfdf70f5c07e9">readSoundLevel</a></div><div class="ttdeci">int readSoundLevel()</div><div class="ttdoc">Čita razinu zvuka sa zvučnog senzora.</div><div class="ttdef"><b>Definition</b> <a href="monitor__za__bebe_8ino_source.html#l00083">monitor_za_bebe.ino:83</a></div></div>
-<div class="ttc" id="amonitor__za__bebe_8ino_html_ae8da78d10b78c6aaae82e63077fd0b90"><div class="ttname"><a href="monitor__za__bebe_8ino.html#ae8da78d10b78c6aaae82e63077fd0b90">lastCryingAlert</a></div><div class="ttdeci">unsigned long lastCryingAlert</div><div class="ttdoc">Vrijeme zadnjeg upozorenja za plač</div><div class="ttdef"><b>Definition</b> <a href="monitor__za__bebe_8ino_source.html#l00034">monitor_za_bebe.ino:34</a></div></div>
+<p class="definition">Definition at line <a class="el" href="monitor__za__bebe_8ino_source.html#l00167">167</a> of file <a class="el" href="monitor__za__bebe_8ino_source.html">monitor_za_bebe.ino</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  167</span>                  {</div>
+<div class="line"><span class="lineno">  168</span>    <a class="code hl_variable" href="monitor__za__bebe_8ino.html#ab4435d9b44d39082a8e46997679cca91">soundLevel</a> = <a class="code hl_function" href="monitor__za__bebe_8ino.html#ad0c01ae6a10d12869addfdf70f5c07e9">readSoundLevel</a>();</div>
+<div class="line"><span class="lineno">  169</span>    <span class="keywordtype">bool</span> <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">isCurrentlyCrying</a> = <a class="code hl_variable" href="monitor__za__bebe_8ino.html#ab4435d9b44d39082a8e46997679cca91">soundLevel</a> &gt; <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a3519a034e3f730cb388324b2eab2d3ad">CRYING_THRESHOLD</a>;</div>
+<div class="line"><span class="lineno">  170</span>   </div>
+<div class="line"><span class="lineno">  171</span>    <span class="comment">// Provjera je li vrijeme za slanje upozorenja</span></div>
+<div class="line"><span class="lineno">  172</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">currentTime</a> = <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">millis</a>();</div>
+<div class="line"><span class="lineno">  173</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">isCurrentlyCrying</a> &amp;&amp; </div>
+<div class="line"><span class="lineno">  174</span>        (<a class="code hl_variable" href="monitor__za__bebe_8ino.html#a8236e33c91672e72d2662bec762d0139">isCrying</a> != <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">isCurrentlyCrying</a> || </div>
+<div class="line"><span class="lineno">  175</span>        <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">currentTime</a> - <a class="code hl_variable" href="monitor__za__bebe_8ino.html#ae8da78d10b78c6aaae82e63077fd0b90">lastCryingAlert</a> &gt; <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a921e032b7468643d82107c660897cd87">ALERT_COOLDOWN</a>)) {</div>
+<div class="line"><span class="lineno">  176</span>       </div>
+<div class="line"><span class="lineno">  177</span>        <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">String</a> <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">message</a> = <span class="stringliteral">&quot;🔊 Beba plače! Razina zvuka: &quot;</span> + <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">String</a>(<a class="code hl_variable" href="monitor__za__bebe_8ino.html#ab4435d9b44d39082a8e46997679cca91">soundLevel</a>);</div>
+<div class="line"><span class="lineno">  178</span>       </div>
+<div class="line"><span class="lineno">  179</span>        <span class="comment">// Ljubičasta boja za upozorenje o plaču</span></div>
+<div class="line"><span class="lineno">  180</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="monitor__za__bebe_8ino.html#a594dd6b4d858b3d48a0edc170177cfc0">sendDiscordAlert</a>(<a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">message</a>, 10181046)) {</div>
+<div class="line"><span class="lineno">  181</span>            <a class="code hl_variable" href="monitor__za__bebe_8ino.html#ae8da78d10b78c6aaae82e63077fd0b90">lastCryingAlert</a> = <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">currentTime</a>;</div>
+<div class="line"><span class="lineno">  182</span>        }</div>
+<div class="line"><span class="lineno">  183</span>    }</div>
+<div class="line"><span class="lineno">  184</span>   </div>
+<div class="line"><span class="lineno">  185</span>    <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a8236e33c91672e72d2662bec762d0139">isCrying</a> = <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">isCurrentlyCrying</a>;</div>
+<div class="line"><span class="lineno">  186</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">isCurrentlyCrying</a>;</div>
+<div class="line"><span class="lineno">  187</span>}</div>
+<div class="ttc" id="amonitor__za__bebe_8ino_html_a3519a034e3f730cb388324b2eab2d3ad"><div class="ttname"><a href="monitor__za__bebe_8ino.html#a3519a034e3f730cb388324b2eab2d3ad">CRYING_THRESHOLD</a></div><div class="ttdeci">const int CRYING_THRESHOLD</div><div class="ttdoc">Prag za detekciju plača.</div><div class="ttdef"><b>Definition</b> <a href="monitor__za__bebe_8ino_source.html#l00032">monitor_za_bebe.ino:32</a></div></div>
+<div class="ttc" id="amonitor__za__bebe_8ino_html_a8236e33c91672e72d2662bec762d0139"><div class="ttname"><a href="monitor__za__bebe_8ino.html#a8236e33c91672e72d2662bec762d0139">isCrying</a></div><div class="ttdeci">bool isCrying</div><div class="ttdoc">Status plača.</div><div class="ttdef"><b>Definition</b> <a href="monitor__za__bebe_8ino_source.html#l00048">monitor_za_bebe.ino:48</a></div></div>
+<div class="ttc" id="amonitor__za__bebe_8ino_html_ab4435d9b44d39082a8e46997679cca91"><div class="ttname"><a href="monitor__za__bebe_8ino.html#ab4435d9b44d39082a8e46997679cca91">soundLevel</a></div><div class="ttdeci">int soundLevel</div><div class="ttdoc">Trenutna razina zvuka.</div><div class="ttdef"><b>Definition</b> <a href="monitor__za__bebe_8ino_source.html#l00047">monitor_za_bebe.ino:47</a></div></div>
+<div class="ttc" id="amonitor__za__bebe_8ino_html_ad0c01ae6a10d12869addfdf70f5c07e9"><div class="ttname"><a href="monitor__za__bebe_8ino.html#ad0c01ae6a10d12869addfdf70f5c07e9">readSoundLevel</a></div><div class="ttdeci">int readSoundLevel()</div><div class="ttdoc">Čita razinu zvuka sa zvučnog senzora.</div><div class="ttdef"><b>Definition</b> <a href="monitor__za__bebe_8ino_source.html#l00098">monitor_za_bebe.ino:98</a></div></div>
+<div class="ttc" id="amonitor__za__bebe_8ino_html_ae8da78d10b78c6aaae82e63077fd0b90"><div class="ttname"><a href="monitor__za__bebe_8ino.html#ae8da78d10b78c6aaae82e63077fd0b90">lastCryingAlert</a></div><div class="ttdeci">unsigned long lastCryingAlert</div><div class="ttdoc">Vrijeme zadnjeg upozorenja za plač</div><div class="ttdef"><b>Definition</b> <a href="monitor__za__bebe_8ino_source.html#l00042">monitor_za_bebe.ino:42</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="ace098a93e7cb0ef3e2733c5f9d464f2f" name="ace098a93e7cb0ef3e2733c5f9d464f2f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ace098a93e7cb0ef3e2733c5f9d464f2f">&#9670;&#160;</a></span>checkTemperature()</h2>
+<a id="a7d88f1d05fba88fb8f31e501f81e5ac3" name="a7d88f1d05fba88fb8f31e501f81e5ac3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7d88f1d05fba88fb8f31e501f81e5ac3">&#9670;&#160;</a></span>checkTemperature()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">void</a> checkTemperature </td>
+          <td class="memname"><a class="el" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">bool</a> checkTemperature </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -365,34 +414,36 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Provjerava temperaturu i šalje upozorenje ako je izvan raspona. </p>
+<dl class="section return"><dt>Returns</dt><dd>bool True ako je temperatura izvan raspona </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="monitor__za__bebe_8ino_source.html#l00093">93</a> of file <a class="el" href="monitor__za__bebe_8ino_source.html">monitor_za_bebe.ino</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   93</span>                         {</div>
-<div class="line"><span class="lineno">   94</span>   <span class="keywordtype">bool</span> <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">isCurrentlyOutOfRange</a> = (<a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">currentTemp &lt; MIN_TEMP || currentTemp &gt;</a> <a class="code hl_variable" href="monitor__za__bebe_8ino.html#aecd07027b33957af8505dcb402c2ab4a">MAX_TEMP</a>);</div>
-<div class="line"><span class="lineno">   95</span>   <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">currentTime</a> = <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">millis</a>();</div>
-<div class="line"><span class="lineno">   96</span> </div>
-<div class="line"><span class="lineno">   97</span>   <span class="keywordflow">if</span> (<a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">isCurrentlyOutOfRange</a> &amp;&amp;</div>
-<div class="line"><span class="lineno">   98</span>       (<a class="code hl_variable" href="monitor__za__bebe_8ino.html#ad79be48c00de7ba22f1f896c9964e18b">tempOutOfRange</a> != <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">isCurrentlyOutOfRange</a> || <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">currentTime</a> - <a class="code hl_variable" href="monitor__za__bebe_8ino.html#aa223e5bd139ad8480dc4487e13d5a10c">lastTempAlert</a> &gt; <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a921e032b7468643d82107c660897cd87">ALERT_COOLDOWN</a>)) {</div>
-<div class="line"><span class="lineno">   99</span> </div>
-<div class="line"><span class="lineno">  100</span>     <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">String</a> <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">message</a>;</div>
-<div class="line"><span class="lineno">  101</span>     <span class="keywordflow">if</span> (<a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">currentTemp</a> &lt; <a class="code hl_variable" href="monitor__za__bebe_8ino.html#acaa9fb1b9d747da2e2d9ee9f04e8926d">MIN_TEMP</a>) {</div>
-<div class="line"><span class="lineno">  102</span>       <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">message</a> = <span class="stringliteral">&quot;⚠️ Temperatura je preniska: &quot;</span> + <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">String</a>(<a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">currentTemp</a>, 1) + <span class="stringliteral">&quot; °C (sigurno: &quot;</span> + <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">String</a>(<a class="code hl_variable" href="monitor__za__bebe_8ino.html#acaa9fb1b9d747da2e2d9ee9f04e8926d">MIN_TEMP</a>, 1) + <span class="stringliteral">&quot; - &quot;</span> + <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">String</a>(<a class="code hl_variable" href="monitor__za__bebe_8ino.html#aecd07027b33957af8505dcb402c2ab4a">MAX_TEMP</a>, 1) + <span class="stringliteral">&quot; °C)&quot;</span>;</div>
-<div class="line"><span class="lineno">  103</span>     } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  104</span>       <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">message</a> = <span class="stringliteral">&quot;⚠️ Temperatura je previsoka: &quot;</span> + <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">String</a>(<a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">currentTemp</a>, 1) + <span class="stringliteral">&quot; °C (sigurno: &quot;</span> + <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">String</a>(<a class="code hl_variable" href="monitor__za__bebe_8ino.html#acaa9fb1b9d747da2e2d9ee9f04e8926d">MIN_TEMP</a>, 1) + <span class="stringliteral">&quot; - &quot;</span> + <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">String</a>(<a class="code hl_variable" href="monitor__za__bebe_8ino.html#aecd07027b33957af8505dcb402c2ab4a">MAX_TEMP</a>, 1) + <span class="stringliteral">&quot; °C)&quot;</span>;</div>
-<div class="line"><span class="lineno">  105</span>     }</div>
-<div class="line"><span class="lineno">  106</span> </div>
-<div class="line"><span class="lineno">  107</span>     <span class="keywordflow">if</span> (<a class="code hl_function" href="monitor__za__bebe_8ino.html#a594dd6b4d858b3d48a0edc170177cfc0">sendDiscordAlert</a>(<a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">message</a>, 15158332)) {</div>
-<div class="line"><span class="lineno">  108</span>       <a class="code hl_variable" href="monitor__za__bebe_8ino.html#aa223e5bd139ad8480dc4487e13d5a10c">lastTempAlert</a> = <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">currentTime</a>;</div>
-<div class="line"><span class="lineno">  109</span>       <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">delay</a>(1500); <span class="comment">// ⚠️ dodan delay između poruka</span></div>
-<div class="line"><span class="lineno">  110</span>     }</div>
-<div class="line"><span class="lineno">  111</span>   }</div>
+<p class="definition">Definition at line <a class="el" href="monitor__za__bebe_8ino_source.html#l00109">109</a> of file <a class="el" href="monitor__za__bebe_8ino_source.html">monitor_za_bebe.ino</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  109</span>                        {</div>
+<div class="line"><span class="lineno">  110</span>    <span class="keywordtype">bool</span> <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">isCurrentlyOutOfRange</a> = (<a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">currentTemp &lt; MIN_TEMP || currentTemp &gt;</a> <a class="code hl_variable" href="monitor__za__bebe_8ino.html#aecd07027b33957af8505dcb402c2ab4a">MAX_TEMP</a>);</div>
+<div class="line"><span class="lineno">  111</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">currentTime</a> = <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">millis</a>();</div>
 <div class="line"><span class="lineno">  112</span> </div>
-<div class="line"><span class="lineno">  113</span>   <a class="code hl_variable" href="monitor__za__bebe_8ino.html#ad79be48c00de7ba22f1f896c9964e18b">tempOutOfRange</a> = <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">isCurrentlyOutOfRange</a>;</div>
-<div class="line"><span class="lineno">  114</span> }</div>
-<div class="ttc" id="amonitor__za__bebe_8ino_html_aa223e5bd139ad8480dc4487e13d5a10c"><div class="ttname"><a href="monitor__za__bebe_8ino.html#aa223e5bd139ad8480dc4487e13d5a10c">lastTempAlert</a></div><div class="ttdeci">unsigned long lastTempAlert</div><div class="ttdoc">Vrijeme zadnjeg upozorenja za temperaturu.</div><div class="ttdef"><b>Definition</b> <a href="monitor__za__bebe_8ino_source.html#l00035">monitor_za_bebe.ino:35</a></div></div>
-<div class="ttc" id="amonitor__za__bebe_8ino_html_acaa9fb1b9d747da2e2d9ee9f04e8926d"><div class="ttname"><a href="monitor__za__bebe_8ino.html#acaa9fb1b9d747da2e2d9ee9f04e8926d">MIN_TEMP</a></div><div class="ttdeci">const float MIN_TEMP</div><div class="ttdoc">Minimalna sigurna temperatura u °C.</div><div class="ttdef"><b>Definition</b> <a href="monitor__za__bebe_8ino_source.html#l00025">monitor_za_bebe.ino:25</a></div></div>
-<div class="ttc" id="amonitor__za__bebe_8ino_html_ad79be48c00de7ba22f1f896c9964e18b"><div class="ttname"><a href="monitor__za__bebe_8ino.html#ad79be48c00de7ba22f1f896c9964e18b">tempOutOfRange</a></div><div class="ttdeci">bool tempOutOfRange</div><div class="ttdoc">Status temperature van raspona.</div><div class="ttdef"><b>Definition</b> <a href="monitor__za__bebe_8ino_source.html#l00041">monitor_za_bebe.ino:41</a></div></div>
-<div class="ttc" id="amonitor__za__bebe_8ino_html_aecd07027b33957af8505dcb402c2ab4a"><div class="ttname"><a href="monitor__za__bebe_8ino.html#aecd07027b33957af8505dcb402c2ab4a">MAX_TEMP</a></div><div class="ttdeci">const float MAX_TEMP</div><div class="ttdoc">Maksimalna sigurna temperatura u °C.</div><div class="ttdef"><b>Definition</b> <a href="monitor__za__bebe_8ino_source.html#l00026">monitor_za_bebe.ino:26</a></div></div>
+<div class="line"><span class="lineno">  113</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">isCurrentlyOutOfRange</a> &amp;&amp;</div>
+<div class="line"><span class="lineno">  114</span>        (<a class="code hl_variable" href="monitor__za__bebe_8ino.html#ad79be48c00de7ba22f1f896c9964e18b">tempOutOfRange</a> != <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">isCurrentlyOutOfRange</a> || <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">currentTime</a> - <a class="code hl_variable" href="monitor__za__bebe_8ino.html#aa223e5bd139ad8480dc4487e13d5a10c">lastTempAlert</a> &gt; <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a921e032b7468643d82107c660897cd87">ALERT_COOLDOWN</a>)) {</div>
+<div class="line"><span class="lineno">  115</span> </div>
+<div class="line"><span class="lineno">  116</span>        <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">String</a> <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">message</a>;</div>
+<div class="line"><span class="lineno">  117</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">currentTemp</a> &lt; <a class="code hl_variable" href="monitor__za__bebe_8ino.html#acaa9fb1b9d747da2e2d9ee9f04e8926d">MIN_TEMP</a>) {</div>
+<div class="line"><span class="lineno">  118</span>            <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">message</a> = <span class="stringliteral">&quot;⚠️ Temperatura je preniska: &quot;</span> + <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">String</a>(<a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">currentTemp</a>, 1) + <span class="stringliteral">&quot; °C (sigurno: &quot;</span> + <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">String</a>(<a class="code hl_variable" href="monitor__za__bebe_8ino.html#acaa9fb1b9d747da2e2d9ee9f04e8926d">MIN_TEMP</a>, 1) + <span class="stringliteral">&quot; - &quot;</span> + <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">String</a>(<a class="code hl_variable" href="monitor__za__bebe_8ino.html#aecd07027b33957af8505dcb402c2ab4a">MAX_TEMP</a>, 1) + <span class="stringliteral">&quot; °C)&quot;</span>;</div>
+<div class="line"><span class="lineno">  119</span>        } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  120</span>            <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">message</a> = <span class="stringliteral">&quot;⚠️ Temperatura je previsoka: &quot;</span> + <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">String</a>(<a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">currentTemp</a>, 1) + <span class="stringliteral">&quot; °C (sigurno: &quot;</span> + <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">String</a>(<a class="code hl_variable" href="monitor__za__bebe_8ino.html#acaa9fb1b9d747da2e2d9ee9f04e8926d">MIN_TEMP</a>, 1) + <span class="stringliteral">&quot; - &quot;</span> + <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">String</a>(<a class="code hl_variable" href="monitor__za__bebe_8ino.html#aecd07027b33957af8505dcb402c2ab4a">MAX_TEMP</a>, 1) + <span class="stringliteral">&quot; °C)&quot;</span>;</div>
+<div class="line"><span class="lineno">  121</span>        }</div>
+<div class="line"><span class="lineno">  122</span> </div>
+<div class="line"><span class="lineno">  123</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="monitor__za__bebe_8ino.html#a594dd6b4d858b3d48a0edc170177cfc0">sendDiscordAlert</a>(<a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">message</a>, 15158332)) {</div>
+<div class="line"><span class="lineno">  124</span>            <a class="code hl_variable" href="monitor__za__bebe_8ino.html#aa223e5bd139ad8480dc4487e13d5a10c">lastTempAlert</a> = <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">currentTime</a>;</div>
+<div class="line"><span class="lineno">  125</span>            <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">delay</a>(1500); <span class="comment">// Dodana pauza između poruka</span></div>
+<div class="line"><span class="lineno">  126</span>        }</div>
+<div class="line"><span class="lineno">  127</span>    }</div>
+<div class="line"><span class="lineno">  128</span> </div>
+<div class="line"><span class="lineno">  129</span>    <a class="code hl_variable" href="monitor__za__bebe_8ino.html#ad79be48c00de7ba22f1f896c9964e18b">tempOutOfRange</a> = <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">isCurrentlyOutOfRange</a>;</div>
+<div class="line"><span class="lineno">  130</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">isCurrentlyOutOfRange</a>;</div>
+<div class="line"><span class="lineno">  131</span>}</div>
+<div class="ttc" id="amonitor__za__bebe_8ino_html_aa223e5bd139ad8480dc4487e13d5a10c"><div class="ttname"><a href="monitor__za__bebe_8ino.html#aa223e5bd139ad8480dc4487e13d5a10c">lastTempAlert</a></div><div class="ttdeci">unsigned long lastTempAlert</div><div class="ttdoc">Vrijeme zadnjeg upozorenja za temperaturu.</div><div class="ttdef"><b>Definition</b> <a href="monitor__za__bebe_8ino_source.html#l00043">monitor_za_bebe.ino:43</a></div></div>
+<div class="ttc" id="amonitor__za__bebe_8ino_html_acaa9fb1b9d747da2e2d9ee9f04e8926d"><div class="ttname"><a href="monitor__za__bebe_8ino.html#acaa9fb1b9d747da2e2d9ee9f04e8926d">MIN_TEMP</a></div><div class="ttdeci">const float MIN_TEMP</div><div class="ttdoc">Minimalna sigurna temperatura u °C.</div><div class="ttdef"><b>Definition</b> <a href="monitor__za__bebe_8ino_source.html#l00028">monitor_za_bebe.ino:28</a></div></div>
+<div class="ttc" id="amonitor__za__bebe_8ino_html_ad79be48c00de7ba22f1f896c9964e18b"><div class="ttname"><a href="monitor__za__bebe_8ino.html#ad79be48c00de7ba22f1f896c9964e18b">tempOutOfRange</a></div><div class="ttdeci">bool tempOutOfRange</div><div class="ttdoc">Status temperature van raspona.</div><div class="ttdef"><b>Definition</b> <a href="monitor__za__bebe_8ino_source.html#l00049">monitor_za_bebe.ino:49</a></div></div>
+<div class="ttc" id="amonitor__za__bebe_8ino_html_aecd07027b33957af8505dcb402c2ab4a"><div class="ttname"><a href="monitor__za__bebe_8ino.html#aecd07027b33957af8505dcb402c2ab4a">MAX_TEMP</a></div><div class="ttdeci">const float MAX_TEMP</div><div class="ttdoc">Maksimalna sigurna temperatura u °C.</div><div class="ttdef"><b>Definition</b> <a href="monitor__za__bebe_8ino_source.html#l00029">monitor_za_bebe.ino:29</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -426,6 +477,48 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a id="a29efc3f74a7b3c3ca078a821e1c6f550" name="a29efc3f74a7b3c3ca078a821e1c6f550"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a29efc3f74a7b3c3ca078a821e1c6f550">&#9670;&#160;</a></span>enterDeepSleep()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">void</a> enterDeepSleep </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">uint64_t</a>&#160;</td>
+          <td class="paramname"><em>sleepDuration</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Ulazak u deep sleep mod. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sleepDuration</td><td>Trajanje spavanja u mikrosekundama </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="monitor__za__bebe_8ino_source.html#l00217">217</a> of file <a class="el" href="monitor__za__bebe_8ino_source.html">monitor_za_bebe.ino</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  217</span>                                            {</div>
+<div class="line"><span class="lineno">  218</span>    <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">Serial</a>.println(<span class="stringliteral">&quot;Ulazak u deep sleep mod...&quot;</span>);</div>
+<div class="line"><span class="lineno">  219</span>    <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">Serial</a>.flush();</div>
+<div class="line"><span class="lineno">  220</span>    </div>
+<div class="line"><span class="lineno">  221</span>    <span class="comment">// Postavite pin za buđenje iz sna (može se koristiti senzor zvuka)</span></div>
+<div class="line"><span class="lineno">  222</span>    <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">esp_sleep_enable_ext0_wakeup</a>((<a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">gpio_num_t</a>)<a class="code hl_define" href="monitor__za__bebe_8ino.html#abd69c0b108d24168d3acdc62c6218b95">SOUND_SENSOR_PIN</a>, <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">HIGH</a>); <span class="comment">// Buđenje kada se detektira zvuk</span></div>
+<div class="line"><span class="lineno">  223</span>    </div>
+<div class="line"><span class="lineno">  224</span>    <span class="comment">// Postavite timer za automatsko buđenje nakon zadanog vremena</span></div>
+<div class="line"><span class="lineno">  225</span>    <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">esp_sleep_enable_timer_wakeup</a>(<a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">sleepDuration</a>);</div>
+<div class="line"><span class="lineno">  226</span>    </div>
+<div class="line"><span class="lineno">  227</span>    <span class="comment">// Ulazak u deep sleep mod</span></div>
+<div class="line"><span class="lineno">  228</span>    <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">esp_deep_sleep_start</a>();</div>
+<div class="line"><span class="lineno">  229</span>}</div>
+<div class="ttc" id="amonitor__za__bebe_8ino_html_abd69c0b108d24168d3acdc62c6218b95"><div class="ttname"><a href="monitor__za__bebe_8ino.html#abd69c0b108d24168d3acdc62c6218b95">SOUND_SENSOR_PIN</a></div><div class="ttdeci">#define SOUND_SENSOR_PIN</div><div class="ttdoc">Pin za zvučni senzor.</div><div class="ttdef"><b>Definition</b> <a href="monitor__za__bebe_8ino_source.html#l00021">monitor_za_bebe.ino:21</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
 <a id="afe461d27b9c48d5921c00d521181f12f" name="afe461d27b9c48d5921c00d521181f12f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#afe461d27b9c48d5921c00d521181f12f">&#9670;&#160;</a></span>loop()</h2>
 
@@ -441,32 +534,66 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="monitor__za__bebe_8ino_source.html#l00209">209</a> of file <a class="el" href="monitor__za__bebe_8ino_source.html">monitor_za_bebe.ino</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  209</span>             {</div>
-<div class="line"><span class="lineno">  210</span>   <span class="comment">// Treperenje LED indikatora kao znak rada</span></div>
-<div class="line"><span class="lineno">  211</span>   <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">digitalWrite</a>(<a class="code hl_define" href="monitor__za__bebe_8ino.html#a089a71f836911c71b3f73fdd3b4b890b">STATUS_LED_PIN</a>, <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">HIGH</a>);</div>
-<div class="line"><span class="lineno">  212</span>   <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">delay</a>(100);</div>
-<div class="line"><span class="lineno">  213</span>   <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">digitalWrite</a>(<a class="code hl_define" href="monitor__za__bebe_8ino.html#a089a71f836911c71b3f73fdd3b4b890b">STATUS_LED_PIN</a>, <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">LOW</a>);</div>
-<div class="line"><span class="lineno">  214</span>   </div>
-<div class="line"><span class="lineno">  215</span>   <span class="comment">// Provjera senzora</span></div>
-<div class="line"><span class="lineno">  216</span>   <span class="keywordflow">if</span> (<a class="code hl_function" href="monitor__za__bebe_8ino.html#abe55f1b24677034196ebac987a108f3a">readDHTSensor</a>()) {</div>
-<div class="line"><span class="lineno">  217</span>     <a class="code hl_function" href="monitor__za__bebe_8ino.html#ace098a93e7cb0ef3e2733c5f9d464f2f">checkTemperature</a>();</div>
-<div class="line"><span class="lineno">  218</span>     <a class="code hl_function" href="monitor__za__bebe_8ino.html#ac0a8b28ab00b8f1d6da2e2f430ce80a5">checkHumidity</a>();</div>
-<div class="line"><span class="lineno">  219</span>   }</div>
-<div class="line"><span class="lineno">  220</span>   <a class="code hl_function" href="monitor__za__bebe_8ino.html#ab3ab841232cf3669258f48cb453422e2">checkSound</a>();</div>
-<div class="line"><span class="lineno">  221</span>   </div>
-<div class="line"><span class="lineno">  222</span>   <span class="comment">// Slanje periodičkog izvještaja</span></div>
-<div class="line"><span class="lineno">  223</span>   <a class="code hl_function" href="monitor__za__bebe_8ino.html#a1d858d406e6558a085195407a385f826">sendStatusReport</a>();</div>
-<div class="line"><span class="lineno">  224</span>   </div>
-<div class="line"><span class="lineno">  225</span>   <span class="comment">// Pauza između očitanja</span></div>
-<div class="line"><span class="lineno">  226</span>   <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">delay</a>(2000);</div>
-<div class="line"><span class="lineno">  227</span> }</div>
-<div class="ttc" id="amonitor__za__bebe_8ino_html_a089a71f836911c71b3f73fdd3b4b890b"><div class="ttname"><a href="monitor__za__bebe_8ino.html#a089a71f836911c71b3f73fdd3b4b890b">STATUS_LED_PIN</a></div><div class="ttdeci">#define STATUS_LED_PIN</div><div class="ttdoc">Pin za LED indikator statusa.</div><div class="ttdef"><b>Definition</b> <a href="monitor__za__bebe_8ino_source.html#l00019">monitor_za_bebe.ino:19</a></div></div>
-<div class="ttc" id="amonitor__za__bebe_8ino_html_a1d858d406e6558a085195407a385f826"><div class="ttname"><a href="monitor__za__bebe_8ino.html#a1d858d406e6558a085195407a385f826">sendStatusReport</a></div><div class="ttdeci">void sendStatusReport()</div><div class="ttdoc">Periodički izvještaj o stanju.</div><div class="ttdef"><b>Definition</b> <a href="monitor__za__bebe_8ino_source.html#l00172">monitor_za_bebe.ino:172</a></div></div>
-<div class="ttc" id="amonitor__za__bebe_8ino_html_ab3ab841232cf3669258f48cb453422e2"><div class="ttname"><a href="monitor__za__bebe_8ino.html#ab3ab841232cf3669258f48cb453422e2">checkSound</a></div><div class="ttdeci">void checkSound()</div><div class="ttdoc">Provjerava zvuk i šalje upozorenje ako beba plače.</div><div class="ttdef"><b>Definition</b> <a href="monitor__za__bebe_8ino_source.html#l00148">monitor_za_bebe.ino:148</a></div></div>
-<div class="ttc" id="amonitor__za__bebe_8ino_html_abe55f1b24677034196ebac987a108f3a"><div class="ttname"><a href="monitor__za__bebe_8ino.html#abe55f1b24677034196ebac987a108f3a">readDHTSensor</a></div><div class="ttdeci">bool readDHTSensor()</div><div class="ttdoc">Čita temperaturu i vlažnost s DHT22 senzora.</div><div class="ttdef"><b>Definition</b> <a href="monitor__za__bebe_8ino_source.html#l00059">monitor_za_bebe.ino:59</a></div></div>
-<div class="ttc" id="amonitor__za__bebe_8ino_html_ac0a8b28ab00b8f1d6da2e2f430ce80a5"><div class="ttname"><a href="monitor__za__bebe_8ino.html#ac0a8b28ab00b8f1d6da2e2f430ce80a5">checkHumidity</a></div><div class="ttdeci">void checkHumidity()</div><div class="ttdoc">Provjerava vlažnost i šalje upozorenje ako je izvan raspona.</div><div class="ttdef"><b>Definition</b> <a href="monitor__za__bebe_8ino_source.html#l00120">monitor_za_bebe.ino:120</a></div></div>
-<div class="ttc" id="amonitor__za__bebe_8ino_html_ace098a93e7cb0ef3e2733c5f9d464f2f"><div class="ttname"><a href="monitor__za__bebe_8ino.html#ace098a93e7cb0ef3e2733c5f9d464f2f">checkTemperature</a></div><div class="ttdeci">void checkTemperature()</div><div class="ttdoc">Provjerava temperaturu i šalje upozorenje ako je izvan raspona.</div><div class="ttdef"><b>Definition</b> <a href="monitor__za__bebe_8ino_source.html#l00093">monitor_za_bebe.ino:93</a></div></div>
+<p class="definition">Definition at line <a class="el" href="monitor__za__bebe_8ino_source.html#l00256">256</a> of file <a class="el" href="monitor__za__bebe_8ino_source.html">monitor_za_bebe.ino</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  256</span>            {</div>
+<div class="line"><span class="lineno">  257</span>    <span class="comment">// Indikacija da je sustav aktivan</span></div>
+<div class="line"><span class="lineno">  258</span>    <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">digitalWrite</a>(<a class="code hl_define" href="monitor__za__bebe_8ino.html#a089a71f836911c71b3f73fdd3b4b890b">STATUS_LED_PIN</a>, <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">HIGH</a>);</div>
+<div class="line"><span class="lineno">  259</span>    </div>
+<div class="line"><span class="lineno">  260</span>    <span class="keywordtype">bool</span> <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">anyAlert</a> = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  261</span>    </div>
+<div class="line"><span class="lineno">  262</span>    <span class="comment">// Provjera senzora</span></div>
+<div class="line"><span class="lineno">  263</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="monitor__za__bebe_8ino.html#abe55f1b24677034196ebac987a108f3a">readDHTSensor</a>()) {</div>
+<div class="line"><span class="lineno">  264</span>        <span class="keywordtype">bool</span> <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">tempAlert</a> = <a class="code hl_function" href="monitor__za__bebe_8ino.html#a7d88f1d05fba88fb8f31e501f81e5ac3">checkTemperature</a>();</div>
+<div class="line"><span class="lineno">  265</span>        <span class="keywordtype">bool</span> <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">humAlert</a> = <a class="code hl_function" href="monitor__za__bebe_8ino.html#a7f9af884807fe0dd011bae0b722f5b12">checkHumidity</a>();</div>
+<div class="line"><span class="lineno">  266</span>        <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">anyAlert</a> = <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">tempAlert</a> || <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">humAlert</a>;</div>
+<div class="line"><span class="lineno">  267</span>    }</div>
+<div class="line"><span class="lineno">  268</span>    </div>
+<div class="line"><span class="lineno">  269</span>    <span class="keywordtype">bool</span> <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">cryingAlert</a> = <a class="code hl_function" href="monitor__za__bebe_8ino.html#ae82383b8e03b3c4c9e18327d620f0acd">checkSound</a>();</div>
+<div class="line"><span class="lineno">  270</span>    <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">anyAlert</a> = <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">anyAlert</a> || <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">cryingAlert</a>;</div>
+<div class="line"><span class="lineno">  271</span>    </div>
+<div class="line"><span class="lineno">  272</span>    <span class="comment">// Slanje periodičkog izvještaja</span></div>
+<div class="line"><span class="lineno">  273</span>    <a class="code hl_function" href="monitor__za__bebe_8ino.html#a1d858d406e6558a085195407a385f826">sendStatusReport</a>();</div>
+<div class="line"><span class="lineno">  274</span>    </div>
+<div class="line"><span class="lineno">  275</span>    <span class="comment">// Isključivanje LED indikatora</span></div>
+<div class="line"><span class="lineno">  276</span>    <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">digitalWrite</a>(<a class="code hl_define" href="monitor__za__bebe_8ino.html#a089a71f836911c71b3f73fdd3b4b890b">STATUS_LED_PIN</a>, <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">LOW</a>);</div>
+<div class="line"><span class="lineno">  277</span>    </div>
+<div class="line"><span class="lineno">  278</span>    <span class="comment">// Odlučivanje o ulasku u sleep mod</span></div>
+<div class="line"><span class="lineno">  279</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">anyAlert</a>) {</div>
+<div class="line"><span class="lineno">  280</span>        <a class="code hl_variable" href="monitor__za__bebe_8ino.html#ab579ba5890dd30ddb273e2d3ed7fe126">normalReadingsCount</a>++;</div>
+<div class="line"><span class="lineno">  281</span>        </div>
+<div class="line"><span class="lineno">  282</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="monitor__za__bebe_8ino.html#ab579ba5890dd30ddb273e2d3ed7fe126">normalReadingsCount</a> &gt;= <a class="code hl_variable" href="monitor__za__bebe_8ino.html#ae39cd6821aac9de072620e1a6d8d71de">MAX_NORMAL_READINGS</a>) {</div>
+<div class="line"><span class="lineno">  283</span>            <span class="comment">// Dovoljno normalnih očitanja, ulazak u duži sleep</span></div>
+<div class="line"><span class="lineno">  284</span>            <a class="code hl_variable" href="monitor__za__bebe_8ino.html#ab579ba5890dd30ddb273e2d3ed7fe126">normalReadingsCount</a> = 0;</div>
+<div class="line"><span class="lineno">  285</span>            <a class="code hl_function" href="monitor__za__bebe_8ino.html#a29efc3f74a7b3c3ca078a821e1c6f550">enterDeepSleep</a>(<a class="code hl_variable" href="monitor__za__bebe_8ino.html#ae70f708a708a558c19d36935f11133df">SLEEP_DURATION_NORMAL</a>);</div>
+<div class="line"><span class="lineno">  286</span>        } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  287</span>            <span class="comment">// Još uvijek pratimo da vidimo je li stanje stabilno</span></div>
+<div class="line"><span class="lineno">  288</span>            <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">Serial</a>.println(<span class="stringliteral">&quot;Normalno čitanje #&quot;</span> + <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">String</a>(<a class="code hl_variable" href="monitor__za__bebe_8ino.html#ab579ba5890dd30ddb273e2d3ed7fe126">normalReadingsCount</a>) + <span class="stringliteral">&quot; od &quot;</span> + <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">String</a>(<a class="code hl_variable" href="monitor__za__bebe_8ino.html#ae39cd6821aac9de072620e1a6d8d71de">MAX_NORMAL_READINGS</a>));</div>
+<div class="line"><span class="lineno">  289</span>            <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">delay</a>(2000);</div>
+<div class="line"><span class="lineno">  290</span>        }</div>
+<div class="line"><span class="lineno">  291</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  292</span>        <span class="comment">// Resetiranje brojača normalnih očitanja</span></div>
+<div class="line"><span class="lineno">  293</span>        <a class="code hl_variable" href="monitor__za__bebe_8ino.html#ab579ba5890dd30ddb273e2d3ed7fe126">normalReadingsCount</a> = 0;</div>
+<div class="line"><span class="lineno">  294</span>        </div>
+<div class="line"><span class="lineno">  295</span>        <span class="comment">// Kraći sleep jer imamo upozorenja</span></div>
+<div class="line"><span class="lineno">  296</span>        <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">Serial</a>.println(<span class="stringliteral">&quot;Detektirano upozorenje, ostajemo u aktivnom načinu rada&quot;</span>);</div>
+<div class="line"><span class="lineno">  297</span>        </div>
+<div class="line"><span class="lineno">  298</span>        <span class="comment">// Kraća pauza između provjera u slučaju upozorenja</span></div>
+<div class="line"><span class="lineno">  299</span>        <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">delay</a>(2000);</div>
+<div class="line"><span class="lineno">  300</span>        </div>
+<div class="line"><span class="lineno">  301</span>        <span class="comment">// Ako želimo kraći sleep umjesto delay, možemo koristiti:</span></div>
+<div class="line"><span class="lineno">  302</span>        <span class="comment">// enterDeepSleep(SLEEP_DURATION_ALERT);</span></div>
+<div class="line"><span class="lineno">  303</span>    }</div>
+<div class="line"><span class="lineno">  304</span>}</div>
+<div class="ttc" id="amonitor__za__bebe_8ino_html_a089a71f836911c71b3f73fdd3b4b890b"><div class="ttname"><a href="monitor__za__bebe_8ino.html#a089a71f836911c71b3f73fdd3b4b890b">STATUS_LED_PIN</a></div><div class="ttdeci">#define STATUS_LED_PIN</div><div class="ttdoc">Pin za LED indikator statusa.</div><div class="ttdef"><b>Definition</b> <a href="monitor__za__bebe_8ino_source.html#l00022">monitor_za_bebe.ino:22</a></div></div>
+<div class="ttc" id="amonitor__za__bebe_8ino_html_a1d858d406e6558a085195407a385f826"><div class="ttname"><a href="monitor__za__bebe_8ino.html#a1d858d406e6558a085195407a385f826">sendStatusReport</a></div><div class="ttdeci">void sendStatusReport()</div><div class="ttdoc">Periodički izvještaj o stanju.</div><div class="ttdef"><b>Definition</b> <a href="monitor__za__bebe_8ino_source.html#l00192">monitor_za_bebe.ino:192</a></div></div>
+<div class="ttc" id="amonitor__za__bebe_8ino_html_a29efc3f74a7b3c3ca078a821e1c6f550"><div class="ttname"><a href="monitor__za__bebe_8ino.html#a29efc3f74a7b3c3ca078a821e1c6f550">enterDeepSleep</a></div><div class="ttdeci">void enterDeepSleep(uint64_t sleepDuration)</div><div class="ttdoc">Ulazak u deep sleep mod.</div><div class="ttdef"><b>Definition</b> <a href="monitor__za__bebe_8ino_source.html#l00217">monitor_za_bebe.ino:217</a></div></div>
+<div class="ttc" id="amonitor__za__bebe_8ino_html_a7d88f1d05fba88fb8f31e501f81e5ac3"><div class="ttname"><a href="monitor__za__bebe_8ino.html#a7d88f1d05fba88fb8f31e501f81e5ac3">checkTemperature</a></div><div class="ttdeci">bool checkTemperature()</div><div class="ttdoc">Provjerava temperaturu i šalje upozorenje ako je izvan raspona.</div><div class="ttdef"><b>Definition</b> <a href="monitor__za__bebe_8ino_source.html#l00109">monitor_za_bebe.ino:109</a></div></div>
+<div class="ttc" id="amonitor__za__bebe_8ino_html_a7f9af884807fe0dd011bae0b722f5b12"><div class="ttname"><a href="monitor__za__bebe_8ino.html#a7f9af884807fe0dd011bae0b722f5b12">checkHumidity</a></div><div class="ttdeci">bool checkHumidity()</div><div class="ttdoc">Provjerava vlažnost i šalje upozorenje ako je izvan raspona.</div><div class="ttdef"><b>Definition</b> <a href="monitor__za__bebe_8ino_source.html#l00137">monitor_za_bebe.ino:137</a></div></div>
+<div class="ttc" id="amonitor__za__bebe_8ino_html_ab579ba5890dd30ddb273e2d3ed7fe126"><div class="ttname"><a href="monitor__za__bebe_8ino.html#ab579ba5890dd30ddb273e2d3ed7fe126">normalReadingsCount</a></div><div class="ttdeci">int normalReadingsCount</div><div class="ttdoc">Brojač normalnih očitanja.</div><div class="ttdef"><b>Definition</b> <a href="monitor__za__bebe_8ino_source.html#l00051">monitor_za_bebe.ino:51</a></div></div>
+<div class="ttc" id="amonitor__za__bebe_8ino_html_abe55f1b24677034196ebac987a108f3a"><div class="ttname"><a href="monitor__za__bebe_8ino.html#abe55f1b24677034196ebac987a108f3a">readDHTSensor</a></div><div class="ttdeci">bool readDHTSensor()</div><div class="ttdoc">Čita temperaturu i vlažnost s DHT22 senzora.</div><div class="ttdef"><b>Definition</b> <a href="monitor__za__bebe_8ino_source.html#l00074">monitor_za_bebe.ino:74</a></div></div>
+<div class="ttc" id="amonitor__za__bebe_8ino_html_ae39cd6821aac9de072620e1a6d8d71de"><div class="ttname"><a href="monitor__za__bebe_8ino.html#ae39cd6821aac9de072620e1a6d8d71de">MAX_NORMAL_READINGS</a></div><div class="ttdeci">const int MAX_NORMAL_READINGS</div><div class="ttdef"><b>Definition</b> <a href="monitor__za__bebe_8ino_source.html#l00038">monitor_za_bebe.ino:38</a></div></div>
+<div class="ttc" id="amonitor__za__bebe_8ino_html_ae70f708a708a558c19d36935f11133df"><div class="ttname"><a href="monitor__za__bebe_8ino.html#ae70f708a708a558c19d36935f11133df">SLEEP_DURATION_NORMAL</a></div><div class="ttdeci">const uint64_t SLEEP_DURATION_NORMAL</div><div class="ttdef"><b>Definition</b> <a href="monitor__za__bebe_8ino_source.html#l00036">monitor_za_bebe.ino:36</a></div></div>
+<div class="ttc" id="amonitor__za__bebe_8ino_html_ae82383b8e03b3c4c9e18327d620f0acd"><div class="ttname"><a href="monitor__za__bebe_8ino.html#ae82383b8e03b3c4c9e18327d620f0acd">checkSound</a></div><div class="ttdeci">bool checkSound()</div><div class="ttdoc">Provjerava zvuk i šalje upozorenje ako beba plače.</div><div class="ttdef"><b>Definition</b> <a href="monitor__za__bebe_8ino_source.html#l00167">monitor_za_bebe.ino:167</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -488,26 +615,26 @@ Variables</h2></td></tr>
 <p>Čita temperaturu i vlažnost s DHT22 senzora. </p>
 <dl class="section return"><dt>Returns</dt><dd>bool Uspješnost čitanja podataka </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="monitor__za__bebe_8ino_source.html#l00059">59</a> of file <a class="el" href="monitor__za__bebe_8ino_source.html">monitor_za_bebe.ino</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   59</span>                      {</div>
-<div class="line"><span class="lineno">   60</span>   <span class="comment">// Čitanje podataka s DHT22 senzora</span></div>
-<div class="line"><span class="lineno">   61</span>   <a class="code hl_variable" href="monitor__za__bebe_8ino.html#ae38ebdca688c226cb3e0ea11e7050b57">currentHumidity</a> = <a class="code hl_function" href="monitor__za__bebe_8ino.html#a5da5b6b7a8ef9bdd213414dc76450221">dht</a>.readHumidity();</div>
-<div class="line"><span class="lineno">   62</span>   <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">currentTemp</a> = <a class="code hl_function" href="monitor__za__bebe_8ino.html#a5da5b6b7a8ef9bdd213414dc76450221">dht</a>.readTemperature();</div>
-<div class="line"><span class="lineno">   63</span>   </div>
-<div class="line"><span class="lineno">   64</span>   <span class="comment">// Provjera je li čitanje uspješno</span></div>
-<div class="line"><span class="lineno">   65</span>   <span class="keywordflow">if</span> (<a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">isnan</a>(<a class="code hl_variable" href="monitor__za__bebe_8ino.html#ae38ebdca688c226cb3e0ea11e7050b57">currentHumidity</a>) || <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">isnan</a>(<a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">currentTemp</a>)) {</div>
-<div class="line"><span class="lineno">   66</span>     <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">Serial</a>.println(<span class="stringliteral">&quot;Greška pri čitanju s DHT senzora!&quot;</span>);</div>
-<div class="line"><span class="lineno">   67</span>     <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   68</span>   }</div>
-<div class="line"><span class="lineno">   69</span>   </div>
-<div class="line"><span class="lineno">   70</span>   <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">Serial</a>.print(<span class="stringliteral">&quot;Temperatura: &quot;</span>);</div>
-<div class="line"><span class="lineno">   71</span>   <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">Serial</a>.print(<a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">currentTemp</a>);</div>
-<div class="line"><span class="lineno">   72</span>   <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">Serial</a>.print(<span class="stringliteral">&quot; °C, Vlažnost: &quot;</span>);</div>
-<div class="line"><span class="lineno">   73</span>   <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">Serial</a>.print(<a class="code hl_variable" href="monitor__za__bebe_8ino.html#ae38ebdca688c226cb3e0ea11e7050b57">currentHumidity</a>);</div>
-<div class="line"><span class="lineno">   74</span>   <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">Serial</a>.println(<span class="stringliteral">&quot; %&quot;</span>);</div>
-<div class="line"><span class="lineno">   75</span>   </div>
-<div class="line"><span class="lineno">   76</span>   <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   77</span> }</div>
+<p class="definition">Definition at line <a class="el" href="monitor__za__bebe_8ino_source.html#l00074">74</a> of file <a class="el" href="monitor__za__bebe_8ino_source.html">monitor_za_bebe.ino</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   74</span>                     {</div>
+<div class="line"><span class="lineno">   75</span>    <span class="comment">// Čitanje podataka s DHT22 senzora</span></div>
+<div class="line"><span class="lineno">   76</span>    <a class="code hl_variable" href="monitor__za__bebe_8ino.html#ae38ebdca688c226cb3e0ea11e7050b57">currentHumidity</a> = <a class="code hl_function" href="monitor__za__bebe_8ino.html#a5da5b6b7a8ef9bdd213414dc76450221">dht</a>.readHumidity();</div>
+<div class="line"><span class="lineno">   77</span>    <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">currentTemp</a> = <a class="code hl_function" href="monitor__za__bebe_8ino.html#a5da5b6b7a8ef9bdd213414dc76450221">dht</a>.readTemperature();</div>
+<div class="line"><span class="lineno">   78</span>   </div>
+<div class="line"><span class="lineno">   79</span>    <span class="comment">// Provjera je li čitanje uspješno</span></div>
+<div class="line"><span class="lineno">   80</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">isnan</a>(<a class="code hl_variable" href="monitor__za__bebe_8ino.html#ae38ebdca688c226cb3e0ea11e7050b57">currentHumidity</a>) || <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">isnan</a>(<a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">currentTemp</a>)) {</div>
+<div class="line"><span class="lineno">   81</span>        <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">Serial</a>.println(<span class="stringliteral">&quot;Greška pri čitanju s DHT senzora!&quot;</span>);</div>
+<div class="line"><span class="lineno">   82</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   83</span>    }</div>
+<div class="line"><span class="lineno">   84</span>   </div>
+<div class="line"><span class="lineno">   85</span>    <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">Serial</a>.print(<span class="stringliteral">&quot;Temperatura: &quot;</span>);</div>
+<div class="line"><span class="lineno">   86</span>    <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">Serial</a>.print(<a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">currentTemp</a>);</div>
+<div class="line"><span class="lineno">   87</span>    <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">Serial</a>.print(<span class="stringliteral">&quot; °C, Vlažnost: &quot;</span>);</div>
+<div class="line"><span class="lineno">   88</span>    <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">Serial</a>.print(<a class="code hl_variable" href="monitor__za__bebe_8ino.html#ae38ebdca688c226cb3e0ea11e7050b57">currentHumidity</a>);</div>
+<div class="line"><span class="lineno">   89</span>    <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">Serial</a>.println(<span class="stringliteral">&quot; %&quot;</span>);</div>
+<div class="line"><span class="lineno">   90</span>   </div>
+<div class="line"><span class="lineno">   91</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   92</span>}</div>
 <div class="ttc" id="amonitor__za__bebe_8ino_html_a5da5b6b7a8ef9bdd213414dc76450221"><div class="ttname"><a href="monitor__za__bebe_8ino.html#a5da5b6b7a8ef9bdd213414dc76450221">dht</a></div><div class="ttdeci">DHT dht(DHT_PIN, DHTTYPE)</div><div class="ttdoc">DHT objekt za mjerenje temperature i vlažnosti.</div></div>
 </div><!-- fragment -->
 </div>
@@ -530,14 +657,13 @@ Variables</h2></td></tr>
 <p>Čita razinu zvuka sa zvučnog senzora. </p>
 <dl class="section return"><dt>Returns</dt><dd>int Razina zvuka </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="monitor__za__bebe_8ino_source.html#l00083">83</a> of file <a class="el" href="monitor__za__bebe_8ino_source.html">monitor_za_bebe.ino</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   83</span>                      {</div>
-<div class="line"><span class="lineno">   84</span>   <span class="keywordtype">int</span> <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">value</a> = <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">analogRead</a>(<a class="code hl_define" href="monitor__za__bebe_8ino.html#abd69c0b108d24168d3acdc62c6218b95">SOUND_SENSOR_PIN</a>);</div>
-<div class="line"><span class="lineno">   85</span>   <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">Serial</a>.print(<span class="stringliteral">&quot;Razina zvuka: &quot;</span>);</div>
-<div class="line"><span class="lineno">   86</span>   <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">Serial</a>.println(<a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">value</a>);</div>
-<div class="line"><span class="lineno">   87</span>   <span class="keywordflow">return</span> <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">value</a>;</div>
-<div class="line"><span class="lineno">   88</span> }</div>
-<div class="ttc" id="amonitor__za__bebe_8ino_html_abd69c0b108d24168d3acdc62c6218b95"><div class="ttname"><a href="monitor__za__bebe_8ino.html#abd69c0b108d24168d3acdc62c6218b95">SOUND_SENSOR_PIN</a></div><div class="ttdeci">#define SOUND_SENSOR_PIN</div><div class="ttdoc">Pin za zvučni senzor.</div><div class="ttdef"><b>Definition</b> <a href="monitor__za__bebe_8ino_source.html#l00018">monitor_za_bebe.ino:18</a></div></div>
+<p class="definition">Definition at line <a class="el" href="monitor__za__bebe_8ino_source.html#l00098">98</a> of file <a class="el" href="monitor__za__bebe_8ino_source.html">monitor_za_bebe.ino</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   98</span>                     {</div>
+<div class="line"><span class="lineno">   99</span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">value</a> = <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">analogRead</a>(<a class="code hl_define" href="monitor__za__bebe_8ino.html#abd69c0b108d24168d3acdc62c6218b95">SOUND_SENSOR_PIN</a>);</div>
+<div class="line"><span class="lineno">  100</span>    <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">Serial</a>.print(<span class="stringliteral">&quot;Razina zvuka: &quot;</span>);</div>
+<div class="line"><span class="lineno">  101</span>    <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">Serial</a>.println(<a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">value</a>);</div>
+<div class="line"><span class="lineno">  102</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">value</a>;</div>
+<div class="line"><span class="lineno">  103</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -577,11 +703,13 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>bool Status uspjeha slanja </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="monitor__za__bebe_8ino_source.html#l00050">50</a> of file <a class="el" href="monitor__za__bebe_8ino_source.html">monitor_za_bebe.ino</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   50</span>                                                  {</div>
-<div class="line"><span class="lineno">   51</span> </div>
-<div class="line"><span class="lineno">   52</span>    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   53</span> }</div>
+<p class="definition">Definition at line <a class="el" href="monitor__za__bebe_8ino_source.html#l00063">63</a> of file <a class="el" href="monitor__za__bebe_8ino_source.html">monitor_za_bebe.ino</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   63</span>                                                 {</div>
+<div class="line"><span class="lineno">   64</span>    <span class="comment">// Implementacija slanja na Discord</span></div>
+<div class="line"><span class="lineno">   65</span>    <span class="comment">// Trenutno samo simulacija</span></div>
+<div class="line"><span class="lineno">   66</span>    <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">Serial</a>.println(<span class="stringliteral">&quot;Discord poruka: &quot;</span> + <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">message</a>);</div>
+<div class="line"><span class="lineno">   67</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   68</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -602,27 +730,29 @@ Variables</h2></td></tr>
 
 <p>Periodički izvještaj o stanju. </p>
 
-<p class="definition">Definition at line <a class="el" href="monitor__za__bebe_8ino_source.html#l00172">172</a> of file <a class="el" href="monitor__za__bebe_8ino_source.html">monitor_za_bebe.ino</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  172</span>                         {</div>
-<div class="line"><span class="lineno">  173</span>   <span class="keyword">static</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">lastStatusReport</a> = 0;</div>
-<div class="line"><span class="lineno">  174</span>   <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">currentTime</a> = <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">millis</a>();</div>
-<div class="line"><span class="lineno">  175</span>   </div>
-<div class="line"><span class="lineno">  176</span>   <span class="comment">// Šalje status izvještaj svakih 30 minuta</span></div>
-<div class="line"><span class="lineno">  177</span>   <span class="keywordflow">if</span> (<a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">currentTime</a> - <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">lastStatusReport</a> &gt; 1800000) {</div>
-<div class="line"><span class="lineno">  178</span>     <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">String</a> <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">message</a> = <span class="stringliteral">&quot;📊 Redoviti izvještaj\n&quot;</span>;</div>
-<div class="line"><span class="lineno">  179</span>     <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">message</a> += <span class="stringliteral">&quot;Temperatura: &quot;</span> + <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">String</a>(<a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">currentTemp</a>, 1) + <span class="stringliteral">&quot; °C\n&quot;</span>;</div>
-<div class="line"><span class="lineno">  180</span>     <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">message</a> += <span class="stringliteral">&quot;Vlažnost: &quot;</span> + <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">String</a>(<a class="code hl_variable" href="monitor__za__bebe_8ino.html#ae38ebdca688c226cb3e0ea11e7050b57">currentHumidity</a>, 1) + <span class="stringliteral">&quot; %\n&quot;</span>;</div>
-<div class="line"><span class="lineno">  181</span>     <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">message</a> += <span class="stringliteral">&quot;Zvuk: &quot;</span> + <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">String</a>(<a class="code hl_variable" href="monitor__za__bebe_8ino.html#ab4435d9b44d39082a8e46997679cca91">soundLevel</a>) + <span class="stringliteral">&quot;\n&quot;</span>;</div>
-<div class="line"><span class="lineno">  182</span>     <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">message</a> += <span class="stringliteral">&quot;Status: &quot;</span> + <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">String</a>(<a class="code hl_variable" href="monitor__za__bebe_8ino.html#a8236e33c91672e72d2662bec762d0139">isCrying</a> ? <span class="stringliteral">&quot;Beba plače&quot;</span> : <span class="stringliteral">&quot;Tiho&quot;</span>) + <span class="stringliteral">&quot;, &quot;</span>;</div>
-<div class="line"><span class="lineno">  183</span>     <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">message</a> += <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">String</a>(<a class="code hl_variable" href="monitor__za__bebe_8ino.html#ad79be48c00de7ba22f1f896c9964e18b">tempOutOfRange</a> ? <span class="stringliteral">&quot;Temperatura izvan raspona&quot;</span> : <span class="stringliteral">&quot;Temperatura u redu&quot;</span>) + <span class="stringliteral">&quot;, &quot;</span>;</div>
-<div class="line"><span class="lineno">  184</span>     <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">message</a> += <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">String</a>(<a class="code hl_variable" href="monitor__za__bebe_8ino.html#a9aa45f8e8cda09c727c00650d54f71b8">humidityOutOfRange</a> ? <span class="stringliteral">&quot;Vlažnost izvan raspona&quot;</span> : <span class="stringliteral">&quot;Vlažnost u redu&quot;</span>);</div>
-<div class="line"><span class="lineno">  185</span>     </div>
-<div class="line"><span class="lineno">  186</span>     <span class="comment">// Zelena boja za redoviti izvještaj</span></div>
-<div class="line"><span class="lineno">  187</span>     <span class="keywordflow">if</span> (<a class="code hl_function" href="monitor__za__bebe_8ino.html#a594dd6b4d858b3d48a0edc170177cfc0">sendDiscordAlert</a>(<a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">message</a>, 5763719)) {</div>
-<div class="line"><span class="lineno">  188</span>       <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">lastStatusReport</a> = <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">currentTime</a>;</div>
-<div class="line"><span class="lineno">  189</span>     }</div>
-<div class="line"><span class="lineno">  190</span>   }</div>
-<div class="line"><span class="lineno">  191</span> }</div>
+<p class="definition">Definition at line <a class="el" href="monitor__za__bebe_8ino_source.html#l00192">192</a> of file <a class="el" href="monitor__za__bebe_8ino_source.html">monitor_za_bebe.ino</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  192</span>                        {</div>
+<div class="line"><span class="lineno">  193</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">currentTime</a> = <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">millis</a>();</div>
+<div class="line"><span class="lineno">  194</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">totalTime</a> = <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a22ebbc698373afce094b495bf7605750">bootCount</a> * (<a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">ESP</a>.getMaxAllocHeap() / 1000) + <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">currentTime</a>; <span class="comment">// Aproksimacija ukupnog vremena</span></div>
+<div class="line"><span class="lineno">  195</span>   </div>
+<div class="line"><span class="lineno">  196</span>    <span class="comment">// Šalje status izvještaj svakih 30 minuta</span></div>
+<div class="line"><span class="lineno">  197</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">totalTime</a> - <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a070bee623db5749e4fe4a8219cfd8e9c">lastStatusReport</a> &gt; 1800000) {</div>
+<div class="line"><span class="lineno">  198</span>        <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">String</a> <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">message</a> = <span class="stringliteral">&quot;📊 Redoviti izvještaj\n&quot;</span>;</div>
+<div class="line"><span class="lineno">  199</span>        <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">message</a> += <span class="stringliteral">&quot;Temperatura: &quot;</span> + <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">String</a>(<a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">currentTemp</a>, 1) + <span class="stringliteral">&quot; °C\n&quot;</span>;</div>
+<div class="line"><span class="lineno">  200</span>        <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">message</a> += <span class="stringliteral">&quot;Vlažnost: &quot;</span> + <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">String</a>(<a class="code hl_variable" href="monitor__za__bebe_8ino.html#ae38ebdca688c226cb3e0ea11e7050b57">currentHumidity</a>, 1) + <span class="stringliteral">&quot; %\n&quot;</span>;</div>
+<div class="line"><span class="lineno">  201</span>        <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">message</a> += <span class="stringliteral">&quot;Zvuk: &quot;</span> + <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">String</a>(<a class="code hl_variable" href="monitor__za__bebe_8ino.html#ab4435d9b44d39082a8e46997679cca91">soundLevel</a>) + <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"><span class="lineno">  202</span>        <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">message</a> += <span class="stringliteral">&quot;Status: &quot;</span> + <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">String</a>(<a class="code hl_variable" href="monitor__za__bebe_8ino.html#a8236e33c91672e72d2662bec762d0139">isCrying</a> ? <span class="stringliteral">&quot;Beba plače&quot;</span> : <span class="stringliteral">&quot;Tiho&quot;</span>) + <span class="stringliteral">&quot;, &quot;</span>;</div>
+<div class="line"><span class="lineno">  203</span>        <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">message</a> += <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">String</a>(<a class="code hl_variable" href="monitor__za__bebe_8ino.html#ad79be48c00de7ba22f1f896c9964e18b">tempOutOfRange</a> ? <span class="stringliteral">&quot;Temperatura izvan raspona&quot;</span> : <span class="stringliteral">&quot;Temperatura u redu&quot;</span>) + <span class="stringliteral">&quot;, &quot;</span>;</div>
+<div class="line"><span class="lineno">  204</span>        <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">message</a> += <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">String</a>(<a class="code hl_variable" href="monitor__za__bebe_8ino.html#a9aa45f8e8cda09c727c00650d54f71b8">humidityOutOfRange</a> ? <span class="stringliteral">&quot;Vlažnost izvan raspona&quot;</span> : <span class="stringliteral">&quot;Vlažnost u redu&quot;</span>);</div>
+<div class="line"><span class="lineno">  205</span>       </div>
+<div class="line"><span class="lineno">  206</span>        <span class="comment">// Zelena boja za redoviti izvještaj</span></div>
+<div class="line"><span class="lineno">  207</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="monitor__za__bebe_8ino.html#a594dd6b4d858b3d48a0edc170177cfc0">sendDiscordAlert</a>(<a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">message</a>, 5763719)) {</div>
+<div class="line"><span class="lineno">  208</span>            <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a070bee623db5749e4fe4a8219cfd8e9c">lastStatusReport</a> = <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">totalTime</a>;</div>
+<div class="line"><span class="lineno">  209</span>        }</div>
+<div class="line"><span class="lineno">  210</span>    }</div>
+<div class="line"><span class="lineno">  211</span>}</div>
+<div class="ttc" id="amonitor__za__bebe_8ino_html_a070bee623db5749e4fe4a8219cfd8e9c"><div class="ttname"><a href="monitor__za__bebe_8ino.html#a070bee623db5749e4fe4a8219cfd8e9c">lastStatusReport</a></div><div class="ttdeci">RTC_DATA_ATTR unsigned long lastStatusReport</div><div class="ttdef"><b>Definition</b> <a href="monitor__za__bebe_8ino_source.html#l00055">monitor_za_bebe.ino:55</a></div></div>
+<div class="ttc" id="amonitor__za__bebe_8ino_html_a22ebbc698373afce094b495bf7605750"><div class="ttname"><a href="monitor__za__bebe_8ino.html#a22ebbc698373afce094b495bf7605750">bootCount</a></div><div class="ttdeci">RTC_DATA_ATTR int bootCount</div><div class="ttdef"><b>Definition</b> <a href="monitor__za__bebe_8ino_source.html#l00054">monitor_za_bebe.ino:54</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -641,21 +771,31 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="monitor__za__bebe_8ino_source.html#l00193">193</a> of file <a class="el" href="monitor__za__bebe_8ino_source.html">monitor_za_bebe.ino</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  193</span>              {</div>
-<div class="line"><span class="lineno">  194</span>   <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">Serial</a>.begin(115200);</div>
-<div class="line"><span class="lineno">  195</span>   <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">Serial</a>.println(<span class="stringliteral">&quot;Inicijalizacija sustava za nadzor beba s DHT22 senzorom...&quot;</span>);</div>
-<div class="line"><span class="lineno">  196</span>   </div>
-<div class="line"><span class="lineno">  197</span>   <span class="comment">// Postavljanje pinova</span></div>
-<div class="line"><span class="lineno">  198</span>   <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">pinMode</a>(<a class="code hl_define" href="monitor__za__bebe_8ino.html#a089a71f836911c71b3f73fdd3b4b890b">STATUS_LED_PIN</a>, <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">OUTPUT</a>);</div>
-<div class="line"><span class="lineno">  199</span>   <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">pinMode</a>(<a class="code hl_define" href="monitor__za__bebe_8ino.html#abd69c0b108d24168d3acdc62c6218b95">SOUND_SENSOR_PIN</a>, <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">INPUT</a>);</div>
-<div class="line"><span class="lineno">  200</span>   </div>
-<div class="line"><span class="lineno">  201</span>   <span class="comment">// Inicijalizacija DHT senzora</span></div>
-<div class="line"><span class="lineno">  202</span>   <a class="code hl_function" href="monitor__za__bebe_8ino.html#a5da5b6b7a8ef9bdd213414dc76450221">dht</a>.begin();</div>
-<div class="line"><span class="lineno">  203</span> </div>
-<div class="line"><span class="lineno">  204</span>   </div>
-<div class="line"><span class="lineno">  205</span>   <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">Serial</a>.println(<span class="stringliteral">&quot;Sustav spreman za nadzor!&quot;</span>);</div>
-<div class="line"><span class="lineno">  206</span> }</div>
+<p class="definition">Definition at line <a class="el" href="monitor__za__bebe_8ino_source.html#l00231">231</a> of file <a class="el" href="monitor__za__bebe_8ino_source.html">monitor_za_bebe.ino</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  231</span>             {</div>
+<div class="line"><span class="lineno">  232</span>    <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">Serial</a>.begin(115200);</div>
+<div class="line"><span class="lineno">  233</span>    </div>
+<div class="line"><span class="lineno">  234</span>    <span class="comment">// Povećanje brojača pokretanja</span></div>
+<div class="line"><span class="lineno">  235</span>    ++<a class="code hl_variable" href="monitor__za__bebe_8ino.html#a22ebbc698373afce094b495bf7605750">bootCount</a>;</div>
+<div class="line"><span class="lineno">  236</span>    <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">Serial</a>.println(<span class="stringliteral">&quot;Broj pokretanja: &quot;</span> + <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">String</a>(<a class="code hl_variable" href="monitor__za__bebe_8ino.html#a22ebbc698373afce094b495bf7605750">bootCount</a>));</div>
+<div class="line"><span class="lineno">  237</span>    </div>
+<div class="line"><span class="lineno">  238</span>    <span class="comment">// Postavljanje pinova</span></div>
+<div class="line"><span class="lineno">  239</span>    <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">pinMode</a>(<a class="code hl_define" href="monitor__za__bebe_8ino.html#a089a71f836911c71b3f73fdd3b4b890b">STATUS_LED_PIN</a>, <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">OUTPUT</a>);</div>
+<div class="line"><span class="lineno">  240</span>    <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">pinMode</a>(<a class="code hl_define" href="monitor__za__bebe_8ino.html#abd69c0b108d24168d3acdc62c6218b95">SOUND_SENSOR_PIN</a>, <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">INPUT</a>);</div>
+<div class="line"><span class="lineno">  241</span>    </div>
+<div class="line"><span class="lineno">  242</span>    <span class="comment">// Inicijalizacija DHT senzora</span></div>
+<div class="line"><span class="lineno">  243</span>    <a class="code hl_function" href="monitor__za__bebe_8ino.html#a5da5b6b7a8ef9bdd213414dc76450221">dht</a>.begin();</div>
+<div class="line"><span class="lineno">  244</span>    </div>
+<div class="line"><span class="lineno">  245</span>    <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">Serial</a>.println(<span class="stringliteral">&quot;Sustav spreman za nadzor!&quot;</span>);</div>
+<div class="line"><span class="lineno">  246</span>    </div>
+<div class="line"><span class="lineno">  247</span>    <span class="comment">// Signalizacija da je sustav pokrenut</span></div>
+<div class="line"><span class="lineno">  248</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">i</a> = 0; <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">i</a> &lt; 3; <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">i</a>++) {</div>
+<div class="line"><span class="lineno">  249</span>        <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">digitalWrite</a>(<a class="code hl_define" href="monitor__za__bebe_8ino.html#a089a71f836911c71b3f73fdd3b4b890b">STATUS_LED_PIN</a>, <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">HIGH</a>);</div>
+<div class="line"><span class="lineno">  250</span>        <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">delay</a>(100);</div>
+<div class="line"><span class="lineno">  251</span>        <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">digitalWrite</a>(<a class="code hl_define" href="monitor__za__bebe_8ino.html#a089a71f836911c71b3f73fdd3b4b890b">STATUS_LED_PIN</a>, <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">LOW</a>);</div>
+<div class="line"><span class="lineno">  252</span>        <a class="code hl_variable" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">delay</a>(100);</div>
+<div class="line"><span class="lineno">  253</span>    }</div>
+<div class="line"><span class="lineno">  254</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -674,7 +814,23 @@ Variables</h2></td></tr>
 
 <p>Vremenski razmak između upozorenja (1 minuta) </p>
 
-<p class="definition">Definition at line <a class="el" href="monitor__za__bebe_8ino_source.html#l00030">30</a> of file <a class="el" href="monitor__za__bebe_8ino_source.html">monitor_za_bebe.ino</a>.</p>
+<p class="definition">Definition at line <a class="el" href="monitor__za__bebe_8ino_source.html#l00033">33</a> of file <a class="el" href="monitor__za__bebe_8ino_source.html">monitor_za_bebe.ino</a>.</p>
+
+</div>
+</div>
+<a id="a22ebbc698373afce094b495bf7605750" name="a22ebbc698373afce094b495bf7605750"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a22ebbc698373afce094b495bf7605750">&#9670;&#160;</a></span>bootCount</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">RTC_DATA_ATTR</a> <a class="el" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">int</a> bootCount = 0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="monitor__za__bebe_8ino_source.html#l00054">54</a> of file <a class="el" href="monitor__za__bebe_8ino_source.html">monitor_za_bebe.ino</a>.</p>
 
 </div>
 </div>
@@ -685,14 +841,14 @@ Variables</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">const</a> <a class="el" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">int</a> CRYING_THRESHOLD = 2000</td>
+          <td class="memname"><a class="el" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">const</a> <a class="el" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">int</a> CRYING_THRESHOLD = 2048</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Prag za detekciju plača. </p>
 
-<p class="definition">Definition at line <a class="el" href="monitor__za__bebe_8ino_source.html#l00029">29</a> of file <a class="el" href="monitor__za__bebe_8ino_source.html">monitor_za_bebe.ino</a>.</p>
+<p class="definition">Definition at line <a class="el" href="monitor__za__bebe_8ino_source.html#l00032">32</a> of file <a class="el" href="monitor__za__bebe_8ino_source.html">monitor_za_bebe.ino</a>.</p>
 
 </div>
 </div>
@@ -710,7 +866,7 @@ Variables</h2></td></tr>
 
 <p>Trenutna vlažnost. </p>
 
-<p class="definition">Definition at line <a class="el" href="monitor__za__bebe_8ino_source.html#l00038">38</a> of file <a class="el" href="monitor__za__bebe_8ino_source.html">monitor_za_bebe.ino</a>.</p>
+<p class="definition">Definition at line <a class="el" href="monitor__za__bebe_8ino_source.html#l00046">46</a> of file <a class="el" href="monitor__za__bebe_8ino_source.html">monitor_za_bebe.ino</a>.</p>
 
 </div>
 </div>
@@ -728,7 +884,7 @@ Variables</h2></td></tr>
 
 <p>Trenutna temperatura. </p>
 
-<p class="definition">Definition at line <a class="el" href="monitor__za__bebe_8ino_source.html#l00037">37</a> of file <a class="el" href="monitor__za__bebe_8ino_source.html">monitor_za_bebe.ino</a>.</p>
+<p class="definition">Definition at line <a class="el" href="monitor__za__bebe_8ino_source.html#l00045">45</a> of file <a class="el" href="monitor__za__bebe_8ino_source.html">monitor_za_bebe.ino</a>.</p>
 
 </div>
 </div>
@@ -746,7 +902,7 @@ Variables</h2></td></tr>
 
 <p>Status vlažnosti van raspona. </p>
 
-<p class="definition">Definition at line <a class="el" href="monitor__za__bebe_8ino_source.html#l00042">42</a> of file <a class="el" href="monitor__za__bebe_8ino_source.html">monitor_za_bebe.ino</a>.</p>
+<p class="definition">Definition at line <a class="el" href="monitor__za__bebe_8ino_source.html#l00050">50</a> of file <a class="el" href="monitor__za__bebe_8ino_source.html">monitor_za_bebe.ino</a>.</p>
 
 </div>
 </div>
@@ -764,7 +920,7 @@ Variables</h2></td></tr>
 
 <p>Status plača. </p>
 
-<p class="definition">Definition at line <a class="el" href="monitor__za__bebe_8ino_source.html#l00040">40</a> of file <a class="el" href="monitor__za__bebe_8ino_source.html">monitor_za_bebe.ino</a>.</p>
+<p class="definition">Definition at line <a class="el" href="monitor__za__bebe_8ino_source.html#l00048">48</a> of file <a class="el" href="monitor__za__bebe_8ino_source.html">monitor_za_bebe.ino</a>.</p>
 
 </div>
 </div>
@@ -782,7 +938,7 @@ Variables</h2></td></tr>
 
 <p>Vrijeme zadnjeg upozorenja za plač </p>
 
-<p class="definition">Definition at line <a class="el" href="monitor__za__bebe_8ino_source.html#l00034">34</a> of file <a class="el" href="monitor__za__bebe_8ino_source.html">monitor_za_bebe.ino</a>.</p>
+<p class="definition">Definition at line <a class="el" href="monitor__za__bebe_8ino_source.html#l00042">42</a> of file <a class="el" href="monitor__za__bebe_8ino_source.html">monitor_za_bebe.ino</a>.</p>
 
 </div>
 </div>
@@ -800,7 +956,23 @@ Variables</h2></td></tr>
 
 <p>Vrijeme zadnjeg upozorenja za vlažnost. </p>
 
-<p class="definition">Definition at line <a class="el" href="monitor__za__bebe_8ino_source.html#l00036">36</a> of file <a class="el" href="monitor__za__bebe_8ino_source.html">monitor_za_bebe.ino</a>.</p>
+<p class="definition">Definition at line <a class="el" href="monitor__za__bebe_8ino_source.html#l00044">44</a> of file <a class="el" href="monitor__za__bebe_8ino_source.html">monitor_za_bebe.ino</a>.</p>
+
+</div>
+</div>
+<a id="a070bee623db5749e4fe4a8219cfd8e9c" name="a070bee623db5749e4fe4a8219cfd8e9c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a070bee623db5749e4fe4a8219cfd8e9c">&#9670;&#160;</a></span>lastStatusReport</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">RTC_DATA_ATTR</a> <a class="el" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">unsigned</a> <a class="el" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">long</a> lastStatusReport = 0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="monitor__za__bebe_8ino_source.html#l00055">55</a> of file <a class="el" href="monitor__za__bebe_8ino_source.html">monitor_za_bebe.ino</a>.</p>
 
 </div>
 </div>
@@ -818,7 +990,7 @@ Variables</h2></td></tr>
 
 <p>Vrijeme zadnjeg upozorenja za temperaturu. </p>
 
-<p class="definition">Definition at line <a class="el" href="monitor__za__bebe_8ino_source.html#l00035">35</a> of file <a class="el" href="monitor__za__bebe_8ino_source.html">monitor_za_bebe.ino</a>.</p>
+<p class="definition">Definition at line <a class="el" href="monitor__za__bebe_8ino_source.html#l00043">43</a> of file <a class="el" href="monitor__za__bebe_8ino_source.html">monitor_za_bebe.ino</a>.</p>
 
 </div>
 </div>
@@ -836,7 +1008,23 @@ Variables</h2></td></tr>
 
 <p>Maksimalna sigurna vlažnost u %. </p>
 
-<p class="definition">Definition at line <a class="el" href="monitor__za__bebe_8ino_source.html#l00028">28</a> of file <a class="el" href="monitor__za__bebe_8ino_source.html">monitor_za_bebe.ino</a>.</p>
+<p class="definition">Definition at line <a class="el" href="monitor__za__bebe_8ino_source.html#l00031">31</a> of file <a class="el" href="monitor__za__bebe_8ino_source.html">monitor_za_bebe.ino</a>.</p>
+
+</div>
+</div>
+<a id="ae39cd6821aac9de072620e1a6d8d71de" name="ae39cd6821aac9de072620e1a6d8d71de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae39cd6821aac9de072620e1a6d8d71de">&#9670;&#160;</a></span>MAX_NORMAL_READINGS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">const</a> <a class="el" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">int</a> MAX_NORMAL_READINGS = 3</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="monitor__za__bebe_8ino_source.html#l00038">38</a> of file <a class="el" href="monitor__za__bebe_8ino_source.html">monitor_za_bebe.ino</a>.</p>
 
 </div>
 </div>
@@ -854,7 +1042,7 @@ Variables</h2></td></tr>
 
 <p>Maksimalna sigurna temperatura u °C. </p>
 
-<p class="definition">Definition at line <a class="el" href="monitor__za__bebe_8ino_source.html#l00026">26</a> of file <a class="el" href="monitor__za__bebe_8ino_source.html">monitor_za_bebe.ino</a>.</p>
+<p class="definition">Definition at line <a class="el" href="monitor__za__bebe_8ino_source.html#l00029">29</a> of file <a class="el" href="monitor__za__bebe_8ino_source.html">monitor_za_bebe.ino</a>.</p>
 
 </div>
 </div>
@@ -872,7 +1060,7 @@ Variables</h2></td></tr>
 
 <p>Minimalna sigurna vlažnost u %. </p>
 
-<p class="definition">Definition at line <a class="el" href="monitor__za__bebe_8ino_source.html#l00027">27</a> of file <a class="el" href="monitor__za__bebe_8ino_source.html">monitor_za_bebe.ino</a>.</p>
+<p class="definition">Definition at line <a class="el" href="monitor__za__bebe_8ino_source.html#l00030">30</a> of file <a class="el" href="monitor__za__bebe_8ino_source.html">monitor_za_bebe.ino</a>.</p>
 
 </div>
 </div>
@@ -890,7 +1078,57 @@ Variables</h2></td></tr>
 
 <p>Minimalna sigurna temperatura u °C. </p>
 
-<p class="definition">Definition at line <a class="el" href="monitor__za__bebe_8ino_source.html#l00025">25</a> of file <a class="el" href="monitor__za__bebe_8ino_source.html">monitor_za_bebe.ino</a>.</p>
+<p class="definition">Definition at line <a class="el" href="monitor__za__bebe_8ino_source.html#l00028">28</a> of file <a class="el" href="monitor__za__bebe_8ino_source.html">monitor_za_bebe.ino</a>.</p>
+
+</div>
+</div>
+<a id="ab579ba5890dd30ddb273e2d3ed7fe126" name="ab579ba5890dd30ddb273e2d3ed7fe126"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab579ba5890dd30ddb273e2d3ed7fe126">&#9670;&#160;</a></span>normalReadingsCount</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">int</a> normalReadingsCount = 0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Brojač normalnih očitanja. </p>
+
+<p class="definition">Definition at line <a class="el" href="monitor__za__bebe_8ino_source.html#l00051">51</a> of file <a class="el" href="monitor__za__bebe_8ino_source.html">monitor_za_bebe.ino</a>.</p>
+
+</div>
+</div>
+<a id="ad8b327996ed9a243a2040b90001bf5d0" name="ad8b327996ed9a243a2040b90001bf5d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad8b327996ed9a243a2040b90001bf5d0">&#9670;&#160;</a></span>SLEEP_DURATION_ALERT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">const</a> <a class="el" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">uint64_t</a> SLEEP_DURATION_ALERT = 10000000</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="monitor__za__bebe_8ino_source.html#l00037">37</a> of file <a class="el" href="monitor__za__bebe_8ino_source.html">monitor_za_bebe.ino</a>.</p>
+
+</div>
+</div>
+<a id="ae70f708a708a558c19d36935f11133df" name="ae70f708a708a558c19d36935f11133df"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae70f708a708a558c19d36935f11133df">&#9670;&#160;</a></span>SLEEP_DURATION_NORMAL</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">const</a> <a class="el" href="monitor__za__bebe_8ino.html#a908a6600439809b00fa906e5c78d381c">uint64_t</a> SLEEP_DURATION_NORMAL = 300000000</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="monitor__za__bebe_8ino_source.html#l00036">36</a> of file <a class="el" href="monitor__za__bebe_8ino_source.html">monitor_za_bebe.ino</a>.</p>
 
 </div>
 </div>
@@ -908,7 +1146,7 @@ Variables</h2></td></tr>
 
 <p>Trenutna razina zvuka. </p>
 
-<p class="definition">Definition at line <a class="el" href="monitor__za__bebe_8ino_source.html#l00039">39</a> of file <a class="el" href="monitor__za__bebe_8ino_source.html">monitor_za_bebe.ino</a>.</p>
+<p class="definition">Definition at line <a class="el" href="monitor__za__bebe_8ino_source.html#l00047">47</a> of file <a class="el" href="monitor__za__bebe_8ino_source.html">monitor_za_bebe.ino</a>.</p>
 
 </div>
 </div>
@@ -926,7 +1164,7 @@ Variables</h2></td></tr>
 
 <p>Status temperature van raspona. </p>
 
-<p class="definition">Definition at line <a class="el" href="monitor__za__bebe_8ino_source.html#l00041">41</a> of file <a class="el" href="monitor__za__bebe_8ino_source.html">monitor_za_bebe.ino</a>.</p>
+<p class="definition">Definition at line <a class="el" href="monitor__za__bebe_8ino_source.html#l00049">49</a> of file <a class="el" href="monitor__za__bebe_8ino_source.html">monitor_za_bebe.ino</a>.</p>
 
 </div>
 </div>
