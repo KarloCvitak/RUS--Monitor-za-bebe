@@ -25,8 +25,8 @@
 | Komponenta | Opis |
 |------------|------|
 | **Mikrokontroler** | ESP32 |
-| **Senzori** | DHT22/BME280, MEMS mikrofon, MQ135 |
-| **Bežična komunikacija** | BLE, Wi-Fi |
+| **Senzori** | DHT22, mikrofon |
+| **Bežična komunikacija** | Wi-Fi |
 | **Sabirnice** | I²C, SPI |
 | **Simulacija** | Wokwi |
 
@@ -37,6 +37,7 @@ TBD
 ```
 📁 RUS--Monitor-za-bebe
 │── 📂 Lab1            # rješenje zadatka 1.
+│── 📂 Lab2            # rješenje zadatka 2.
 │── 📂 Projekt         # Implementacija projekta Monitora za bebe
 │── 📄 README.md       # Ovaj dokument
 ```
@@ -44,10 +45,6 @@ TBD
 # Članovi tima 
 > Karlo Cvitak
 
-
-# Kontribucije
->Pravila ovise o organizaciji tima i su često izdvojena u CONTRIBUTING.md
- 
 
 # 📝 Licenca
 Važeča (1)
