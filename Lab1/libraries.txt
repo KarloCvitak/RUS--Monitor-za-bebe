@@ -1,9 +1,4 @@
 # Sample libraries.txt file:
-TMP36
 
 # Install a specific version of a library:
-TMP36
-TMP117-Arduino
-ClosedCube TMP116
-Adafruit TMP117
-LiquidCrystal I2C
+
