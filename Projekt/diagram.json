@@ -1,11 +1,11 @@
 {
   "version": 1,
-  "author": "Karlo Cvitak",
+  "author": "kcvitak",
   "editor": "wokwi",
   "parts": [
-    { "type": "wokwi-esp32-devkit-v1", "id": "esp", "top": -33.7, "left": -81.8, "attrs": {} },
+    { "type": "wokwi-esp32-devkit-v1", "id": "esp", "top": -43.3, "left": -81.8, "attrs": {} },
     { "type": "wokwi-analog-temperature", "id": "temp1", "top": 100, "left": 200, "attrs": {} },
-    { "type": "wokwi-microphone", "id": "mic1", "top": -112.98, "left": -158.61, "attrs": {} },
+    { "type": "wokwi-microphone", "id": "mic1", "top": -112.98, "left": -168.21, "attrs": {} },
     {
       "type": "wokwi-led",
       "id": "led1",
@@ -18,7 +18,7 @@
       "id": "dht1",
       "top": -114.9,
       "left": -264.6,
-      "attrs": { "temperature": "21.4", "humidity": "50" }
+      "attrs": { "temperature": "-15.7", "humidity": "79.5" }
     }
   ],
   "connections": [
@@ -35,8 +35,8 @@
     [ "dht1:VCC", "esp:3V3", "red", [ "v0" ] ],
     [ "dht1:SDA", "esp:D4", "green", [ "v0" ] ],
     [ "dht1:GND", "esp:GND.1", "black", [ "v57.6", "h124.8" ] ],
-    [ "mic1:1", "esp:GND.2", "black", [ "v0" ] ],
-    [ "mic1:2", "esp:D35", "green", [ "v0" ] ]
+    [ "mic1:2", "esp:GND.2", "black", [ "v0" ] ],
+    [ "mic1:1", "esp:D34", "green", [ "v0" ] ]
   ],
   "dependencies": {}
 }

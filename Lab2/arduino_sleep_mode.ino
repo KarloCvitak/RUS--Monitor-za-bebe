@@ -1,7 +1,6 @@
 /**
  * @file arduino_sleep_mode.ino
  * @brief Program za upravljanje potrošnjom energije Arduino mikrokontrolera korištenjem sleep modova
- * @author kcvitak
  * @date 2025-04-10
  * 
  * @details Ovaj program demonstrira razne tehnike za smanjenje potrošnje energije
