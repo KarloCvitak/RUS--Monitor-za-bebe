@@ -161,7 +161,6 @@ Variables</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Program za upravljanje potrošnjom energije Arduino mikrokontrolera korištenjem sleep modova. </p>
-<dl class="section author"><dt>Author</dt><dd>kcvitak </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>2025-04-10</dd></dl>
 <p>Ovaj program demonstrira razne tehnike za smanjenje potrošnje energije na Arduino platformi korištenjem sleep modova. Implementira različite mehanizme buđenja, uključujući vanjski prekid (tipkalo) i timer prekid (watchdog timer). </p>
 
@@ -185,19 +184,19 @@ Variables</h2></td></tr>
 <p>Interrupt Service Routine (ISR) za tipkalo. </p>
 <p>Postavlja zastavice za buđenje iz sleep moda i označava buđenje tipkom </p>
 
-<p class="definition">Definition at line <a class="el" href="arduino__sleep__mode_8ino_source.html#l00212">212</a> of file <a class="el" href="arduino__sleep__mode_8ino_source.html">arduino_sleep_mode.ino</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  212</span>                        {</div>
-<div class="line"><span class="lineno">  213</span>   <span class="comment">// Debounce mehanizam</span></div>
-<div class="line"><span class="lineno">  214</span>   <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> currentMillis = millis();</div>
-<div class="line"><span class="lineno">  215</span>   <span class="keywordflow">if</span> (currentMillis - <a class="code hl_variable" href="arduino__sleep__mode_8ino.html#a18ec832e742616d037d5a342d30715f9">lastButtonPress</a> &gt; 200) {  <span class="comment">// 200ms debounce period</span></div>
-<div class="line"><span class="lineno">  216</span>     <a class="code hl_variable" href="arduino__sleep__mode_8ino.html#a42e1cacb64e6f87904d9c7c0f519c566">isSleeping</a> = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  217</span>     <a class="code hl_variable" href="arduino__sleep__mode_8ino.html#a294f2c67fdd899f99ec943850a43956d">buttonWakeUp</a> = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  218</span>     <a class="code hl_variable" href="arduino__sleep__mode_8ino.html#a18ec832e742616d037d5a342d30715f9">lastButtonPress</a> = currentMillis;</div>
-<div class="line"><span class="lineno">  219</span>   }</div>
-<div class="line"><span class="lineno">  220</span> }</div>
-<div class="ttc" id="aarduino__sleep__mode_8ino_html_a18ec832e742616d037d5a342d30715f9"><div class="ttname"><a href="arduino__sleep__mode_8ino.html#a18ec832e742616d037d5a342d30715f9">lastButtonPress</a></div><div class="ttdeci">volatile unsigned long lastButtonPress</div><div class="ttdoc">Za praćenje zadnjeg vremena za debounce tipkala.</div><div class="ttdef"><b>Definition</b> <a href="arduino__sleep__mode_8ino_source.html#l00052">arduino_sleep_mode.ino:52</a></div></div>
-<div class="ttc" id="aarduino__sleep__mode_8ino_html_a294f2c67fdd899f99ec943850a43956d"><div class="ttname"><a href="arduino__sleep__mode_8ino.html#a294f2c67fdd899f99ec943850a43956d">buttonWakeUp</a></div><div class="ttdeci">volatile bool buttonWakeUp</div><div class="ttdoc">Zastavica koja označava buđenje putem tipkala.</div><div class="ttdef"><b>Definition</b> <a href="arduino__sleep__mode_8ino_source.html#l00041">arduino_sleep_mode.ino:41</a></div></div>
-<div class="ttc" id="aarduino__sleep__mode_8ino_html_a42e1cacb64e6f87904d9c7c0f519c566"><div class="ttname"><a href="arduino__sleep__mode_8ino.html#a42e1cacb64e6f87904d9c7c0f519c566">isSleeping</a></div><div class="ttdeci">volatile bool isSleeping</div><div class="ttdoc">Zastavica koja označava stanje spavanja.</div><div class="ttdef"><b>Definition</b> <a href="arduino__sleep__mode_8ino_source.html#l00036">arduino_sleep_mode.ino:36</a></div></div>
+<p class="definition">Definition at line <a class="el" href="arduino__sleep__mode_8ino_source.html#l00211">211</a> of file <a class="el" href="arduino__sleep__mode_8ino_source.html">arduino_sleep_mode.ino</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  211</span>                        {</div>
+<div class="line"><span class="lineno">  212</span>   <span class="comment">// Debounce mehanizam</span></div>
+<div class="line"><span class="lineno">  213</span>   <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> currentMillis = millis();</div>
+<div class="line"><span class="lineno">  214</span>   <span class="keywordflow">if</span> (currentMillis - <a class="code hl_variable" href="arduino__sleep__mode_8ino.html#a18ec832e742616d037d5a342d30715f9">lastButtonPress</a> &gt; 200) {  <span class="comment">// 200ms debounce period</span></div>
+<div class="line"><span class="lineno">  215</span>     <a class="code hl_variable" href="arduino__sleep__mode_8ino.html#a42e1cacb64e6f87904d9c7c0f519c566">isSleeping</a> = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  216</span>     <a class="code hl_variable" href="arduino__sleep__mode_8ino.html#a294f2c67fdd899f99ec943850a43956d">buttonWakeUp</a> = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  217</span>     <a class="code hl_variable" href="arduino__sleep__mode_8ino.html#a18ec832e742616d037d5a342d30715f9">lastButtonPress</a> = currentMillis;</div>
+<div class="line"><span class="lineno">  218</span>   }</div>
+<div class="line"><span class="lineno">  219</span> }</div>
+<div class="ttc" id="aarduino__sleep__mode_8ino_html_a18ec832e742616d037d5a342d30715f9"><div class="ttname"><a href="arduino__sleep__mode_8ino.html#a18ec832e742616d037d5a342d30715f9">lastButtonPress</a></div><div class="ttdeci">volatile unsigned long lastButtonPress</div><div class="ttdoc">Za praćenje zadnjeg vremena za debounce tipkala.</div><div class="ttdef"><b>Definition</b> <a href="arduino__sleep__mode_8ino_source.html#l00051">arduino_sleep_mode.ino:51</a></div></div>
+<div class="ttc" id="aarduino__sleep__mode_8ino_html_a294f2c67fdd899f99ec943850a43956d"><div class="ttname"><a href="arduino__sleep__mode_8ino.html#a294f2c67fdd899f99ec943850a43956d">buttonWakeUp</a></div><div class="ttdeci">volatile bool buttonWakeUp</div><div class="ttdoc">Zastavica koja označava buđenje putem tipkala.</div><div class="ttdef"><b>Definition</b> <a href="arduino__sleep__mode_8ino_source.html#l00040">arduino_sleep_mode.ino:40</a></div></div>
+<div class="ttc" id="aarduino__sleep__mode_8ino_html_a42e1cacb64e6f87904d9c7c0f519c566"><div class="ttname"><a href="arduino__sleep__mode_8ino.html#a42e1cacb64e6f87904d9c7c0f519c566">isSleeping</a></div><div class="ttdeci">volatile bool isSleeping</div><div class="ttdoc">Zastavica koja označava stanje spavanja.</div><div class="ttdef"><b>Definition</b> <a href="arduino__sleep__mode_8ino_source.html#l00035">arduino_sleep_mode.ino:35</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -219,33 +218,33 @@ Variables</h2></td></tr>
 <p>Mijenja trenutni sleep mode. </p>
 <p>Ciklički izmjenjuje sleep modove i ispisuje informacije o njihovoj potrošnji energije. </p>
 
-<p class="definition">Definition at line <a class="el" href="arduino__sleep__mode_8ino_source.html#l00304">304</a> of file <a class="el" href="arduino__sleep__mode_8ino_source.html">arduino_sleep_mode.ino</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  304</span>                   {</div>
-<div class="line"><span class="lineno">  305</span>   <span class="comment">// Ciklički izmijeni sleep modove</span></div>
-<div class="line"><span class="lineno">  306</span>   <span class="keywordflow">switch</span> (<a class="code hl_variable" href="arduino__sleep__mode_8ino.html#a2d4a23b2392a19cae5b9b1c00ab5b4b6">sleepMode</a>) {</div>
-<div class="line"><span class="lineno">  307</span>     <span class="keywordflow">case</span> SLEEP_MODE_PWR_DOWN:</div>
-<div class="line"><span class="lineno">  308</span>       <a class="code hl_variable" href="arduino__sleep__mode_8ino.html#a2d4a23b2392a19cae5b9b1c00ab5b4b6">sleepMode</a> = SLEEP_MODE_PWR_SAVE;</div>
-<div class="line"><span class="lineno">  309</span>       Serial.println(F(<span class="stringliteral">&quot;Novi mod: SLEEP_MODE_PWR_SAVE&quot;</span>));</div>
-<div class="line"><span class="lineno">  310</span>       <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  311</span>     <span class="keywordflow">case</span> SLEEP_MODE_PWR_SAVE:</div>
-<div class="line"><span class="lineno">  312</span>       <a class="code hl_variable" href="arduino__sleep__mode_8ino.html#a2d4a23b2392a19cae5b9b1c00ab5b4b6">sleepMode</a> = SLEEP_MODE_STANDBY;</div>
-<div class="line"><span class="lineno">  313</span>       Serial.println(F(<span class="stringliteral">&quot;Novi mod: SLEEP_MODE_STANDBY&quot;</span>));</div>
-<div class="line"><span class="lineno">  314</span>       <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  315</span>     <span class="keywordflow">case</span> SLEEP_MODE_STANDBY:</div>
-<div class="line"><span class="lineno">  316</span>       <a class="code hl_variable" href="arduino__sleep__mode_8ino.html#a2d4a23b2392a19cae5b9b1c00ab5b4b6">sleepMode</a> = SLEEP_MODE_IDLE;</div>
-<div class="line"><span class="lineno">  317</span>       Serial.println(F(<span class="stringliteral">&quot;Novi mod: SLEEP_MODE_IDLE&quot;</span>));</div>
-<div class="line"><span class="lineno">  318</span>       <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  319</span>     <span class="keywordflow">case</span> SLEEP_MODE_IDLE:</div>
-<div class="line"><span class="lineno">  320</span>       <a class="code hl_variable" href="arduino__sleep__mode_8ino.html#a2d4a23b2392a19cae5b9b1c00ab5b4b6">sleepMode</a> = SLEEP_MODE_PWR_DOWN;</div>
-<div class="line"><span class="lineno">  321</span>       Serial.println(F(<span class="stringliteral">&quot;Novi mod: SLEEP_MODE_PWR_DOWN&quot;</span>));</div>
-<div class="line"><span class="lineno">  322</span>       <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  323</span>     <span class="keywordflow">default</span>:</div>
-<div class="line"><span class="lineno">  324</span>       <a class="code hl_variable" href="arduino__sleep__mode_8ino.html#a2d4a23b2392a19cae5b9b1c00ab5b4b6">sleepMode</a> = SLEEP_MODE_PWR_DOWN;</div>
-<div class="line"><span class="lineno">  325</span>       Serial.println(F(<span class="stringliteral">&quot;Reset na: SLEEP_MODE_PWR_DOWN&quot;</span>));</div>
-<div class="line"><span class="lineno">  326</span>       <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  327</span>   }</div>
-<div class="line"><span class="lineno">  328</span> }</div>
-<div class="ttc" id="aarduino__sleep__mode_8ino_html_a2d4a23b2392a19cae5b9b1c00ab5b4b6"><div class="ttname"><a href="arduino__sleep__mode_8ino.html#a2d4a23b2392a19cae5b9b1c00ab5b4b6">sleepMode</a></div><div class="ttdeci">byte sleepMode</div><div class="ttdoc">Trenutno odabrani sleep mode.</div><div class="ttdef"><b>Definition</b> <a href="arduino__sleep__mode_8ino_source.html#l00047">arduino_sleep_mode.ino:47</a></div></div>
+<p class="definition">Definition at line <a class="el" href="arduino__sleep__mode_8ino_source.html#l00303">303</a> of file <a class="el" href="arduino__sleep__mode_8ino_source.html">arduino_sleep_mode.ino</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  303</span>                   {</div>
+<div class="line"><span class="lineno">  304</span>   <span class="comment">// Ciklički izmijeni sleep modove</span></div>
+<div class="line"><span class="lineno">  305</span>   <span class="keywordflow">switch</span> (<a class="code hl_variable" href="arduino__sleep__mode_8ino.html#a2d4a23b2392a19cae5b9b1c00ab5b4b6">sleepMode</a>) {</div>
+<div class="line"><span class="lineno">  306</span>     <span class="keywordflow">case</span> SLEEP_MODE_PWR_DOWN:</div>
+<div class="line"><span class="lineno">  307</span>       <a class="code hl_variable" href="arduino__sleep__mode_8ino.html#a2d4a23b2392a19cae5b9b1c00ab5b4b6">sleepMode</a> = SLEEP_MODE_PWR_SAVE;</div>
+<div class="line"><span class="lineno">  308</span>       Serial.println(F(<span class="stringliteral">&quot;Novi mod: SLEEP_MODE_PWR_SAVE&quot;</span>));</div>
+<div class="line"><span class="lineno">  309</span>       <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  310</span>     <span class="keywordflow">case</span> SLEEP_MODE_PWR_SAVE:</div>
+<div class="line"><span class="lineno">  311</span>       <a class="code hl_variable" href="arduino__sleep__mode_8ino.html#a2d4a23b2392a19cae5b9b1c00ab5b4b6">sleepMode</a> = SLEEP_MODE_STANDBY;</div>
+<div class="line"><span class="lineno">  312</span>       Serial.println(F(<span class="stringliteral">&quot;Novi mod: SLEEP_MODE_STANDBY&quot;</span>));</div>
+<div class="line"><span class="lineno">  313</span>       <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  314</span>     <span class="keywordflow">case</span> SLEEP_MODE_STANDBY:</div>
+<div class="line"><span class="lineno">  315</span>       <a class="code hl_variable" href="arduino__sleep__mode_8ino.html#a2d4a23b2392a19cae5b9b1c00ab5b4b6">sleepMode</a> = SLEEP_MODE_IDLE;</div>
+<div class="line"><span class="lineno">  316</span>       Serial.println(F(<span class="stringliteral">&quot;Novi mod: SLEEP_MODE_IDLE&quot;</span>));</div>
+<div class="line"><span class="lineno">  317</span>       <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  318</span>     <span class="keywordflow">case</span> SLEEP_MODE_IDLE:</div>
+<div class="line"><span class="lineno">  319</span>       <a class="code hl_variable" href="arduino__sleep__mode_8ino.html#a2d4a23b2392a19cae5b9b1c00ab5b4b6">sleepMode</a> = SLEEP_MODE_PWR_DOWN;</div>
+<div class="line"><span class="lineno">  320</span>       Serial.println(F(<span class="stringliteral">&quot;Novi mod: SLEEP_MODE_PWR_DOWN&quot;</span>));</div>
+<div class="line"><span class="lineno">  321</span>       <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  322</span>     <span class="keywordflow">default</span>:</div>
+<div class="line"><span class="lineno">  323</span>       <a class="code hl_variable" href="arduino__sleep__mode_8ino.html#a2d4a23b2392a19cae5b9b1c00ab5b4b6">sleepMode</a> = SLEEP_MODE_PWR_DOWN;</div>
+<div class="line"><span class="lineno">  324</span>       Serial.println(F(<span class="stringliteral">&quot;Reset na: SLEEP_MODE_PWR_DOWN&quot;</span>));</div>
+<div class="line"><span class="lineno">  325</span>       <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  326</span>   }</div>
+<div class="line"><span class="lineno">  327</span> }</div>
+<div class="ttc" id="aarduino__sleep__mode_8ino_html_a2d4a23b2392a19cae5b9b1c00ab5b4b6"><div class="ttname"><a href="arduino__sleep__mode_8ino.html#a2d4a23b2392a19cae5b9b1c00ab5b4b6">sleepMode</a></div><div class="ttdeci">byte sleepMode</div><div class="ttdoc">Trenutno odabrani sleep mode.</div><div class="ttdef"><b>Definition</b> <a href="arduino__sleep__mode_8ino_source.html#l00046">arduino_sleep_mode.ino:46</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -267,14 +266,14 @@ Variables</h2></td></tr>
 <p>Isključuje watchdog timer. </p>
 <p>Sigurnosna funkcija za potpuno isključivanje watchdog timera </p>
 
-<p class="definition">Definition at line <a class="el" href="arduino__sleep__mode_8ino_source.html#l00189">189</a> of file <a class="el" href="arduino__sleep__mode_8ino_source.html">arduino_sleep_mode.ino</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  189</span>                        {</div>
-<div class="line"><span class="lineno">  190</span>   <span class="comment">// Clearing the WDT reset flag</span></div>
-<div class="line"><span class="lineno">  191</span>   MCUSR &amp;= ~(1&lt;&lt;WDRF);</div>
-<div class="line"><span class="lineno">  192</span>   </div>
-<div class="line"><span class="lineno">  193</span>   <span class="comment">// Disable the WDT</span></div>
-<div class="line"><span class="lineno">  194</span>   wdt_disable();</div>
-<div class="line"><span class="lineno">  195</span> }</div>
+<p class="definition">Definition at line <a class="el" href="arduino__sleep__mode_8ino_source.html#l00188">188</a> of file <a class="el" href="arduino__sleep__mode_8ino_source.html">arduino_sleep_mode.ino</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  188</span>                        {</div>
+<div class="line"><span class="lineno">  189</span>   <span class="comment">// Clearing the WDT reset flag</span></div>
+<div class="line"><span class="lineno">  190</span>   MCUSR &amp;= ~(1&lt;&lt;WDRF);</div>
+<div class="line"><span class="lineno">  191</span>   </div>
+<div class="line"><span class="lineno">  192</span>   <span class="comment">// Disable the WDT</span></div>
+<div class="line"><span class="lineno">  193</span>   wdt_disable();</div>
+<div class="line"><span class="lineno">  194</span> }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -296,42 +295,42 @@ Variables</h2></td></tr>
 <p>Ulazak u odabrani sleep mode. </p>
 <p>Isključuje nekorištene periferije, konfigurira registre i stavlja mikrokontroler u odabrani sleep mode. Čeka dok se ne dogodi vanjski prekid ili istekne watchdog timer. </p>
 
-<p class="definition">Definition at line <a class="el" href="arduino__sleep__mode_8ino_source.html#l00262">262</a> of file <a class="el" href="arduino__sleep__mode_8ino_source.html">arduino_sleep_mode.ino</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  262</span>                   {</div>
-<div class="line"><span class="lineno">  263</span>   <span class="comment">// Isključi periferije koje se ne koriste u sleep modu</span></div>
-<div class="line"><span class="lineno">  264</span>   power_adc_disable();</div>
-<div class="line"><span class="lineno">  265</span>   power_spi_disable();</div>
-<div class="line"><span class="lineno">  266</span>   power_twi_disable();</div>
-<div class="line"><span class="lineno">  267</span>   </div>
-<div class="line"><span class="lineno">  268</span>   <span class="comment">// Samo u IDLE modu, Timer0 i USART mogu ostati aktivni</span></div>
-<div class="line"><span class="lineno">  269</span>   <span class="keywordflow">if</span> (<a class="code hl_variable" href="arduino__sleep__mode_8ino.html#a2d4a23b2392a19cae5b9b1c00ab5b4b6">sleepMode</a> != SLEEP_MODE_IDLE) {</div>
-<div class="line"><span class="lineno">  270</span>     power_timer0_disable();</div>
-<div class="line"><span class="lineno">  271</span>     power_usart0_disable();</div>
-<div class="line"><span class="lineno">  272</span>   }</div>
-<div class="line"><span class="lineno">  273</span>   </div>
-<div class="line"><span class="lineno">  274</span>   noInterrupts();        <span class="comment">// Onemogući prekide prije ulaska u sleep</span></div>
-<div class="line"><span class="lineno">  275</span>   set_sleep_mode(<a class="code hl_variable" href="arduino__sleep__mode_8ino.html#a2d4a23b2392a19cae5b9b1c00ab5b4b6">sleepMode</a>);  <span class="comment">// Postavi odabrani sleep mode</span></div>
-<div class="line"><span class="lineno">  276</span>   sleep_enable();        <span class="comment">// Omogući sleep mode</span></div>
-<div class="line"><span class="lineno">  277</span>   </div>
-<div class="line"><span class="lineno">  278</span>   <span class="comment">// Samo kod PWR_DOWN i STANDBY modova, omogući BOD disable za minimalnu potrošnju</span></div>
-<div class="line"><span class="lineno">  279</span>   <span class="keywordflow">if</span> (<a class="code hl_variable" href="arduino__sleep__mode_8ino.html#a2d4a23b2392a19cae5b9b1c00ab5b4b6">sleepMode</a> == SLEEP_MODE_PWR_DOWN || <a class="code hl_variable" href="arduino__sleep__mode_8ino.html#a2d4a23b2392a19cae5b9b1c00ab5b4b6">sleepMode</a> == SLEEP_MODE_STANDBY) {</div>
-<div class="line"><span class="lineno">  280</span><span class="preprocessor">     #if defined(BODS) &amp;&amp; defined(BODSE)</span></div>
-<div class="line"><span class="lineno">  281</span>       sleep_bod_disable();</div>
-<div class="line"><span class="lineno">  282</span><span class="preprocessor">     #endif</span></div>
-<div class="line"><span class="lineno">  283</span>   }</div>
-<div class="line"><span class="lineno">  284</span>   </div>
-<div class="line"><span class="lineno">  285</span>   interrupts();          <span class="comment">// Ponovno omogući prekide</span></div>
-<div class="line"><span class="lineno">  286</span>   sleep_cpu();           <span class="comment">// Ulazak u sleep mode</span></div>
-<div class="line"><span class="lineno">  287</span>   </div>
-<div class="line"><span class="lineno">  288</span>   <span class="comment">// Program nastavlja ovdje nakon prvog buđenja</span></div>
-<div class="line"><span class="lineno">  289</span>   sleep_disable();       <span class="comment">// Odmah onemogući sleep</span></div>
-<div class="line"><span class="lineno">  290</span>   </div>
-<div class="line"><span class="lineno">  291</span>   <span class="comment">// Ostani u petlji dok se ne dogodi prekid</span></div>
-<div class="line"><span class="lineno">  292</span>   <span class="keywordflow">while</span> (<a class="code hl_variable" href="arduino__sleep__mode_8ino.html#a42e1cacb64e6f87904d9c7c0f519c566">isSleeping</a>) {}</div>
-<div class="line"><span class="lineno">  293</span>   </div>
-<div class="line"><span class="lineno">  294</span>   <span class="comment">// Ponovno omogući potrebne periferije</span></div>
-<div class="line"><span class="lineno">  295</span>   power_all_enable();    <span class="comment">// Uključi sve periferije</span></div>
-<div class="line"><span class="lineno">  296</span> }</div>
+<p class="definition">Definition at line <a class="el" href="arduino__sleep__mode_8ino_source.html#l00261">261</a> of file <a class="el" href="arduino__sleep__mode_8ino_source.html">arduino_sleep_mode.ino</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  261</span>                   {</div>
+<div class="line"><span class="lineno">  262</span>   <span class="comment">// Isključi periferije koje se ne koriste u sleep modu</span></div>
+<div class="line"><span class="lineno">  263</span>   power_adc_disable();</div>
+<div class="line"><span class="lineno">  264</span>   power_spi_disable();</div>
+<div class="line"><span class="lineno">  265</span>   power_twi_disable();</div>
+<div class="line"><span class="lineno">  266</span>   </div>
+<div class="line"><span class="lineno">  267</span>   <span class="comment">// Samo u IDLE modu, Timer0 i USART mogu ostati aktivni</span></div>
+<div class="line"><span class="lineno">  268</span>   <span class="keywordflow">if</span> (<a class="code hl_variable" href="arduino__sleep__mode_8ino.html#a2d4a23b2392a19cae5b9b1c00ab5b4b6">sleepMode</a> != SLEEP_MODE_IDLE) {</div>
+<div class="line"><span class="lineno">  269</span>     power_timer0_disable();</div>
+<div class="line"><span class="lineno">  270</span>     power_usart0_disable();</div>
+<div class="line"><span class="lineno">  271</span>   }</div>
+<div class="line"><span class="lineno">  272</span>   </div>
+<div class="line"><span class="lineno">  273</span>   noInterrupts();        <span class="comment">// Onemogući prekide prije ulaska u sleep</span></div>
+<div class="line"><span class="lineno">  274</span>   set_sleep_mode(<a class="code hl_variable" href="arduino__sleep__mode_8ino.html#a2d4a23b2392a19cae5b9b1c00ab5b4b6">sleepMode</a>);  <span class="comment">// Postavi odabrani sleep mode</span></div>
+<div class="line"><span class="lineno">  275</span>   sleep_enable();        <span class="comment">// Omogući sleep mode</span></div>
+<div class="line"><span class="lineno">  276</span>   </div>
+<div class="line"><span class="lineno">  277</span>   <span class="comment">// Samo kod PWR_DOWN i STANDBY modova, omogući BOD disable za minimalnu potrošnju</span></div>
+<div class="line"><span class="lineno">  278</span>   <span class="keywordflow">if</span> (<a class="code hl_variable" href="arduino__sleep__mode_8ino.html#a2d4a23b2392a19cae5b9b1c00ab5b4b6">sleepMode</a> == SLEEP_MODE_PWR_DOWN || <a class="code hl_variable" href="arduino__sleep__mode_8ino.html#a2d4a23b2392a19cae5b9b1c00ab5b4b6">sleepMode</a> == SLEEP_MODE_STANDBY) {</div>
+<div class="line"><span class="lineno">  279</span><span class="preprocessor">     #if defined(BODS) &amp;&amp; defined(BODSE)</span></div>
+<div class="line"><span class="lineno">  280</span>       sleep_bod_disable();</div>
+<div class="line"><span class="lineno">  281</span><span class="preprocessor">     #endif</span></div>
+<div class="line"><span class="lineno">  282</span>   }</div>
+<div class="line"><span class="lineno">  283</span>   </div>
+<div class="line"><span class="lineno">  284</span>   interrupts();          <span class="comment">// Ponovno omogući prekide</span></div>
+<div class="line"><span class="lineno">  285</span>   sleep_cpu();           <span class="comment">// Ulazak u sleep mode</span></div>
+<div class="line"><span class="lineno">  286</span>   </div>
+<div class="line"><span class="lineno">  287</span>   <span class="comment">// Program nastavlja ovdje nakon prvog buđenja</span></div>
+<div class="line"><span class="lineno">  288</span>   sleep_disable();       <span class="comment">// Odmah onemogući sleep</span></div>
+<div class="line"><span class="lineno">  289</span>   </div>
+<div class="line"><span class="lineno">  290</span>   <span class="comment">// Ostani u petlji dok se ne dogodi prekid</span></div>
+<div class="line"><span class="lineno">  291</span>   <span class="keywordflow">while</span> (<a class="code hl_variable" href="arduino__sleep__mode_8ino.html#a42e1cacb64e6f87904d9c7c0f519c566">isSleeping</a>) {}</div>
+<div class="line"><span class="lineno">  292</span>   </div>
+<div class="line"><span class="lineno">  293</span>   <span class="comment">// Ponovno omogući potrebne periferije</span></div>
+<div class="line"><span class="lineno">  294</span>   power_all_enable();    <span class="comment">// Uključi sve periferije</span></div>
+<div class="line"><span class="lineno">  295</span> }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -354,11 +353,11 @@ Variables</h2></td></tr>
 <p>Interrupt Service Routine (ISR) za Watchdog Timer. </p>
 <p>Postavlja zastavicu i onemogući watchdog timer kada istekne vrijeme timera. </p>
 
-<p class="definition">Definition at line <a class="el" href="arduino__sleep__mode_8ino_source.html#l00227">227</a> of file <a class="el" href="arduino__sleep__mode_8ino_source.html">arduino_sleep_mode.ino</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  227</span>               {</div>
-<div class="line"><span class="lineno">  228</span>   <a class="code hl_variable" href="arduino__sleep__mode_8ino.html#a42e1cacb64e6f87904d9c7c0f519c566">isSleeping</a> = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  229</span>   wdt_disable();  <span class="comment">// Onemogući watchdog timer</span></div>
-<div class="line"><span class="lineno">  230</span> }</div>
+<p class="definition">Definition at line <a class="el" href="arduino__sleep__mode_8ino_source.html#l00226">226</a> of file <a class="el" href="arduino__sleep__mode_8ino_source.html">arduino_sleep_mode.ino</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  226</span>               {</div>
+<div class="line"><span class="lineno">  227</span>   <a class="code hl_variable" href="arduino__sleep__mode_8ino.html#a42e1cacb64e6f87904d9c7c0f519c566">isSleeping</a> = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  228</span>   wdt_disable();  <span class="comment">// Onemogući watchdog timer</span></div>
+<div class="line"><span class="lineno">  229</span> }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -386,53 +385,53 @@ Variables</h2></td></tr>
 <li>Nakon buđenja, ispisuje što je uzrokovalo buđenje </li>
 </ol>
 
-<p class="definition">Definition at line <a class="el" href="arduino__sleep__mode_8ino_source.html#l00102">102</a> of file <a class="el" href="arduino__sleep__mode_8ino_source.html">arduino_sleep_mode.ino</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  102</span>             {</div>
-<div class="line"><span class="lineno">  103</span>   <span class="comment">// Aktivan period - uključi LED na 5 sekundi</span></div>
-<div class="line"><span class="lineno">  104</span>   Serial.println(F(<span class="stringliteral">&quot;Uključujem LED na 5 sekundi...&quot;</span>));</div>
-<div class="line"><span class="lineno">  105</span>   digitalWrite(<a class="code hl_variable" href="arduino__sleep__mode_8ino.html#adae60f691931ebee43e0b1779dbd4219">LED_PIN</a>, HIGH);</div>
-<div class="line"><span class="lineno">  106</span>   delay(5000);</div>
-<div class="line"><span class="lineno">  107</span>   digitalWrite(<a class="code hl_variable" href="arduino__sleep__mode_8ino.html#adae60f691931ebee43e0b1779dbd4219">LED_PIN</a>, LOW);</div>
-<div class="line"><span class="lineno">  108</span>   </div>
-<div class="line"><span class="lineno">  109</span>   <span class="comment">// Debug signal za Wokwi - pokazuje aktivni period</span></div>
-<div class="line"><span class="lineno">  110</span>   digitalWrite(<a class="code hl_variable" href="arduino__sleep__mode_8ino.html#a9e28d6c4a481789a9adb6b9d1710d0c2">DEBUG_PIN</a>, HIGH);</div>
-<div class="line"><span class="lineno">  111</span>   delay(200);</div>
-<div class="line"><span class="lineno">  112</span>   digitalWrite(<a class="code hl_variable" href="arduino__sleep__mode_8ino.html#a9e28d6c4a481789a9adb6b9d1710d0c2">DEBUG_PIN</a>, LOW);</div>
-<div class="line"><span class="lineno">  113</span>   </div>
-<div class="line"><span class="lineno">  114</span>   Serial.println(F(<span class="stringliteral">&quot;Ulazim u sleep mode...&quot;</span>));</div>
-<div class="line"><span class="lineno">  115</span>   Serial.println(F(<span class="stringliteral">&quot;Buđenje će biti nakon 8 sekundi ili pritiskom tipke&quot;</span>));</div>
-<div class="line"><span class="lineno">  116</span>   Serial.flush();  <span class="comment">// Osigurati da su svi podaci poslani prije spavanja</span></div>
-<div class="line"><span class="lineno">  117</span>   </div>
-<div class="line"><span class="lineno">  118</span>   <span class="comment">// Postavljanje watchdog timera na 8 sekundi</span></div>
-<div class="line"><span class="lineno">  119</span>   <a class="code hl_function" href="arduino__sleep__mode_8ino.html#ac84cd35e5331d91aa923acfbb1ad3369">setupWatchdog</a>(9);  <span class="comment">// 9 = 8 sekundi</span></div>
-<div class="line"><span class="lineno">  120</span>   </div>
-<div class="line"><span class="lineno">  121</span>   <span class="comment">// Indikacija za Wokwi - uzorak bljeskanja za trenutni mod</span></div>
-<div class="line"><span class="lineno">  122</span>   <a class="code hl_function" href="arduino__sleep__mode_8ino.html#a348e0ec49a0d5c586f2e43e79b668c51">visualizeSleepMode</a>();</div>
-<div class="line"><span class="lineno">  123</span>   </div>
-<div class="line"><span class="lineno">  124</span>   <span class="comment">// Ulazak u sleep mode</span></div>
-<div class="line"><span class="lineno">  125</span>   <a class="code hl_function" href="arduino__sleep__mode_8ino.html#ae5b5093bef9a291e112c49e9aae5feec">enterSleep</a>();</div>
-<div class="line"><span class="lineno">  126</span>   </div>
-<div class="line"><span class="lineno">  127</span>   <span class="comment">// Kod nastavlja ovdje nakon buđenja</span></div>
-<div class="line"><span class="lineno">  128</span>   Serial.println(F(<span class="stringliteral">&quot;Probudili smo se!&quot;</span>));</div>
-<div class="line"><span class="lineno">  129</span>   </div>
-<div class="line"><span class="lineno">  130</span>   <span class="comment">// Provjeri zastavicu za buđenje tipkom</span></div>
-<div class="line"><span class="lineno">  131</span>   <span class="keywordflow">if</span> (<a class="code hl_variable" href="arduino__sleep__mode_8ino.html#a294f2c67fdd899f99ec943850a43956d">buttonWakeUp</a>) {</div>
-<div class="line"><span class="lineno">  132</span>     Serial.println(F(<span class="stringliteral">&quot;Buđenje uzrokovano pritiskom tipke!&quot;</span>));</div>
-<div class="line"><span class="lineno">  133</span>     <a class="code hl_function" href="arduino__sleep__mode_8ino.html#a8e7c52501b2958676d97c9ac1f291cc1">changeMode</a>();  <span class="comment">// Promijeni mod kada smo probuđeni tipkom</span></div>
-<div class="line"><span class="lineno">  134</span>     <a class="code hl_variable" href="arduino__sleep__mode_8ino.html#a294f2c67fdd899f99ec943850a43956d">buttonWakeUp</a> = <span class="keyword">false</span>;  <span class="comment">// Resetiraj zastavicu</span></div>
-<div class="line"><span class="lineno">  135</span>   } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  136</span>     Serial.println(F(<span class="stringliteral">&quot;Buđenje uzrokovano timerom!&quot;</span>));</div>
-<div class="line"><span class="lineno">  137</span>   }</div>
-<div class="line"><span class="lineno">  138</span>   </div>
-<div class="line"><span class="lineno">  139</span>   delay(1000);  <span class="comment">// Mali delay za stabilizaciju</span></div>
-<div class="line"><span class="lineno">  140</span>   <a class="code hl_variable" href="arduino__sleep__mode_8ino.html#a42e1cacb64e6f87904d9c7c0f519c566">isSleeping</a> = <span class="keyword">true</span>;  <span class="comment">// Resetiramo zastavicu za sljedeći ciklus</span></div>
-<div class="line"><span class="lineno">  141</span> }</div>
-<div class="ttc" id="aarduino__sleep__mode_8ino_html_a348e0ec49a0d5c586f2e43e79b668c51"><div class="ttname"><a href="arduino__sleep__mode_8ino.html#a348e0ec49a0d5c586f2e43e79b668c51">visualizeSleepMode</a></div><div class="ttdeci">void visualizeSleepMode()</div><div class="ttdoc">Vizualizira trenutni sleep mod kroz LED bljeskanje.</div><div class="ttdef"><b>Definition</b> <a href="arduino__sleep__mode_8ino_source.html#l00149">arduino_sleep_mode.ino:149</a></div></div>
-<div class="ttc" id="aarduino__sleep__mode_8ino_html_a8e7c52501b2958676d97c9ac1f291cc1"><div class="ttname"><a href="arduino__sleep__mode_8ino.html#a8e7c52501b2958676d97c9ac1f291cc1">changeMode</a></div><div class="ttdeci">void changeMode()</div><div class="ttdoc">Mijenja trenutni sleep mode.</div><div class="ttdef"><b>Definition</b> <a href="arduino__sleep__mode_8ino_source.html#l00304">arduino_sleep_mode.ino:304</a></div></div>
-<div class="ttc" id="aarduino__sleep__mode_8ino_html_a9e28d6c4a481789a9adb6b9d1710d0c2"><div class="ttname"><a href="arduino__sleep__mode_8ino.html#a9e28d6c4a481789a9adb6b9d1710d0c2">DEBUG_PIN</a></div><div class="ttdeci">const int DEBUG_PIN</div><div class="ttdoc">Pin za debugging sleep modova u Wokwi.</div><div class="ttdef"><b>Definition</b> <a href="arduino__sleep__mode_8ino_source.html#l00031">arduino_sleep_mode.ino:31</a></div></div>
-<div class="ttc" id="aarduino__sleep__mode_8ino_html_ac84cd35e5331d91aa923acfbb1ad3369"><div class="ttname"><a href="arduino__sleep__mode_8ino.html#ac84cd35e5331d91aa923acfbb1ad3369">setupWatchdog</a></div><div class="ttdeci">void setupWatchdog(int timerPrescaler)</div><div class="ttdoc">Postavlja watchdog timer za buđenje nakon određenog vremena.</div><div class="ttdef"><b>Definition</b> <a href="arduino__sleep__mode_8ino_source.html#l00239">arduino_sleep_mode.ino:239</a></div></div>
-<div class="ttc" id="aarduino__sleep__mode_8ino_html_adae60f691931ebee43e0b1779dbd4219"><div class="ttname"><a href="arduino__sleep__mode_8ino.html#adae60f691931ebee43e0b1779dbd4219">LED_PIN</a></div><div class="ttdeci">const int LED_PIN</div><div class="ttdoc">Pin na kojem je spojena LED dioda.</div><div class="ttdef"><b>Definition</b> <a href="arduino__sleep__mode_8ino_source.html#l00020">arduino_sleep_mode.ino:20</a></div></div>
-<div class="ttc" id="aarduino__sleep__mode_8ino_html_ae5b5093bef9a291e112c49e9aae5feec"><div class="ttname"><a href="arduino__sleep__mode_8ino.html#ae5b5093bef9a291e112c49e9aae5feec">enterSleep</a></div><div class="ttdeci">void enterSleep()</div><div class="ttdoc">Ulazak u odabrani sleep mode.</div><div class="ttdef"><b>Definition</b> <a href="arduino__sleep__mode_8ino_source.html#l00262">arduino_sleep_mode.ino:262</a></div></div>
+<p class="definition">Definition at line <a class="el" href="arduino__sleep__mode_8ino_source.html#l00101">101</a> of file <a class="el" href="arduino__sleep__mode_8ino_source.html">arduino_sleep_mode.ino</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  101</span>             {</div>
+<div class="line"><span class="lineno">  102</span>   <span class="comment">// Aktivan period - uključi LED na 5 sekundi</span></div>
+<div class="line"><span class="lineno">  103</span>   Serial.println(F(<span class="stringliteral">&quot;Uključujem LED na 5 sekundi...&quot;</span>));</div>
+<div class="line"><span class="lineno">  104</span>   digitalWrite(<a class="code hl_variable" href="arduino__sleep__mode_8ino.html#adae60f691931ebee43e0b1779dbd4219">LED_PIN</a>, HIGH);</div>
+<div class="line"><span class="lineno">  105</span>   delay(5000);</div>
+<div class="line"><span class="lineno">  106</span>   digitalWrite(<a class="code hl_variable" href="arduino__sleep__mode_8ino.html#adae60f691931ebee43e0b1779dbd4219">LED_PIN</a>, LOW);</div>
+<div class="line"><span class="lineno">  107</span>   </div>
+<div class="line"><span class="lineno">  108</span>   <span class="comment">// Debug signal za Wokwi - pokazuje aktivni period</span></div>
+<div class="line"><span class="lineno">  109</span>   digitalWrite(<a class="code hl_variable" href="arduino__sleep__mode_8ino.html#a9e28d6c4a481789a9adb6b9d1710d0c2">DEBUG_PIN</a>, HIGH);</div>
+<div class="line"><span class="lineno">  110</span>   delay(200);</div>
+<div class="line"><span class="lineno">  111</span>   digitalWrite(<a class="code hl_variable" href="arduino__sleep__mode_8ino.html#a9e28d6c4a481789a9adb6b9d1710d0c2">DEBUG_PIN</a>, LOW);</div>
+<div class="line"><span class="lineno">  112</span>   </div>
+<div class="line"><span class="lineno">  113</span>   Serial.println(F(<span class="stringliteral">&quot;Ulazim u sleep mode...&quot;</span>));</div>
+<div class="line"><span class="lineno">  114</span>   Serial.println(F(<span class="stringliteral">&quot;Buđenje će biti nakon 8 sekundi ili pritiskom tipke&quot;</span>));</div>
+<div class="line"><span class="lineno">  115</span>   Serial.flush();  <span class="comment">// Osigurati da su svi podaci poslani prije spavanja</span></div>
+<div class="line"><span class="lineno">  116</span>   </div>
+<div class="line"><span class="lineno">  117</span>   <span class="comment">// Postavljanje watchdog timera na 8 sekundi</span></div>
+<div class="line"><span class="lineno">  118</span>   <a class="code hl_function" href="arduino__sleep__mode_8ino.html#ac84cd35e5331d91aa923acfbb1ad3369">setupWatchdog</a>(9);  <span class="comment">// 9 = 8 sekundi</span></div>
+<div class="line"><span class="lineno">  119</span>   </div>
+<div class="line"><span class="lineno">  120</span>   <span class="comment">// Indikacija za Wokwi - uzorak bljeskanja za trenutni mod</span></div>
+<div class="line"><span class="lineno">  121</span>   <a class="code hl_function" href="arduino__sleep__mode_8ino.html#a348e0ec49a0d5c586f2e43e79b668c51">visualizeSleepMode</a>();</div>
+<div class="line"><span class="lineno">  122</span>   </div>
+<div class="line"><span class="lineno">  123</span>   <span class="comment">// Ulazak u sleep mode</span></div>
+<div class="line"><span class="lineno">  124</span>   <a class="code hl_function" href="arduino__sleep__mode_8ino.html#ae5b5093bef9a291e112c49e9aae5feec">enterSleep</a>();</div>
+<div class="line"><span class="lineno">  125</span>   </div>
+<div class="line"><span class="lineno">  126</span>   <span class="comment">// Kod nastavlja ovdje nakon buđenja</span></div>
+<div class="line"><span class="lineno">  127</span>   Serial.println(F(<span class="stringliteral">&quot;Probudili smo se!&quot;</span>));</div>
+<div class="line"><span class="lineno">  128</span>   </div>
+<div class="line"><span class="lineno">  129</span>   <span class="comment">// Provjeri zastavicu za buđenje tipkom</span></div>
+<div class="line"><span class="lineno">  130</span>   <span class="keywordflow">if</span> (<a class="code hl_variable" href="arduino__sleep__mode_8ino.html#a294f2c67fdd899f99ec943850a43956d">buttonWakeUp</a>) {</div>
+<div class="line"><span class="lineno">  131</span>     Serial.println(F(<span class="stringliteral">&quot;Buđenje uzrokovano pritiskom tipke!&quot;</span>));</div>
+<div class="line"><span class="lineno">  132</span>     <a class="code hl_function" href="arduino__sleep__mode_8ino.html#a8e7c52501b2958676d97c9ac1f291cc1">changeMode</a>();  <span class="comment">// Promijeni mod kada smo probuđeni tipkom</span></div>
+<div class="line"><span class="lineno">  133</span>     <a class="code hl_variable" href="arduino__sleep__mode_8ino.html#a294f2c67fdd899f99ec943850a43956d">buttonWakeUp</a> = <span class="keyword">false</span>;  <span class="comment">// Resetiraj zastavicu</span></div>
+<div class="line"><span class="lineno">  134</span>   } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  135</span>     Serial.println(F(<span class="stringliteral">&quot;Buđenje uzrokovano timerom!&quot;</span>));</div>
+<div class="line"><span class="lineno">  136</span>   }</div>
+<div class="line"><span class="lineno">  137</span>   </div>
+<div class="line"><span class="lineno">  138</span>   delay(1000);  <span class="comment">// Mali delay za stabilizaciju</span></div>
+<div class="line"><span class="lineno">  139</span>   <a class="code hl_variable" href="arduino__sleep__mode_8ino.html#a42e1cacb64e6f87904d9c7c0f519c566">isSleeping</a> = <span class="keyword">true</span>;  <span class="comment">// Resetiramo zastavicu za sljedeći ciklus</span></div>
+<div class="line"><span class="lineno">  140</span> }</div>
+<div class="ttc" id="aarduino__sleep__mode_8ino_html_a348e0ec49a0d5c586f2e43e79b668c51"><div class="ttname"><a href="arduino__sleep__mode_8ino.html#a348e0ec49a0d5c586f2e43e79b668c51">visualizeSleepMode</a></div><div class="ttdeci">void visualizeSleepMode()</div><div class="ttdoc">Vizualizira trenutni sleep mod kroz LED bljeskanje.</div><div class="ttdef"><b>Definition</b> <a href="arduino__sleep__mode_8ino_source.html#l00148">arduino_sleep_mode.ino:148</a></div></div>
+<div class="ttc" id="aarduino__sleep__mode_8ino_html_a8e7c52501b2958676d97c9ac1f291cc1"><div class="ttname"><a href="arduino__sleep__mode_8ino.html#a8e7c52501b2958676d97c9ac1f291cc1">changeMode</a></div><div class="ttdeci">void changeMode()</div><div class="ttdoc">Mijenja trenutni sleep mode.</div><div class="ttdef"><b>Definition</b> <a href="arduino__sleep__mode_8ino_source.html#l00303">arduino_sleep_mode.ino:303</a></div></div>
+<div class="ttc" id="aarduino__sleep__mode_8ino_html_a9e28d6c4a481789a9adb6b9d1710d0c2"><div class="ttname"><a href="arduino__sleep__mode_8ino.html#a9e28d6c4a481789a9adb6b9d1710d0c2">DEBUG_PIN</a></div><div class="ttdeci">const int DEBUG_PIN</div><div class="ttdoc">Pin za debugging sleep modova u Wokwi.</div><div class="ttdef"><b>Definition</b> <a href="arduino__sleep__mode_8ino_source.html#l00030">arduino_sleep_mode.ino:30</a></div></div>
+<div class="ttc" id="aarduino__sleep__mode_8ino_html_ac84cd35e5331d91aa923acfbb1ad3369"><div class="ttname"><a href="arduino__sleep__mode_8ino.html#ac84cd35e5331d91aa923acfbb1ad3369">setupWatchdog</a></div><div class="ttdeci">void setupWatchdog(int timerPrescaler)</div><div class="ttdoc">Postavlja watchdog timer za buđenje nakon određenog vremena.</div><div class="ttdef"><b>Definition</b> <a href="arduino__sleep__mode_8ino_source.html#l00238">arduino_sleep_mode.ino:238</a></div></div>
+<div class="ttc" id="aarduino__sleep__mode_8ino_html_adae60f691931ebee43e0b1779dbd4219"><div class="ttname"><a href="arduino__sleep__mode_8ino.html#adae60f691931ebee43e0b1779dbd4219">LED_PIN</a></div><div class="ttdeci">const int LED_PIN</div><div class="ttdoc">Pin na kojem je spojena LED dioda.</div><div class="ttdef"><b>Definition</b> <a href="arduino__sleep__mode_8ino_source.html#l00019">arduino_sleep_mode.ino:19</a></div></div>
+<div class="ttc" id="aarduino__sleep__mode_8ino_html_ae5b5093bef9a291e112c49e9aae5feec"><div class="ttname"><a href="arduino__sleep__mode_8ino.html#ae5b5093bef9a291e112c49e9aae5feec">enterSleep</a></div><div class="ttdeci">void enterSleep()</div><div class="ttdoc">Ulazak u odabrani sleep mode.</div><div class="ttdef"><b>Definition</b> <a href="arduino__sleep__mode_8ino_source.html#l00261">arduino_sleep_mode.ino:261</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -454,34 +453,34 @@ Variables</h2></td></tr>
 <p>Inicijalizacija programa. </p>
 <p>Postavlja pinove, konfigurira prekide i isključuje nekorištene periferije za smanjenje potrošnje energije. </p>
 
-<p class="definition">Definition at line <a class="el" href="arduino__sleep__mode_8ino_source.html#l00067">67</a> of file <a class="el" href="arduino__sleep__mode_8ino_source.html">arduino_sleep_mode.ino</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   67</span>              {</div>
-<div class="line"><span class="lineno">   68</span>   Serial.begin(9600);</div>
-<div class="line"><span class="lineno">   69</span>   </div>
-<div class="line"><span class="lineno">   70</span>   <span class="comment">// Postavljanje pinova</span></div>
-<div class="line"><span class="lineno">   71</span>   pinMode(<a class="code hl_variable" href="arduino__sleep__mode_8ino.html#adae60f691931ebee43e0b1779dbd4219">LED_PIN</a>, OUTPUT);</div>
-<div class="line"><span class="lineno">   72</span>   pinMode(<a class="code hl_variable" href="arduino__sleep__mode_8ino.html#a4adb49baac164d761359c1af0d2c2bb2">BUTTON_PIN</a>, INPUT_PULLUP);</div>
-<div class="line"><span class="lineno">   73</span>   pinMode(<a class="code hl_variable" href="arduino__sleep__mode_8ino.html#a9e28d6c4a481789a9adb6b9d1710d0c2">DEBUG_PIN</a>, OUTPUT);</div>
-<div class="line"><span class="lineno">   74</span>   </div>
-<div class="line"><span class="lineno">   75</span>   <span class="comment">// Osiguraj da je watchdog timer isključen na početku</span></div>
-<div class="line"><span class="lineno">   76</span>   <a class="code hl_function" href="arduino__sleep__mode_8ino.html#aa572728a61b0024de131ea9c47fc8ed5">disableWatchdog</a>();</div>
-<div class="line"><span class="lineno">   77</span>   </div>
-<div class="line"><span class="lineno">   78</span>   <span class="comment">// Postavljanje prekida</span></div>
-<div class="line"><span class="lineno">   79</span>   <a class="code hl_function" href="arduino__sleep__mode_8ino.html#aebd4dcf38a05c8be3c7bdd9c38130112">setupExternalInterrupt</a>();</div>
-<div class="line"><span class="lineno">   80</span>   </div>
-<div class="line"><span class="lineno">   81</span>   <span class="comment">// Inicijalno isključivanje nekorištenih periferija za štednju energije</span></div>
-<div class="line"><span class="lineno">   82</span>   power_adc_disable();  <span class="comment">// Isključi ADC</span></div>
-<div class="line"><span class="lineno">   83</span>   power_spi_disable();  <span class="comment">// Isključi SPI</span></div>
-<div class="line"><span class="lineno">   84</span>   power_twi_disable();  <span class="comment">// Isključi TWI/I2C</span></div>
-<div class="line"><span class="lineno">   85</span>   </div>
-<div class="line"><span class="lineno">   86</span>   Serial.println(F(<span class="stringliteral">&quot;Arduino Sleep Mode Demonstracija&quot;</span>));</div>
-<div class="line"><span class="lineno">   87</span>   Serial.println(F(<span class="stringliteral">&quot;-----------------------------&quot;</span>));</div>
-<div class="line"><span class="lineno">   88</span>   Serial.println(F(<span class="stringliteral">&quot;Trenutni mod: SLEEP_MODE_PWR_DOWN&quot;</span>));</div>
-<div class="line"><span class="lineno">   89</span>   Serial.println(F(<span class="stringliteral">&quot;Pritisnite tipku za buđenje i promjenu sleep moda&quot;</span>));</div>
-<div class="line"><span class="lineno">   90</span> }</div>
-<div class="ttc" id="aarduino__sleep__mode_8ino_html_a4adb49baac164d761359c1af0d2c2bb2"><div class="ttname"><a href="arduino__sleep__mode_8ino.html#a4adb49baac164d761359c1af0d2c2bb2">BUTTON_PIN</a></div><div class="ttdeci">const int BUTTON_PIN</div><div class="ttdoc">Pin na kojem je spojeno tipkalo za vanjski prekid.</div><div class="ttdef"><b>Definition</b> <a href="arduino__sleep__mode_8ino_source.html#l00026">arduino_sleep_mode.ino:26</a></div></div>
-<div class="ttc" id="aarduino__sleep__mode_8ino_html_aa572728a61b0024de131ea9c47fc8ed5"><div class="ttname"><a href="arduino__sleep__mode_8ino.html#aa572728a61b0024de131ea9c47fc8ed5">disableWatchdog</a></div><div class="ttdeci">void disableWatchdog()</div><div class="ttdoc">Isključuje watchdog timer.</div><div class="ttdef"><b>Definition</b> <a href="arduino__sleep__mode_8ino_source.html#l00189">arduino_sleep_mode.ino:189</a></div></div>
-<div class="ttc" id="aarduino__sleep__mode_8ino_html_aebd4dcf38a05c8be3c7bdd9c38130112"><div class="ttname"><a href="arduino__sleep__mode_8ino.html#aebd4dcf38a05c8be3c7bdd9c38130112">setupExternalInterrupt</a></div><div class="ttdeci">void setupExternalInterrupt()</div><div class="ttdoc">Postavlja vanjski prekid na pin za tipkalo.</div><div class="ttdef"><b>Definition</b> <a href="arduino__sleep__mode_8ino_source.html#l00203">arduino_sleep_mode.ino:203</a></div></div>
+<p class="definition">Definition at line <a class="el" href="arduino__sleep__mode_8ino_source.html#l00066">66</a> of file <a class="el" href="arduino__sleep__mode_8ino_source.html">arduino_sleep_mode.ino</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   66</span>              {</div>
+<div class="line"><span class="lineno">   67</span>   Serial.begin(9600);</div>
+<div class="line"><span class="lineno">   68</span>   </div>
+<div class="line"><span class="lineno">   69</span>   <span class="comment">// Postavljanje pinova</span></div>
+<div class="line"><span class="lineno">   70</span>   pinMode(<a class="code hl_variable" href="arduino__sleep__mode_8ino.html#adae60f691931ebee43e0b1779dbd4219">LED_PIN</a>, OUTPUT);</div>
+<div class="line"><span class="lineno">   71</span>   pinMode(<a class="code hl_variable" href="arduino__sleep__mode_8ino.html#a4adb49baac164d761359c1af0d2c2bb2">BUTTON_PIN</a>, INPUT_PULLUP);</div>
+<div class="line"><span class="lineno">   72</span>   pinMode(<a class="code hl_variable" href="arduino__sleep__mode_8ino.html#a9e28d6c4a481789a9adb6b9d1710d0c2">DEBUG_PIN</a>, OUTPUT);</div>
+<div class="line"><span class="lineno">   73</span>   </div>
+<div class="line"><span class="lineno">   74</span>   <span class="comment">// Osiguraj da je watchdog timer isključen na početku</span></div>
+<div class="line"><span class="lineno">   75</span>   <a class="code hl_function" href="arduino__sleep__mode_8ino.html#aa572728a61b0024de131ea9c47fc8ed5">disableWatchdog</a>();</div>
+<div class="line"><span class="lineno">   76</span>   </div>
+<div class="line"><span class="lineno">   77</span>   <span class="comment">// Postavljanje prekida</span></div>
+<div class="line"><span class="lineno">   78</span>   <a class="code hl_function" href="arduino__sleep__mode_8ino.html#aebd4dcf38a05c8be3c7bdd9c38130112">setupExternalInterrupt</a>();</div>
+<div class="line"><span class="lineno">   79</span>   </div>
+<div class="line"><span class="lineno">   80</span>   <span class="comment">// Inicijalno isključivanje nekorištenih periferija za štednju energije</span></div>
+<div class="line"><span class="lineno">   81</span>   power_adc_disable();  <span class="comment">// Isključi ADC</span></div>
+<div class="line"><span class="lineno">   82</span>   power_spi_disable();  <span class="comment">// Isključi SPI</span></div>
+<div class="line"><span class="lineno">   83</span>   power_twi_disable();  <span class="comment">// Isključi TWI/I2C</span></div>
+<div class="line"><span class="lineno">   84</span>   </div>
+<div class="line"><span class="lineno">   85</span>   Serial.println(F(<span class="stringliteral">&quot;Arduino Sleep Mode Demonstracija&quot;</span>));</div>
+<div class="line"><span class="lineno">   86</span>   Serial.println(F(<span class="stringliteral">&quot;-----------------------------&quot;</span>));</div>
+<div class="line"><span class="lineno">   87</span>   Serial.println(F(<span class="stringliteral">&quot;Trenutni mod: SLEEP_MODE_PWR_DOWN&quot;</span>));</div>
+<div class="line"><span class="lineno">   88</span>   Serial.println(F(<span class="stringliteral">&quot;Pritisnite tipku za buđenje i promjenu sleep moda&quot;</span>));</div>
+<div class="line"><span class="lineno">   89</span> }</div>
+<div class="ttc" id="aarduino__sleep__mode_8ino_html_a4adb49baac164d761359c1af0d2c2bb2"><div class="ttname"><a href="arduino__sleep__mode_8ino.html#a4adb49baac164d761359c1af0d2c2bb2">BUTTON_PIN</a></div><div class="ttdeci">const int BUTTON_PIN</div><div class="ttdoc">Pin na kojem je spojeno tipkalo za vanjski prekid.</div><div class="ttdef"><b>Definition</b> <a href="arduino__sleep__mode_8ino_source.html#l00025">arduino_sleep_mode.ino:25</a></div></div>
+<div class="ttc" id="aarduino__sleep__mode_8ino_html_aa572728a61b0024de131ea9c47fc8ed5"><div class="ttname"><a href="arduino__sleep__mode_8ino.html#aa572728a61b0024de131ea9c47fc8ed5">disableWatchdog</a></div><div class="ttdeci">void disableWatchdog()</div><div class="ttdoc">Isključuje watchdog timer.</div><div class="ttdef"><b>Definition</b> <a href="arduino__sleep__mode_8ino_source.html#l00188">arduino_sleep_mode.ino:188</a></div></div>
+<div class="ttc" id="aarduino__sleep__mode_8ino_html_aebd4dcf38a05c8be3c7bdd9c38130112"><div class="ttname"><a href="arduino__sleep__mode_8ino.html#aebd4dcf38a05c8be3c7bdd9c38130112">setupExternalInterrupt</a></div><div class="ttdeci">void setupExternalInterrupt()</div><div class="ttdoc">Postavlja vanjski prekid na pin za tipkalo.</div><div class="ttdef"><b>Definition</b> <a href="arduino__sleep__mode_8ino_source.html#l00202">arduino_sleep_mode.ino:202</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -503,11 +502,11 @@ Variables</h2></td></tr>
 <p>Postavlja vanjski prekid na pin za tipkalo. </p>
 <p>Konfigurira vanjski prekid za buđenje mikrokontrolera na padajući brid signala (pritisak tipke). </p>
 
-<p class="definition">Definition at line <a class="el" href="arduino__sleep__mode_8ino_source.html#l00203">203</a> of file <a class="el" href="arduino__sleep__mode_8ino_source.html">arduino_sleep_mode.ino</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  203</span>                               {</div>
-<div class="line"><span class="lineno">  204</span>   attachInterrupt(digitalPinToInterrupt(<a class="code hl_variable" href="arduino__sleep__mode_8ino.html#a4adb49baac164d761359c1af0d2c2bb2">BUTTON_PIN</a>), <a class="code hl_function" href="arduino__sleep__mode_8ino.html#a2a711de0a91e448032513da319406975">buttonInterrupt</a>, FALLING);</div>
-<div class="line"><span class="lineno">  205</span> }</div>
-<div class="ttc" id="aarduino__sleep__mode_8ino_html_a2a711de0a91e448032513da319406975"><div class="ttname"><a href="arduino__sleep__mode_8ino.html#a2a711de0a91e448032513da319406975">buttonInterrupt</a></div><div class="ttdeci">void buttonInterrupt()</div><div class="ttdoc">Interrupt Service Routine (ISR) za tipkalo.</div><div class="ttdef"><b>Definition</b> <a href="arduino__sleep__mode_8ino_source.html#l00212">arduino_sleep_mode.ino:212</a></div></div>
+<p class="definition">Definition at line <a class="el" href="arduino__sleep__mode_8ino_source.html#l00202">202</a> of file <a class="el" href="arduino__sleep__mode_8ino_source.html">arduino_sleep_mode.ino</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  202</span>                               {</div>
+<div class="line"><span class="lineno">  203</span>   attachInterrupt(digitalPinToInterrupt(<a class="code hl_variable" href="arduino__sleep__mode_8ino.html#a4adb49baac164d761359c1af0d2c2bb2">BUTTON_PIN</a>), <a class="code hl_function" href="arduino__sleep__mode_8ino.html#a2a711de0a91e448032513da319406975">buttonInterrupt</a>, FALLING);</div>
+<div class="line"><span class="lineno">  204</span> }</div>
+<div class="ttc" id="aarduino__sleep__mode_8ino_html_a2a711de0a91e448032513da319406975"><div class="ttname"><a href="arduino__sleep__mode_8ino.html#a2a711de0a91e448032513da319406975">buttonInterrupt</a></div><div class="ttdeci">void buttonInterrupt()</div><div class="ttdoc">Interrupt Service Routine (ISR) za tipkalo.</div><div class="ttdef"><b>Definition</b> <a href="arduino__sleep__mode_8ino_source.html#l00211">arduino_sleep_mode.ino:211</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -535,22 +534,22 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="arduino__sleep__mode_8ino_source.html#l00239">239</a> of file <a class="el" href="arduino__sleep__mode_8ino_source.html">arduino_sleep_mode.ino</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  239</span>                                        {</div>
-<div class="line"><span class="lineno">  240</span>   <span class="comment">// Resetiranje watchdog timera</span></div>
-<div class="line"><span class="lineno">  241</span>   wdt_reset();</div>
-<div class="line"><span class="lineno">  242</span>   </div>
-<div class="line"><span class="lineno">  243</span>   <span class="comment">// Postavljanje WDT registara za omogućavanje prekida</span></div>
-<div class="line"><span class="lineno">  244</span>   <span class="keywordtype">byte</span> wdtBits = timerPrescaler &amp; 7;</div>
-<div class="line"><span class="lineno">  245</span>   <span class="keywordflow">if</span> (timerPrescaler &gt; 7) {</div>
-<div class="line"><span class="lineno">  246</span>     wdtBits |= (1 &lt;&lt; 5);  <span class="comment">// Postavi WDP3 bit</span></div>
-<div class="line"><span class="lineno">  247</span>   }</div>
-<div class="line"><span class="lineno">  248</span>   </div>
-<div class="line"><span class="lineno">  249</span>   <span class="comment">// Posebna sekvenca za promjenu registara</span></div>
-<div class="line"><span class="lineno">  250</span>   MCUSR &amp;= ~(1 &lt;&lt; WDRF);  <span class="comment">// Očisti WDRF flag</span></div>
-<div class="line"><span class="lineno">  251</span>   WDTCSR |= (1 &lt;&lt; WDCE) | (1 &lt;&lt; WDE);  <span class="comment">// Omogući promjenu</span></div>
-<div class="line"><span class="lineno">  252</span>   WDTCSR = (1 &lt;&lt; WDIE) | wdtBits;      <span class="comment">// Postavi novi timeout i WDT interrupt enable bit</span></div>
-<div class="line"><span class="lineno">  253</span> }</div>
+<p class="definition">Definition at line <a class="el" href="arduino__sleep__mode_8ino_source.html#l00238">238</a> of file <a class="el" href="arduino__sleep__mode_8ino_source.html">arduino_sleep_mode.ino</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  238</span>                                        {</div>
+<div class="line"><span class="lineno">  239</span>   <span class="comment">// Resetiranje watchdog timera</span></div>
+<div class="line"><span class="lineno">  240</span>   wdt_reset();</div>
+<div class="line"><span class="lineno">  241</span>   </div>
+<div class="line"><span class="lineno">  242</span>   <span class="comment">// Postavljanje WDT registara za omogućavanje prekida</span></div>
+<div class="line"><span class="lineno">  243</span>   <span class="keywordtype">byte</span> wdtBits = timerPrescaler &amp; 7;</div>
+<div class="line"><span class="lineno">  244</span>   <span class="keywordflow">if</span> (timerPrescaler &gt; 7) {</div>
+<div class="line"><span class="lineno">  245</span>     wdtBits |= (1 &lt;&lt; 5);  <span class="comment">// Postavi WDP3 bit</span></div>
+<div class="line"><span class="lineno">  246</span>   }</div>
+<div class="line"><span class="lineno">  247</span>   </div>
+<div class="line"><span class="lineno">  248</span>   <span class="comment">// Posebna sekvenca za promjenu registara</span></div>
+<div class="line"><span class="lineno">  249</span>   MCUSR &amp;= ~(1 &lt;&lt; WDRF);  <span class="comment">// Očisti WDRF flag</span></div>
+<div class="line"><span class="lineno">  250</span>   WDTCSR |= (1 &lt;&lt; WDCE) | (1 &lt;&lt; WDE);  <span class="comment">// Omogući promjenu</span></div>
+<div class="line"><span class="lineno">  251</span>   WDTCSR = (1 &lt;&lt; WDIE) | wdtBits;      <span class="comment">// Postavi novi timeout i WDT interrupt enable bit</span></div>
+<div class="line"><span class="lineno">  252</span> }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -572,41 +571,41 @@ Variables</h2></td></tr>
 <p>Vizualizira trenutni sleep mod kroz LED bljeskanje. </p>
 <p>Za Wokwi simulaciju, ova funkcija pokazuje koji je trenutni sleep mod aktiviran različitim uzorkom bljeskanja. </p>
 
-<p class="definition">Definition at line <a class="el" href="arduino__sleep__mode_8ino_source.html#l00149">149</a> of file <a class="el" href="arduino__sleep__mode_8ino_source.html">arduino_sleep_mode.ino</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  149</span>                           {</div>
-<div class="line"><span class="lineno">  150</span>   <span class="keywordflow">switch</span> (<a class="code hl_variable" href="arduino__sleep__mode_8ino.html#a2d4a23b2392a19cae5b9b1c00ab5b4b6">sleepMode</a>) {</div>
-<div class="line"><span class="lineno">  151</span>     <span class="keywordflow">case</span> SLEEP_MODE_PWR_DOWN:</div>
-<div class="line"><span class="lineno">  152</span>       <span class="comment">// Jedan brzi bljesak za PWR_DOWN</span></div>
-<div class="line"><span class="lineno">  153</span>       digitalWrite(<a class="code hl_variable" href="arduino__sleep__mode_8ino.html#a9e28d6c4a481789a9adb6b9d1710d0c2">DEBUG_PIN</a>, HIGH);</div>
-<div class="line"><span class="lineno">  154</span>       delay(100);</div>
-<div class="line"><span class="lineno">  155</span>       digitalWrite(<a class="code hl_variable" href="arduino__sleep__mode_8ino.html#a9e28d6c4a481789a9adb6b9d1710d0c2">DEBUG_PIN</a>, LOW);</div>
-<div class="line"><span class="lineno">  156</span>       <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  157</span>     <span class="keywordflow">case</span> SLEEP_MODE_PWR_SAVE:</div>
-<div class="line"><span class="lineno">  158</span>       <span class="comment">// Dva brza bljeska za PWR_SAVE</span></div>
-<div class="line"><span class="lineno">  159</span>       <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 2; i++) {</div>
-<div class="line"><span class="lineno">  160</span>         digitalWrite(<a class="code hl_variable" href="arduino__sleep__mode_8ino.html#a9e28d6c4a481789a9adb6b9d1710d0c2">DEBUG_PIN</a>, HIGH);</div>
-<div class="line"><span class="lineno">  161</span>         delay(100);</div>
-<div class="line"><span class="lineno">  162</span>         digitalWrite(<a class="code hl_variable" href="arduino__sleep__mode_8ino.html#a9e28d6c4a481789a9adb6b9d1710d0c2">DEBUG_PIN</a>, LOW);</div>
-<div class="line"><span class="lineno">  163</span>         delay(100);</div>
-<div class="line"><span class="lineno">  164</span>       }</div>
-<div class="line"><span class="lineno">  165</span>       <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  166</span>     <span class="keywordflow">case</span> SLEEP_MODE_STANDBY:</div>
-<div class="line"><span class="lineno">  167</span>       <span class="comment">// Tri brza bljeska za STANDBY</span></div>
-<div class="line"><span class="lineno">  168</span>       <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 3; i++) {</div>
-<div class="line"><span class="lineno">  169</span>         digitalWrite(<a class="code hl_variable" href="arduino__sleep__mode_8ino.html#a9e28d6c4a481789a9adb6b9d1710d0c2">DEBUG_PIN</a>, HIGH);</div>
-<div class="line"><span class="lineno">  170</span>         delay(100);</div>
-<div class="line"><span class="lineno">  171</span>         digitalWrite(<a class="code hl_variable" href="arduino__sleep__mode_8ino.html#a9e28d6c4a481789a9adb6b9d1710d0c2">DEBUG_PIN</a>, LOW);</div>
-<div class="line"><span class="lineno">  172</span>         delay(100);</div>
-<div class="line"><span class="lineno">  173</span>       }</div>
-<div class="line"><span class="lineno">  174</span>       <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  175</span>     <span class="keywordflow">case</span> SLEEP_MODE_IDLE:</div>
-<div class="line"><span class="lineno">  176</span>       <span class="comment">// Dugački bljesak za IDLE</span></div>
-<div class="line"><span class="lineno">  177</span>       digitalWrite(<a class="code hl_variable" href="arduino__sleep__mode_8ino.html#a9e28d6c4a481789a9adb6b9d1710d0c2">DEBUG_PIN</a>, HIGH);</div>
-<div class="line"><span class="lineno">  178</span>       delay(500);</div>
-<div class="line"><span class="lineno">  179</span>       digitalWrite(<a class="code hl_variable" href="arduino__sleep__mode_8ino.html#a9e28d6c4a481789a9adb6b9d1710d0c2">DEBUG_PIN</a>, LOW);</div>
-<div class="line"><span class="lineno">  180</span>       <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  181</span>   }</div>
-<div class="line"><span class="lineno">  182</span> }</div>
+<p class="definition">Definition at line <a class="el" href="arduino__sleep__mode_8ino_source.html#l00148">148</a> of file <a class="el" href="arduino__sleep__mode_8ino_source.html">arduino_sleep_mode.ino</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  148</span>                           {</div>
+<div class="line"><span class="lineno">  149</span>   <span class="keywordflow">switch</span> (<a class="code hl_variable" href="arduino__sleep__mode_8ino.html#a2d4a23b2392a19cae5b9b1c00ab5b4b6">sleepMode</a>) {</div>
+<div class="line"><span class="lineno">  150</span>     <span class="keywordflow">case</span> SLEEP_MODE_PWR_DOWN:</div>
+<div class="line"><span class="lineno">  151</span>       <span class="comment">// Jedan brzi bljesak za PWR_DOWN</span></div>
+<div class="line"><span class="lineno">  152</span>       digitalWrite(<a class="code hl_variable" href="arduino__sleep__mode_8ino.html#a9e28d6c4a481789a9adb6b9d1710d0c2">DEBUG_PIN</a>, HIGH);</div>
+<div class="line"><span class="lineno">  153</span>       delay(100);</div>
+<div class="line"><span class="lineno">  154</span>       digitalWrite(<a class="code hl_variable" href="arduino__sleep__mode_8ino.html#a9e28d6c4a481789a9adb6b9d1710d0c2">DEBUG_PIN</a>, LOW);</div>
+<div class="line"><span class="lineno">  155</span>       <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  156</span>     <span class="keywordflow">case</span> SLEEP_MODE_PWR_SAVE:</div>
+<div class="line"><span class="lineno">  157</span>       <span class="comment">// Dva brza bljeska za PWR_SAVE</span></div>
+<div class="line"><span class="lineno">  158</span>       <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 2; i++) {</div>
+<div class="line"><span class="lineno">  159</span>         digitalWrite(<a class="code hl_variable" href="arduino__sleep__mode_8ino.html#a9e28d6c4a481789a9adb6b9d1710d0c2">DEBUG_PIN</a>, HIGH);</div>
+<div class="line"><span class="lineno">  160</span>         delay(100);</div>
+<div class="line"><span class="lineno">  161</span>         digitalWrite(<a class="code hl_variable" href="arduino__sleep__mode_8ino.html#a9e28d6c4a481789a9adb6b9d1710d0c2">DEBUG_PIN</a>, LOW);</div>
+<div class="line"><span class="lineno">  162</span>         delay(100);</div>
+<div class="line"><span class="lineno">  163</span>       }</div>
+<div class="line"><span class="lineno">  164</span>       <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  165</span>     <span class="keywordflow">case</span> SLEEP_MODE_STANDBY:</div>
+<div class="line"><span class="lineno">  166</span>       <span class="comment">// Tri brza bljeska za STANDBY</span></div>
+<div class="line"><span class="lineno">  167</span>       <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 3; i++) {</div>
+<div class="line"><span class="lineno">  168</span>         digitalWrite(<a class="code hl_variable" href="arduino__sleep__mode_8ino.html#a9e28d6c4a481789a9adb6b9d1710d0c2">DEBUG_PIN</a>, HIGH);</div>
+<div class="line"><span class="lineno">  169</span>         delay(100);</div>
+<div class="line"><span class="lineno">  170</span>         digitalWrite(<a class="code hl_variable" href="arduino__sleep__mode_8ino.html#a9e28d6c4a481789a9adb6b9d1710d0c2">DEBUG_PIN</a>, LOW);</div>
+<div class="line"><span class="lineno">  171</span>         delay(100);</div>
+<div class="line"><span class="lineno">  172</span>       }</div>
+<div class="line"><span class="lineno">  173</span>       <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  174</span>     <span class="keywordflow">case</span> SLEEP_MODE_IDLE:</div>
+<div class="line"><span class="lineno">  175</span>       <span class="comment">// Dugački bljesak za IDLE</span></div>
+<div class="line"><span class="lineno">  176</span>       digitalWrite(<a class="code hl_variable" href="arduino__sleep__mode_8ino.html#a9e28d6c4a481789a9adb6b9d1710d0c2">DEBUG_PIN</a>, HIGH);</div>
+<div class="line"><span class="lineno">  177</span>       delay(500);</div>
+<div class="line"><span class="lineno">  178</span>       digitalWrite(<a class="code hl_variable" href="arduino__sleep__mode_8ino.html#a9e28d6c4a481789a9adb6b9d1710d0c2">DEBUG_PIN</a>, LOW);</div>
+<div class="line"><span class="lineno">  179</span>       <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  180</span>   }</div>
+<div class="line"><span class="lineno">  181</span> }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -626,7 +625,7 @@ Variables</h2></td></tr>
 <p>Pin na kojem je spojeno tipkalo za vanjski prekid. </p>
 <dl class="section note"><dt>Note</dt><dd>Mora biti pin 2 (INT0) ili pin 3 (INT1) na standardnom Arduinu </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="arduino__sleep__mode_8ino_source.html#l00026">26</a> of file <a class="el" href="arduino__sleep__mode_8ino_source.html">arduino_sleep_mode.ino</a>.</p>
+<p class="definition">Definition at line <a class="el" href="arduino__sleep__mode_8ino_source.html#l00025">25</a> of file <a class="el" href="arduino__sleep__mode_8ino_source.html">arduino_sleep_mode.ino</a>.</p>
 
 </div>
 </div>
@@ -644,7 +643,7 @@ Variables</h2></td></tr>
 
 <p>Zastavica koja označava buđenje putem tipkala. </p>
 
-<p class="definition">Definition at line <a class="el" href="arduino__sleep__mode_8ino_source.html#l00041">41</a> of file <a class="el" href="arduino__sleep__mode_8ino_source.html">arduino_sleep_mode.ino</a>.</p>
+<p class="definition">Definition at line <a class="el" href="arduino__sleep__mode_8ino_source.html#l00040">40</a> of file <a class="el" href="arduino__sleep__mode_8ino_source.html">arduino_sleep_mode.ino</a>.</p>
 
 </div>
 </div>
@@ -662,7 +661,7 @@ Variables</h2></td></tr>
 
 <p>Pin za debugging sleep modova u Wokwi. </p>
 
-<p class="definition">Definition at line <a class="el" href="arduino__sleep__mode_8ino_source.html#l00031">31</a> of file <a class="el" href="arduino__sleep__mode_8ino_source.html">arduino_sleep_mode.ino</a>.</p>
+<p class="definition">Definition at line <a class="el" href="arduino__sleep__mode_8ino_source.html#l00030">30</a> of file <a class="el" href="arduino__sleep__mode_8ino_source.html">arduino_sleep_mode.ino</a>.</p>
 
 </div>
 </div>
@@ -680,7 +679,7 @@ Variables</h2></td></tr>
 
 <p>Zastavica koja označava stanje spavanja. </p>
 
-<p class="definition">Definition at line <a class="el" href="arduino__sleep__mode_8ino_source.html#l00036">36</a> of file <a class="el" href="arduino__sleep__mode_8ino_source.html">arduino_sleep_mode.ino</a>.</p>
+<p class="definition">Definition at line <a class="el" href="arduino__sleep__mode_8ino_source.html#l00035">35</a> of file <a class="el" href="arduino__sleep__mode_8ino_source.html">arduino_sleep_mode.ino</a>.</p>
 
 </div>
 </div>
@@ -698,7 +697,7 @@ Variables</h2></td></tr>
 
 <p>Za praćenje zadnjeg vremena za debounce tipkala. </p>
 
-<p class="definition">Definition at line <a class="el" href="arduino__sleep__mode_8ino_source.html#l00052">52</a> of file <a class="el" href="arduino__sleep__mode_8ino_source.html">arduino_sleep_mode.ino</a>.</p>
+<p class="definition">Definition at line <a class="el" href="arduino__sleep__mode_8ino_source.html#l00051">51</a> of file <a class="el" href="arduino__sleep__mode_8ino_source.html">arduino_sleep_mode.ino</a>.</p>
 
 </div>
 </div>
@@ -716,7 +715,7 @@ Variables</h2></td></tr>
 
 <p>Pin na kojem je spojena LED dioda. </p>
 
-<p class="definition">Definition at line <a class="el" href="arduino__sleep__mode_8ino_source.html#l00020">20</a> of file <a class="el" href="arduino__sleep__mode_8ino_source.html">arduino_sleep_mode.ino</a>.</p>
+<p class="definition">Definition at line <a class="el" href="arduino__sleep__mode_8ino_source.html#l00019">19</a> of file <a class="el" href="arduino__sleep__mode_8ino_source.html">arduino_sleep_mode.ino</a>.</p>
 
 </div>
 </div>
@@ -735,7 +734,7 @@ Variables</h2></td></tr>
 <p>Trenutno odabrani sleep mode. </p>
 <dl class="section see"><dt>See also</dt><dd>sleep.h za dostupne modove </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="arduino__sleep__mode_8ino_source.html#l00047">47</a> of file <a class="el" href="arduino__sleep__mode_8ino_source.html">arduino_sleep_mode.ino</a>.</p>
+<p class="definition">Definition at line <a class="el" href="arduino__sleep__mode_8ino_source.html#l00046">46</a> of file <a class="el" href="arduino__sleep__mode_8ino_source.html">arduino_sleep_mode.ino</a>.</p>
 
 </div>
 </div>

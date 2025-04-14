@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['readdhtsensor_0',['readDHTSensor',['../monitor__za__bebe_8ino.html#abe55f1b24677034196ebac987a108f3a',1,'monitor_za_bebe.ino']]],
-  ['readsoundlevel_1',['readSoundLevel',['../monitor__za__bebe_8ino.html#ad0c01ae6a10d12869addfdf70f5c07e9',1,'monitor_za_bebe.ino']]]
+  ['normalreadingscount_0',['normalReadingsCount',['../monitor__za__bebe_8ino.html#af8ff5a91d1a18a1d498d2c1da4aed12f',1,'monitor_za_bebe.ino']]],
+  ['ntpserver_1',['ntpServer',['../monitor__za__bebe_8ino.html#a6bd950625db0f240acc63a9cb41873f6',1,'monitor_za_bebe.ino']]]
 ];
