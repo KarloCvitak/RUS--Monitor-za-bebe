@@ -1,5 +1,5 @@
 /**
- * @file main.cpp
+ * @file monitor_za_bebe.ino
  * @author Karlo Cvitak
  * @brief Implementacija sustava za nadzor beba s podrškom za sleep mod i očuvanjem WiFi veze
  * @version 1.5
