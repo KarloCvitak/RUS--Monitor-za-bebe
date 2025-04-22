@@ -1,7 +1,8 @@
 # Razvoj ugradbenih sustava
-> [Pristup pregledu generirane dokumentacije koda](https://karlocvitak.github.io/RUS--Monitor-za-bebe/).
 
-> [Detaljan opis sustava se nalazi na Wiki stranici](https://github.com/KarloCvitak/RUS--Monitor-za-bebe/wiki).
+Doxygen [generirana dokumentacija koda.](https://karlocvitak.github.io/RUS--Monitor-za-bebe/).
+
+Detaljan opis sustava se nalazi na [Wiki stranici.](https://github.com/KarloCvitak/RUS--Monitor-za-bebe/wiki).
 
 
 # Opis projekta
@@ -12,13 +13,13 @@
 # Funkcijski zahtjevi
 > Mjerenje temperature i vlage okoline (DHT22/BME280).
 
-> Detekcija zvuka pomoću MEMS mikrofona.
+> Detekcija zvuka pomoću senzora zvuka.
 
-> Mjerenje kvalitete zraka (MQ135 ili sličan senzor).
+> Mjerenje vlage i temeperature zraka (DHT22).
 
-> Alarmni sustav koji obavještava o promjenama stanja.
+> Alarmni sustav koji obavještava o promjenama stanja (Discord webhook).
 
-> Energetska optimizacija kroz Deep Sleep i druge tehnike.
+> Energetska optimizacija kroz Light Sleep.
 
 
 # Tehnologije
@@ -27,11 +28,19 @@
 | **Mikrokontroler** | ESP32 |
 | **Senzori** | DHT22, mikrofon |
 | **Bežična komunikacija** | Wi-Fi |
-| **Sabirnice** | I²C, SPI |
+| **Sabirnice** | I²C |
 | **Simulacija** | Wokwi |
 
 # Instalcija
-TBD
+
+Za pokretanje ovog projekta u Wokwi simulatoru:
+
+1. Preuzeti repozitorij (Code > Local > Download ZIP) 
+2. Stvorite novi ESP32 Arduino projekt u Wokwi simulatoru
+3. Učitat mapu projekta
+5. Pokrenut simulaciju
+
+
 
 ## 📂 Struktura repozitorija
 ```
