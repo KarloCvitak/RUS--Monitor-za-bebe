@@ -2,7 +2,7 @@
  * @file main.cpp
  * @author Karlo Cvitak
  * @brief Implementacija sustava za nadzor beba s podrškom za sleep mod
- * @version 1.2
+ * @version 2
  * @date 2025-04-12
  * 
  * @details Ovaj sustav omogućuje nadzor temperature, vlažnosti i zvuka djeteta
