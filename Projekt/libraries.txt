@@ -7,3 +7,6 @@ SimpleWiFiClient
 ESP-WiFiSettings
 ESP-Wifi-Config
 DHT22
+Adafruit GFX Library
+Adafruit SSD1306
+BME280_Arduino_I2C
